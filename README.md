@@ -275,3 +275,36 @@ public:
 
 </details>
 
+
+<details>
+<summary><h3>190. Reverse Bits</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 11.17%` `Commit:fb11fc8` `Solved At: 2026-02-22 23:21:45` <code><a href="https://leetcode.com/problems/reverse-bits/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int reverseBits(int n) {
+        // int to binary conversion
+        bitset<32> binary_representation(n);
+        // binary to string
+        string binary_string = binary_representation.to_string();
+
+        int i=0;
+        int j=binary_string.size()-1;
+
+        // reversing the string
+        while(i<j){
+            swap(binary_string[i],binary_string[j]);
+            i++;
+            j--;
+        }
+
+        // converting the string back to int
+        return stoi(binary_string, nullptr, 2);
+    }
+};
+```
+
+</details>
+
