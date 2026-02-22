@@ -1,0 +1,54 @@
+name: Update README with LeetCode Solution
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - '.github/workflows/**'
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    
+    # Prevent the workflow from running on commits made by the workflow itself
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for git log
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq curl
+      
+      - name: Make script executable
+        run: chmod +x script.sh
+      
+      - name: Run LeetCode script
+        run: bash script.sh
+      
+      - name: Check if README was modified
+        id: check_changes
+        run: |
+          if git diff --quiet README.md; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: Update README with latest LeetCode solution [skip ci]"
+          git push
