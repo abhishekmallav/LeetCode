@@ -1,0 +1,70 @@
+name: Update README with LeetCode Solution
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - '.github/workflows/**'
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    
+    # Prevent the workflow from running on commits made by the workflow itself
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for git log
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y jq curl
+      
+      - name: Verify dependencies
+        run: |
+          echo "Checking installed tools..."
+          jq --version
+          curl --version
+          git --version
+      
+      - name: Make script executable
+        run: chmod +x script.sh
+      
+      - name: Run LeetCode script
+        id: run_script
+        run: |
+          echo "Running script.sh..."
+          bash script.sh 2>&1 | tee script_output.log
+          echo "Script completed successfully!"
+        continue-on-error: false
+      
+      - name: Check if README was modified
+        id: check_changes
+        run: |
+          if git diff --quiet README.md; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes to README.md"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "README.md has been updated"
+            git diff README.md
+          fi
+      
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: Update README with latest LeetCode solution [skip ci]"
+          git push
+          echo "✅ README.md updated and pushed successfully!"
