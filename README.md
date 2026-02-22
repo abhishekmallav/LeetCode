@@ -308,3 +308,52 @@ public:
 
 </details>
 
+
+<details>
+<summary><h3>3713. Longest Balanced Substring I</h3></summary>
+
+`Medium` `Time Beats: 41.45%` `Memory Beats: 59.78%` `Commit:8a82b83` `Solved At: 2026-02-22 23:43:31` <code><a href="https://leetcode.com/problems/longest-balanced-substring-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+
+    bool checkBalanced(vector<int>& freq) {
+        int common = 0;
+        for(int i = 0; i < 26; i++) {
+            if(freq[i] == 0) continue;
+            if(common == 0)
+                common = freq[i];
+            else if(freq[i] != common) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    int longestBalanced(string s) {
+        int n = s.length();
+
+        int maxLen = 0;
+
+        for(int i = 0; i < n; i++) {
+            vector<int> freq(26, 0);
+
+            for(int j = i; j < n; j++) {
+                freq[s[j] - 'a']++;
+
+                //i..j
+                if(checkBalanced(freq)) {
+                    maxLen = max(maxLen, j-i+1);
+                }
+            }
+        }
+
+        return maxLen;
+    }
+};
+```
+
+</details>
+
