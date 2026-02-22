@@ -1,8 +1,8 @@
 
 <details>
-<summary><h3><a href="https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/description/">762. Prime Number of Set Bits in Binary Representation</a></h3></summary>
+<summary><h3>762. Prime Number of Set Bits in Binary Representation</h3></summary>
 
-`Easy` `Time Beats: 72.17%` `Memory Beats: 7.90%` `Commit:3a9deb9` `Solved At: 2026-02-21 21:12:51`
+`Easy` `Time Beats: 72.17%` `Memory Beats: 7.90%` `Commit:3a9deb9` `Solved At: 2026-02-21 21:12:51` <code><a href="https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/description/" target="_blank">LINK</a></code>
 
 ```cpp
 class Solution {
@@ -26,9 +26,9 @@ public:
 
 
 <details>
-<summary><h3><a href="https://leetcode.com/problems/next-greater-element-ii/description/">503. Next Greater Element II</a></h3></summary>
+<summary><h3>503. Next Greater Element II</h3></summary>
 
-`Medium` `Time Beats: 5.59%` `Memory Beats: 98.76%` `Commit:1450318` `Solved At: 2026-02-21 21:16:29`
+`Medium` `Time Beats: 5.59%` `Memory Beats: 98.76%` `Commit:1450318` `Solved At: 2026-02-21 21:16:29` <code><a href="https://leetcode.com/problems/next-greater-element-ii/description/" target="_blank">LINK</a></code>
 
 ```cpp
 class Solution {
@@ -56,9 +56,9 @@ public:
 
 
 <details>
-<summary><h3><a href="https://leetcode.com/problems/third-maximum-number/description/">414. Third Maximum Number</a></h3></summary>
+<summary><h3>414. Third Maximum Number</h3></summary>
 
-`Easy` `Time Beats: 100.00%` `Memory Beats: 92.66%` `Commit:049c8c6` `Solved At: 2026-02-21 22:15:11`
+`Easy` `Time Beats: 100.00%` `Memory Beats: 92.66%` `Commit:049c8c6` `Solved At: 2026-02-21 22:15:11` <code><a href="https://leetcode.com/problems/third-maximum-number/description/" target="_blank">LINK</a></code>
 
 ```cpp
 class Solution {
@@ -102,9 +102,9 @@ public:
 
 
 <details>
-<summary><h3><a href="https://leetcode.com/problems/two-sum/description/">1. Two Sum</a></h3></summary>
+<summary><h3>1. Two Sum</h3></summary>
 
-`Easy` `Time Beats: 73.15%` `Memory Beats: 9.88%` `Commit:5f11611` `Solved At: 2026-02-21 22:24:52`
+`Easy` `Time Beats: 73.15%` `Memory Beats: 9.88%` `Commit:5f11611` `Solved At: 2026-02-21 22:24:52` <code><a href="https://leetcode.com/problems/two-sum/description/" target="_blank">LINK</a></code>
 
 ```cpp
 class Solution {
@@ -129,9 +129,9 @@ public:
 
 
 <details>
-<summary><h3><a href="https://leetcode.com/problems/binary-gap/description/">868. Binary Gap</a> 🌟 POTD</h3></summary>
+<summary><h3>868. Binary Gap 🌟 POTD</h3></summary>
 
-`Easy` `Time Beats: 100.00%` `Memory Beats: 25.49%` `Commit:029cc44` `Solved At: 2026-02-22 19:14:50`
+`Easy` `Time Beats: 100.00%` `Memory Beats: 25.49%` `Commit:029cc44` `Solved At: 2026-02-22 19:14:50` <code><a href="https://leetcode.com/problems/binary-gap/description/" target="_blank">LINK</a></code>
 
 ```cpp
 class Solution {
