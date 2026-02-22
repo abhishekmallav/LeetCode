@@ -163,3 +163,36 @@ public:
 
 </details>
 
+
+<details>
+<summary><h3>3379. Transformed Array</h3></summary>
+
+`Easy` `Time Beats: 80.84%` `Memory Beats: 10.17%` `Commit:fd9f9e1` `Solved At: 2026-02-22 23:14:00` <code><a href="https://leetcode.com/problems/transformed-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> constructTransformedArray(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> result;
+
+        for (int i = 0; i < n; i++) {
+            int j = i + nums[i];
+
+            while (j < 0) {
+                j += n;
+            }
+            while (j >= n) {
+                j -= n;
+            }
+
+            result.push_back(nums[j]);
+        }
+
+        return result;
+    }
+};
+```
+
+</details>
+
