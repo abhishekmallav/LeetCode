@@ -1,6 +1,6 @@
 
 <details>
-<summary><h3>762. Prime Number of Set Bits in Binary Representation</h3></summary>
+<summary><h3>762. Prime Number of Set Bits in Binary Representation 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 72.17%` `Memory Beats: 7.90%` `Commit:3a9deb9` `Solved At: 2026-02-21 21:12:51` <code><a href="https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/description/" target="_blank">LINK</a></code>
 
