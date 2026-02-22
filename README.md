@@ -196,3 +196,82 @@ public:
 
 </details>
 
+
+<details>
+<summary><h3>3640. Trionic Array II</h3></summary>
+
+`Hard` `Time Beats: 100.00%` `Memory Beats: 76.29%` `Commit:c13b9cc` `Solved At: 2026-02-22 23:15:36` <code><a href="https://leetcode.com/problems/trionic-array-ii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    long long maxSumTrionic(vector<int>& nums) {
+        int n = nums.size();
+        long long ans = LLONG_MIN;
+
+        for (int i = 0; i < n; i++) {
+            int j = i;
+            int p, q, k;
+            long long res = 0;
+            long long sum = 0, max_sum = 0;
+
+            // First increasing phase
+            while (j + 1 < n && nums[j] < nums[j + 1]) {
+                j++;
+            }
+            p = j;
+            if (p == i) continue;
+
+            // Add peak and previous
+            res += nums[p] + nums[p - 1];
+
+            // Decreasing phase
+            while (j + 1 < n && nums[j] > nums[j + 1]) {
+                j++;
+                res += nums[j];
+            }
+            q = j;
+
+            // Validate third phase existence
+            if (q == p || q + 1 >= n || nums[q] >= nums[q + 1]) {
+                i = q;
+                continue;
+            }
+
+            // Start final increasing phase
+            res += nums[q + 1];
+
+            // Extend final increasing (right side)
+            sum = 0;
+            max_sum = 0;
+            k = q + 2;
+            while (k < n && nums[k] > nums[k - 1]) {
+                sum += nums[k];
+                max_sum = max(max_sum, sum);
+                k++;
+            }
+            res += max_sum;
+
+            // Extend first increasing backwards (left side)
+            sum = 0;
+            max_sum = 0;
+            k = p - 2;
+            while (k >= i) {
+                sum += nums[k];
+                max_sum = max(max_sum, sum);
+                k--;
+            }
+            res += max_sum;
+            ans = max(ans, res);
+
+            // Skip processed region
+            i = q - 1;
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
