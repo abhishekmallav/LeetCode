@@ -357,3 +357,28 @@ public:
 
 </details>
 
+
+<details>
+<summary><h3>1461. Check If a String Contains All Binary Codes of Size K 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 59.96%` `Memory Beats: 39.67%` `Commit:4edc9ea` `Solved At: 2026-02-23 21:27:03` <code><a href="https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool hasAllCodes(string s, int k) {
+        int n = s.length();
+        unordered_set<string> st;
+        for (int i = k; i <= n; i++) {
+            st.insert(s.substr(i - k, k));
+        }
+        if (st.size() == pow(2, k)) {
+            return true;
+        }
+        return false;
+    }
+};
+```
+
+</details>
+
