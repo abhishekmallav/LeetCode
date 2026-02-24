@@ -382,3 +382,33 @@ public:
 
 </details>
 
+
+<details>
+<summary><h3>1022. Sum of Root To Leaf Binary Numbers 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 9.54%` `Memory Beats: 19.46%` `Commit:026c9ac` `Solved At: 2026-02-24 15:42:26` <code><a href="https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int preOrder(TreeNode* node, string str) {
+        if (!node) return 0;
+
+        str.push_back(node->val + '0');
+
+        if (!node->left && !node->right) {
+            return stoi(str, nullptr, 2);
+        }
+
+        return preOrder(node->left, str) + 
+               preOrder(node->right, str);
+    }
+
+    int sumRootToLeaf(TreeNode* root) {
+        return preOrder(root, "");
+    }
+};
+```
+
+</details>
+
