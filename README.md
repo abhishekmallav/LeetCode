@@ -444,3 +444,48 @@ public:
 
 </details>
 
+
+<details>
+<summary><h3>8. String to Integer (atoi)</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 97.58%` `Commit:523ef37` `Solved At: 2026-02-24 18:28:20` <code><a href="https://leetcode.com/problems/string-to-integer-atoi/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int myAtoi(string s) {
+        int i = 0;
+        int n = s.length();
+        
+        while (i < n && s[i] == ' ') {
+            i++;
+        }
+
+        int sign = 1;
+        if (i < n && (s[i] == '+' || s[i] == '-')) {
+            if (s[i] == '-') {
+                sign = -1;
+            }
+            i++;
+        }
+        
+        long result = 0;
+        
+        while (i < n && s[i]>=48 && s[i]<=57) {
+            result = result * 10 + (s[i] - 48);
+            
+            if (sign * result > INT_MAX)
+                return INT_MAX;
+            if (sign * result < INT_MIN)
+                return INT_MIN;
+            
+            i++;
+        }
+        
+        return sign * result;
+    }
+};
+```
+
+</details>
+
