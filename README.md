@@ -412,3 +412,35 @@ public:
 
 </details>
 
+
+<details>
+<summary><h3>3. Longest Substring Without Repeating Characters</h3></summary>
+
+`Medium` `Time Beats: 37.40%` `Memory Beats: 21.15%` `Commit:c4f1af8` `Solved At: 2026-02-24 16:22:20` <code><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_set<char>st;
+        int n=s.length();
+        int i=0;
+        int j=0;
+        int len=0;
+        while (j<n){
+            if(!st.count(s[j])){
+                st.insert(s[j]);
+                len=max(len,j-i+1);
+                j++;
+                continue;
+            }
+            st.erase(s[i]);
+            i++;
+        }
+        return len;
+    }
+};
+```
+
+</details>
+
