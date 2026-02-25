@@ -516,3 +516,28 @@ public:
 
 </details>
 
+
+<details>
+<summary><h3>1356. Sort Integers by The Number of 1 Bits 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 57.35%` `Memory Beats: 5.10%` `Commit:806525f` `Solved At: 2026-02-25 11:47:19` <code><a href="https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> sortByBits(vector<int>& arr) {
+        function<bool(int,int)> comp = [](int a, int b) {
+            int countA = __builtin_popcount(a);
+            int countB = __builtin_popcount(b);
+            if (countA == countB)
+                return a < b;
+            return countA < countB;
+        };
+        sort(arr.begin(), arr.end(),comp);
+        return arr;
+    }
+};
+```
+
+</details>
+
