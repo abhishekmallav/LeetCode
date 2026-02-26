@@ -541,3 +541,43 @@ public:
 
 </details>
 
+
+<details>
+<summary><h3>1404. Number of Steps to Reduce a Number in Binary Representation to One 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 24.61%` `Commit:3fd14f1` `Solved At: 2026-02-26 10:56:29` <code><a href="https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int numSteps(string s) {
+        int count = 0;
+
+        while (s != "1") {
+            if (s.back() == '0') {
+                // even divide by 2
+                s.pop_back();
+            } else {
+                // odd add 1
+                int i = s.size() - 1;
+                while (i >= 0 && s[i] == '1') {
+                    s[i] = '0';
+                    i--;
+                }
+
+                if (i >= 0) {
+                    s[i] = '1';
+                } else {
+                    s = '1' + s; 
+                }
+            }
+            count++;
+        }
+
+        return count;
+    }
+};
+```
+
+</details>
+
