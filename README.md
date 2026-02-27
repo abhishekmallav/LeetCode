@@ -9,6 +9,78 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3666. Minimum Operations to Equalize Binary String 🌟 POTD</h3></summary>
+
+`Hard` `Time Beats: 52.31%` `Memory Beats: 32.31%` `Commit:3a50597` `Solved At: 2026-02-27 10:06:43` <code><a href="https://leetcode.com/problems/minimum-operations-to-equalize-binary-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minOperations(string s, int k) {
+        int n = s.length();
+        vector<int> operations(n + 1, -1);
+        queue<int> que;
+        int startZeros = 0;
+
+        for (char& ch : s) {
+            if (ch == '0') {
+                startZeros++;
+            }
+        }
+
+        if (startZeros == 0) {
+            return 0;
+        }
+
+        set<int> evenSet;
+        set<int> oddSet;
+
+        for (int cnt = 0; cnt <= n; cnt++) {
+            if (cnt % 2 == 0) {
+                evenSet.insert(cnt);
+            } else {
+                oddSet.insert(cnt);
+            }
+        }
+        que.push(startZeros);
+        operations[startZeros] = 0;
+        if (startZeros % 2 == 0) {
+            evenSet.erase(startZeros);
+        } else {
+            oddSet.erase(startZeros);
+        }
+        while (!que.empty()) {
+            int z = que.front();
+            que.pop();
+
+            int min_newZ = z + k - 2 * min(k, z);
+            int max_newZ = z + k - 2 * max(0, k - n + z);
+
+            set<int>& currSet = (min_newZ % 2 == 0) ? evenSet : oddSet;
+            auto it = currSet.lower_bound(min_newZ);
+
+            while (it != currSet.end() && *it <= max_newZ) {
+                int newZ = *it;
+
+                if (operations[newZ] == -1) {
+                    operations[newZ] = operations[z] + 1;
+                    if (newZ == 0) {
+                        return operations[newZ];
+                    }
+                    que.push(newZ);
+                }
+                it = currSet.erase(it);
+            }
+        }
+        return -1;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1404. Number of Steps to Reduce a Number in Binary Representation to One 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 24.61%` `Commit:3fd14f1` `Solved At: 2026-02-26 10:56:29` <code><a href="https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one/description/" target="_blank">LINK</a></code>
