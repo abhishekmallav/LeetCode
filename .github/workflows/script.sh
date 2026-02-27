@@ -149,3 +149,10 @@ awk -v tmpfile="$TMPFILE" '
 ' README.md > README.tmp && mv README.tmp README.md
 
 rm -f "$TMPFILE"
+
+# Export variables for GitHub Actions commit message
+if [[ -n "$GITHUB_ENV" ]]; then
+    echo "LEETCODE_PROBLEM_NUMBER=$PROBLEM_NUMBER" >> "$GITHUB_ENV"
+    echo "LEETCODE_PROBLEM_TITLE=$PROBLEM_TITLE" >> "$GITHUB_ENV"
+    echo "LEETCODE_COMMIT_DATE=${COMMIT_TIME:0:10}" >> "$GITHUB_ENV"
+fi
