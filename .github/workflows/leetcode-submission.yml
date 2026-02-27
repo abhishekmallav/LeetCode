@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'README.md'
-      - '.github/workflows/**'
+    paths:
+      - '**.cpp'
+      - '**.java'
+      - '**.py'
+      - '**.js'
+      - '**.ts'
 
 jobs:
   update-readme:
@@ -22,7 +25,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for git log
+          fetch-depth: 0
       
       - name: Install dependencies
         run: |
@@ -30,10 +33,10 @@ jobs:
           sudo apt-get install -y jq curl
       
       - name: Make script executable
-        run: chmod +x script.sh
+        run: chmod +x .github/workflows/script.sh
       
       - name: Run LeetCode script
-        run: bash script.sh
+        run: bash .github/workflows/script.sh
       
       - name: Check if README was modified
         id: check_changes
