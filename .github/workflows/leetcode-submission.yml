@@ -53,5 +53,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "docs: Update README with latest LeetCode solution [skip ci]"
+          git commit -m "docs: [#${{ env.LEETCODE_PROBLEM_NUMBER }}] ${{ env.LEETCODE_PROBLEM_TITLE }} (${{ env.LEETCODE_COMMIT_DATE }}) [skip ci]"
           git push
