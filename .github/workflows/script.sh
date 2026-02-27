@@ -120,6 +120,8 @@ echo "URL: $PROBLEM_URL"
 echo "Code File: $FILE"
 echo "$CODE_CONTENT"
 
+# Build the new entry in a temp file
+TMPFILE=$(mktemp)
 {
 echo ""
 echo "<details>"
@@ -133,4 +135,17 @@ echo '```'
 echo ""
 echo "</details>"
 echo ""
-} >> README.md
+} > "$TMPFILE"
+
+# Prepend the entry right after the <!-- SUBMISSIONS --> marker
+awk -v tmpfile="$TMPFILE" '
+/<!-- SUBMISSIONS -->/ {
+    print
+    while ((getline line < tmpfile) > 0) print line
+    close(tmpfile)
+    next
+}
+{ print }
+' README.md > README.tmp && mv README.tmp README.md
+
+rm -f "$TMPFILE"
