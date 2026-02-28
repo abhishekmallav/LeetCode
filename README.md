@@ -9,6 +9,29 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1680. Concatenation of Consecutive Binary Numbers</h3></summary>
+
+`Medium` `Time Beats: 59.06%` `Memory Beats: 17.45%` `Commit:4a56bc6` `Solved At: 2026-02-28 16:05:48` <code><a href="https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int concatenatedBinary(int n) {
+        int M = 1e9 + 7;
+        long long ans = 0;
+        for (int i = 1; i <= n; i++) {
+            int bits = log2(i) + 1;
+            ans = ((ans << bits) % M + i) % M;
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3666. Minimum Operations to Equalize Binary String 🌟 POTD</h3></summary>
 
 `Hard` `Time Beats: 52.31%` `Memory Beats: 32.31%` `Commit:3a50597` `Solved At: 2026-02-27 10:06:43` <code><a href="https://leetcode.com/problems/minimum-operations-to-equalize-binary-string/description/" target="_blank">LINK</a></code>
