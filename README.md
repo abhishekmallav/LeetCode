@@ -9,6 +9,29 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1689. Partitioning Into Minimum Number Of Deci-Binary Numbers 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 53.96%` `Commit:d3a10da` `Solved At: 2026-03-01 11:33:26` <code><a href="https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minPartitions(string n) {
+        char c = '0';
+        for (int i = 0; i < n.length(); i++) {
+            if (n[i] > c) {
+                c = n[i];
+            }
+        }
+        return c - '0';
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>387. First Unique Character in a String</h3></summary>
 
 `Easy` `Time Beats: 37.52%` `Memory Beats: 20.66%` `Commit:ad26e7e` `Solved At: 2026-03-01 11:18:27` <code><a href="https://leetcode.com/problems/first-unique-character-in-a-string/description/" target="_blank">LINK</a></code>
