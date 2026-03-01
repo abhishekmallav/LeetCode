@@ -9,6 +9,32 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>387. First Unique Character in a String</h3></summary>
+
+`Easy` `Time Beats: 37.52%` `Memory Beats: 20.66%` `Commit:ad26e7e` `Solved At: 2026-03-01 11:18:27` <code><a href="https://leetcode.com/problems/first-unique-character-in-a-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        unordered_map<char, int> freq;
+        for (char c : s) {
+            freq[c]++;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if (freq[s[i]] == 1) {
+                return i;
+            }
+        }
+        return -1;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1680. Concatenation of Consecutive Binary Numbers</h3></summary>
 
 `Medium` `Time Beats: 59.06%` `Memory Beats: 17.45%` `Commit:4a56bc6` `Solved At: 2026-02-28 16:05:48` <code><a href="https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/description/" target="_blank">LINK</a></code>
