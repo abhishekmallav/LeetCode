@@ -9,6 +9,73 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1536. Minimum Swaps to Arrange a Binary Grid</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 65.85%` `Commit:4e805c7` `Solved At: 2026-03-02 09:51:28` <code><a href="https://leetcode.com/problems/minimum-swaps-to-arrange-a-binary-grid/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minSwaps(vector<vector<int>>& grid) {
+        int n = grid.size();
+        vector<int> zeros(n, 0);
+
+        //count no of trailing zeros (zeros from the end) in each row
+        for (int i = 0; i < n; i++) {
+            int j = n - 1;
+            int count = 0;
+            while (j >= 0 && grid[i][j] == 0) {
+                count++;
+                j--;
+            }
+            zeros[i] = count;
+        }
+
+        int ans = 0;
+        //check if the current need is satisfied or not
+        // if yes then move to next row
+        // if no then go to the element where need is satisfied
+        // swap the elements after the need is done
+       
+        // if need not satisfied in the zeros array retrun -1
+
+        for (int i = 0; i < n; i++) {
+            // need = n - row - 1 (no of zeros needed)
+            int need = n - i - 1;
+            int j = i;
+
+            //check if the current need is satisfied or not
+            // if yes then move to next row
+            // if no then go to the element where need is satisfied
+            
+            while (j < n && zeros[j] < need) {
+                j++;
+            }
+
+            // if need not satisfied in the zeros array retrun -1
+            if (j == n) {
+                return -1;
+            }
+
+            //count no of swaps
+            ans += j - i;
+
+            // swap the elements after the need is done
+            // bubble swap mechanism
+            while (j > i) {
+                swap(zeros[j], zeros[j - 1]);
+                j--;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1689. Partitioning Into Minimum Number Of Deci-Binary Numbers 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 53.96%` `Commit:d3a10da` `Solved At: 2026-03-01 11:33:26` <code><a href="https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/description/" target="_blank">LINK</a></code>
