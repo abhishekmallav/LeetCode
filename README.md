@@ -9,6 +9,37 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1545. Find Kth Bit in Nth Binary String 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 40.02%` `Memory Beats: 22.63%` `Commit:9a420d6` `Solved At: 2026-03-03 17:41:05` <code><a href="https://leetcode.com/problems/find-kth-bit-in-nth-binary-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string invert(string s) {
+        for (char& c : s) {
+            c = (c == '0' ? '1' : '0');
+        }
+        return s;
+    }
+    char findKthBit(int n, int k) {
+        string s = "0";
+        for (int i = 2; i <= n; i++) {
+            string prev = s;
+            string sub = invert(prev);
+            reverse(sub.begin(), sub.end());
+            s = prev + "1" + sub;
+        }
+
+        return s[k-1];
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1536. Minimum Swaps to Arrange a Binary Grid</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 65.85%` `Commit:4e805c7` `Solved At: 2026-03-02 09:51:28` <code><a href="https://leetcode.com/problems/minimum-swaps-to-arrange-a-binary-grid/description/" target="_blank">LINK</a></code>
