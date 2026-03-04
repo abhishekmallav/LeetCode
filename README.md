@@ -9,6 +9,46 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1582. Special Positions in a Binary Matrix 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 20.57%` `Commit:7cec811` `Solved At: 2026-03-04 10:44:24` <code><a href="https://leetcode.com/problems/special-positions-in-a-binary-matrix/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int numSpecial(vector<vector<int>>& mat) {
+        int m = mat.size();
+        int n = mat[0].size();
+
+        vector<int> row(m, 0);
+        vector<int> col(n, 0);
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                row[i] += mat[i][j];
+                col[j] += mat[i][j];
+            }
+        }
+
+        int count = 0;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (mat[i][j] == 1 && row[i] == 1 && col[j] == 1) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1545. Find Kth Bit in Nth Binary String 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 40.02%` `Memory Beats: 22.63%` `Commit:9a420d6` `Solved At: 2026-03-03 17:41:05` <code><a href="https://leetcode.com/problems/find-kth-bit-in-nth-binary-string/description/" target="_blank">LINK</a></code>
