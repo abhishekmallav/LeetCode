@@ -9,6 +9,67 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1758. Minimum Changes To Make Alternating Binary String</h3></summary>
+
+`Easy` `Time Beats: 4.15%` `Memory Beats: 12.01%` `Commit:0b3d366` `Solved At: 2026-03-05 08:44:03` <code><a href="https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minOperations(string s) {
+        string copy0 = s;
+        string copy1 = s;
+
+        int n = s.length();
+
+        int cnt = 0;
+        int cnt0 = 1;
+        int cnt1 = 1;
+
+        for (int i = 1; i < n; i++) {
+            if (s[i] != s[i - 1]) {
+                continue;
+            }
+            if (s[i] == '0') {
+                s[i] = '1';
+            } else {
+                s[i] = '0';
+            }
+            cnt++;
+        }
+        copy0[0] = '0';
+        for (int i = 1; i < n; i++) {
+            if (copy0[i] != copy0[i - 1]) {
+                continue;
+            }
+            if (copy0[i] == '0') {
+                copy0[i] = '1';
+            } else {
+                copy0[i] = '0';
+            }
+            cnt0++;
+        }
+        copy1[0] = '1';
+        for (int i = 1; i < n; i++) {
+            if (copy1[i] != copy1[i - 1]) {
+                continue;
+            }
+            if (copy1[i] == '0') {
+                copy1[i] = '1';
+            } else {
+                copy1[i] = '0';
+            }
+            cnt1++;
+        }
+        return min(cnt, min(cnt0, cnt1));
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1582. Special Positions in a Binary Matrix 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 20.57%` `Commit:7cec811` `Solved At: 2026-03-04 10:44:24` <code><a href="https://leetcode.com/problems/special-positions-in-a-binary-matrix/description/" target="_blank">LINK</a></code>
