@@ -9,6 +9,36 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1784. Check if Binary String Has at Most One Segment of Ones 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 77.26%` `Commit:1a640bf` `Solved At: 2026-03-06 09:17:21` <code><a href="https://leetcode.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool checkOnesSegment(string s) {
+        int n = s.length();
+
+        // we have to check if the 01 appears or not
+        // 10000 true no (01)
+        // 111000 true no (01)
+        // 10001 false (01) exists
+        // 110011 false (01) exists
+
+        for (int i = 0; i < n; i++) {
+            if (s[i] == '0' && s[i + 1] == '1') {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1758. Minimum Changes To Make Alternating Binary String</h3></summary>
 
 `Easy` `Time Beats: 4.15%` `Memory Beats: 12.01%` `Commit:0b3d366` `Solved At: 2026-03-05 08:44:03` <code><a href="https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/description/" target="_blank">LINK</a></code>
