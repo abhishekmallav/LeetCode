@@ -9,6 +9,58 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1888. Minimum Number of Flips to Make the Binary String Alternating 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 14.40%` `Memory Beats: 20.80%` `Commit:ce3de4c` `Solved At: 2026-03-07 10:39:12` <code><a href="https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minFlips(string s) {
+        int n = s.length();
+        string str = s + s;
+        string s1, s2;
+
+        for (int i = 0; i < 2 * n; i++) {
+            // 010101...
+            s1 += (i % 2 ? '1' : '0'); 
+            // 101010...
+            s2 += (i % 2 ? '0' : '1'); 
+        }
+
+        int result = n;
+        int flip1 = 0;
+        int flip2 = 0;
+
+        int i = 0, j = 0;
+
+        while (j < 2 * n) {
+
+            if (str[j] != s1[j]) flip1++;
+            if (str[j] != s2[j]) flip2++;
+
+            if (j - i + 1 > n) {
+                if (str[i] != s1[i]) flip1--;
+                if (str[i] != s2[i]) flip2--;
+                i++;
+            }
+
+            if (j - i + 1 == n) {
+                result = min(result, min(flip1, flip2));
+            }
+
+            j++;
+        }
+
+        return result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1784. Check if Binary String Has at Most One Segment of Ones 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 77.26%` `Commit:1a640bf` `Solved At: 2026-03-06 09:17:21` <code><a href="https://leetcode.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/description/" target="_blank">LINK</a></code>
