@@ -11,6 +11,61 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <details>
 <summary><h3>1888. Minimum Number of Flips to Make the Binary String Alternating 🌟 POTD</h3></summary>
 
+`Medium` `Time Beats: 78.80%` `Memory Beats: 93.60%` `Commit:4773fc8` `Solved At: 2026-03-07 10:53:33` <code><a href="https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minFlips(string s) {
+        int n = s.length();
+        // not using the extra s+s string and rotating using modulo %
+        // not using extra space for the pattern strings 010101... 101010...
+        // we know that cahracters are alternating so we can predict them by
+        // index even 0 odd 1 for S1 even 1 ood 0 for S2
+
+        int result = n;
+        int flip1 = 0;
+        int flip2 = 0;
+
+        int i = 0, j = 0;
+
+        while (j < 2 * n) {
+            char expectedS1 = (j % 2 ? '0' : '1');
+            char expectedS2 = (j % 2 ? '1' : '0');
+
+            if (s[j % n] != expectedS1)
+                flip1++;
+            if (s[j % n] != expectedS2)
+                flip2++;
+
+            if (j - i + 1 > n) {
+                expectedS1 = (i % 2 ? '0' : '1');
+                expectedS2 = (i % 2 ? '1' : '0');
+                if (s[i % n] != expectedS1)
+                    flip1--;
+                if (s[i % n] != expectedS2)
+                    flip2--;
+                i++;
+            }
+
+            if (j - i + 1 == n) {
+                result = min(result, min(flip1, flip2));
+            }
+
+            j++;
+        }
+
+        return result;
+    }
+};
+```
+
+</details>
+
+
+<details>
+<summary><h3>1888. Minimum Number of Flips to Make the Binary String Alternating 🌟 POTD</h3></summary>
+
 `Medium` `Time Beats: 14.40%` `Memory Beats: 20.80%` `Commit:ce3de4c` `Solved At: 2026-03-07 10:39:12` <code><a href="https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/description/" target="_blank">LINK</a></code>
 
 ```cpp
