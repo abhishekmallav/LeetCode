@@ -9,6 +9,31 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1980. Find Unique Binary String 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 86.66%` `Commit:9250095` `Solved At: 2026-03-08 14:40:17` <code><a href="https://leetcode.com/problems/find-unique-binary-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string findDifferentBinaryString(vector<string>& nums) {
+        int n = nums.size();
+        string ans = "";
+        
+        for (int i = 0; i < n; i++) {
+            char ch = (nums[i][i] == '0' ? '1' : '0');
+            ans.push_back(ch);
+        }
+        
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1888. Minimum Number of Flips to Make the Binary String Alternating 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 78.80%` `Memory Beats: 93.60%` `Commit:4773fc8` `Solved At: 2026-03-07 10:53:33` <code><a href="https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/description/" target="_blank">LINK</a></code>
