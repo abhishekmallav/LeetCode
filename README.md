@@ -9,6 +9,44 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1009. Complement of Base 10 Integer 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 4.02%` `Commit:423044b` `Solved At: 2026-03-11 13:19:50` <code><a href="https://leetcode.com/problems/complement-of-base-10-integer/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int bitwiseComplement(int n) {
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return 0;
+        }
+        // no of bits required for the binary representation
+        // for 5 its 3 bits (101)
+        int bits = log2(n) + 1;
+
+        // this is our mask for the XOR operation
+        // mask is calculated by shifting 1 to left by no of bits 
+        // and subtracting 1 from it 
+        // for 5 it is 1<<3 = 1000 (decimal 8)
+        //  8 - 1 = 7 (binay 111) 
+        
+        // 00000000 00000000 00000000 00000101 = 5 
+        // 00000000 00000000 00000000 00000111 = mask for 5 
+        // 00000000 00000000 00000000 00000010 = XOR (int^mask)
+
+        int mask = (1 << bits) - 1;
+        return n ^ mask;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3130. Find All Possible Stable Binary Arrays II 🌟 POTD</h3></summary>
 
 `Hard` `Time Beats: 12.33%` `Memory Beats: 12.33%` `Commit:e2dd543` `Solved At: 2026-03-10 09:04:59` <code><a href="https://leetcode.com/problems/find-all-possible-stable-binary-arrays-ii/description/" target="_blank">LINK</a></code>
