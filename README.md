@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>69. Sqrt(x)</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 13.89%` `Commit:42f91c3` `Solved At: 2026-03-13 10:26:17` <code><a href="https://leetcode.com/problems/sqrtx/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int mySqrt(int x) {
+        int L = 1;
+        int R = x;
+        int ans = 0;
+
+        while (L <= R) {
+            int mid = L + (R - L) / 2;
+            long long midSq = (long long)mid * mid;
+
+            if (midSq == x) {
+                return mid;
+            } else if (midSq < x) {
+                ans = mid;
+                L = mid + 1;
+            } else {
+                R = mid - 1;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3296. Minimum Number of Seconds to Make Mountain Height Zero</h3></summary>
 
 `Medium` `Time Beats: 76.77%` `Memory Beats: 90.32%` `Commit:cf76260` `Solved At: 2026-03-13 10:15:28` <code><a href="https://leetcode.com/problems/minimum-number-of-seconds-to-make-mountain-height-zero/description/" target="_blank">LINK</a></code>
