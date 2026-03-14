@@ -9,6 +9,53 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1415. The k-th Lexicographical String of All Happy Strings of Length n 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 89.21%` `Commit:bc49125` `Solved At: 2026-03-14 13:20:04` <code><a href="https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    void solve(int n, string& curr, int& count, int k, string& result) {
+        if (curr.length() == n) {
+            count++;
+            if (count == k) {
+                result = curr;
+            }
+            return;
+        }
+
+        for (char ch = 'a'; ch <= 'c'; ch++) {
+            if (!curr.empty() && curr.back() == ch) {
+                continue;
+            }
+
+            curr.push_back(ch);
+
+            solve(n, curr, count, k, result);
+
+            if (!result.empty())
+                return;
+            curr.pop_back();
+        }
+    }
+
+    string getHappyString(int n, int k) {
+        string curr = "";
+        string result = "";
+        int count = 0;
+
+        solve(n, curr, count, k, result);
+
+        return result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>69. Sqrt(x)</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 13.89%` `Commit:42f91c3` `Solved At: 2026-03-13 10:26:17` <code><a href="https://leetcode.com/problems/sqrtx/description/" target="_blank">LINK</a></code>
