@@ -9,6 +9,33 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1108. Defanging an IP Address</h3></summary>
+
+`Easy` `Time Beats: 56.13%` `Memory Beats: 75.28%` `Commit:4433f57` `Solved At: 2026-03-14 13:51:57` <code><a href="https://leetcode.com/problems/defanging-an-ip-address/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string defangIPaddr(string address) {
+        string ans;
+
+        for (char c : address) {
+            if (c == '.') {
+                ans += "[.]";
+            } else {
+                ans += c;
+            }
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1078. Occurrences After Bigram</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 81.82%` `Commit:31e9298` `Solved At: 2026-03-14 13:41:26` <code><a href="https://leetcode.com/problems/occurrences-after-bigram/description/" target="_blank">LINK</a></code>
