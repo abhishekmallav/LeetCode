@@ -9,6 +9,36 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1078. Occurrences After Bigram</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 81.82%` `Commit:31e9298` `Solved At: 2026-03-14 13:41:26` <code><a href="https://leetcode.com/problems/occurrences-after-bigram/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<string> findOcurrences(string text, string first, string second) {
+        vector<string> ans;
+        vector<string> words;
+        istringstream iss(text);
+        string word;
+
+        while (iss >> word) {
+            words.push_back(word);
+        }
+        for (int i = 0; i < words.size() - 2; i++) {
+            if (words[i] == first && words[i + 1] == second) {
+                ans.push_back(words[i + 2]);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1415. The k-th Lexicographical String of All Happy Strings of Length n 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 89.21%` `Commit:bc49125` `Solved At: 2026-03-14 13:20:04` <code><a href="https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/description/" target="_blank">LINK</a></code>
