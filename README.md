@@ -9,6 +9,29 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>344. Reverse String</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 97.74%` `Commit:02ccf38` `Solved At: 2026-03-14 13:54:47` <code><a href="https://leetcode.com/problems/reverse-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int L=0;
+        int R=s.size()-1;
+        while(L<R){
+            swap(s[L],s[R]);
+            L++;
+            R--;
+        }
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1108. Defanging an IP Address</h3></summary>
 
 `Easy` `Time Beats: 56.13%` `Memory Beats: 75.28%` `Commit:4433f57` `Solved At: 2026-03-14 13:51:57` <code><a href="https://leetcode.com/problems/defanging-an-ip-address/description/" target="_blank">LINK</a></code>
