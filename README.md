@@ -9,6 +9,38 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>541. Reverse String II</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 10.17%` `Commit:3cba370` `Solved At: 2026-03-14 14:43:56` <code><a href="https://leetcode.com/problems/reverse-string-ii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string reverseStr(string s, int k) {
+        int n = s.length();
+        int L = 0;
+        int R = min(L + k - 1, n - 1);
+        int pos = 2 * k;
+
+        while (L < n) {
+            while (L < R) {
+                swap(s[L], s[R]);
+                L++;
+                R--;
+            }
+            L = pos;
+            R = min(L + k - 1, n - 1);
+            pos += 2 * k;
+        }
+        return s;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>344. Reverse String</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 97.74%` `Commit:02ccf38` `Solved At: 2026-03-14 13:54:47` <code><a href="https://leetcode.com/problems/reverse-string/description/" target="_blank">LINK</a></code>
