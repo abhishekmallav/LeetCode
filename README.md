@@ -9,6 +9,102 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1878. Get Biggest Three Rhombus Sums in a Grid</h3></summary>
+
+`Medium` `Time Beats: 33.79%` `Memory Beats: 13.10%` `Commit:a3a2dd9` `Solved At: 2026-03-16 14:18:13` <code><a href="https://leetcode.com/problems/get-biggest-three-rhombus-sums-in-a-grid/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> getBiggestThree(vector<vector<int>>& grid) {
+        int n = grid.size(), m = grid[0].size();
+
+        vector<vector<int>> d1(n, vector<int>(m));
+        vector<vector<int>> d2(n, vector<int>(m));
+
+        // build diagonal prefix sums
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                d1[i][j] = grid[i][j];
+                if (i > 0 && j > 0)
+                    d1[i][j] += d1[i - 1][j - 1];
+
+                d2[i][j] = grid[i][j];
+                if (i > 0 && j + 1 < m)
+                    d2[i][j] += d2[i - 1][j + 1];
+            }
+        }
+
+        set<int> best;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+
+                best.insert(grid[i][j]);
+
+                for (int k = 1;; k++) {
+
+                    int top = i - k;
+                    int bottom = i + k;
+                    int left = j - k;
+                    int right = j + k;
+
+                    if (top < 0 || bottom >= n || left < 0 || right >= m)
+                        break;
+
+                    int sum = 0;
+
+                    // top -> right (D1)
+                    sum += d1[i][right];
+                    if (top - 1 >= 0 && j - 1 >= 0)
+                        sum -= d1[top - 1][j - 1];
+
+                    // right -> bottom (D2)
+                    sum += d2[bottom][j];
+                    if (i - 1 >= 0 && right + 1 < m)
+                        sum -= d2[i - 1][right + 1];
+
+                    // bottom -> left (D1)
+                    sum += d1[bottom][j];
+                    if (i - 1 >= 0 && left - 1 >= 0)
+                        sum -= d1[i - 1][left - 1];
+
+                    // left -> top (D2)
+                    sum += d2[i][left];
+                    if (top - 1 >= 0 && j + 1 < m)
+                        sum -= d2[top - 1][j + 1];
+
+                    // subtract corners counted twice
+                    sum -= grid[top][j];
+                    sum -= grid[i][right];
+                    sum -= grid[bottom][j];
+                    sum -= grid[i][left];
+
+                    best.insert(sum);
+                    if (best.size() < 3) {
+                        best.insert(sum);
+                    } else if (sum > *best.begin()) {
+                        best.insert(sum);
+                        best.erase(best.begin());
+                    }
+                }
+            }
+        }
+        vector<int> ans;
+        int cnt = 0;
+        for (auto it = best.rbegin(); it != best.rend() && cnt < 3;
+             ++it, ++cnt) {
+            ans.push_back(*it);
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>541. Reverse String II</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 10.17%` `Commit:3cba370` `Solved At: 2026-03-14 14:43:56` <code><a href="https://leetcode.com/problems/reverse-string-ii/description/" target="_blank">LINK</a></code>
