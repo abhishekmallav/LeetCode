@@ -9,6 +9,49 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1727. Largest Submatrix With Rearrangements 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 23.40%` `Memory Beats: 16.49%` `Commit:95bb94c` `Solved At: 2026-03-17 09:15:02` <code><a href="https://leetcode.com/problems/largest-submatrix-with-rearrangements/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int largestSubmatrix(vector<vector<int>>& matrix) {
+        int row = matrix.size();
+        int col = matrix[0].size();
+        int area = 0;
+        vector<int> prevRow(col, 0);
+
+        for (int i = 0; i < row; i++) {
+            vector<int> currRow = matrix[i];
+
+            for (int j = 0; j < col; j++) {
+                if (currRow[j] == 1) {
+                    currRow[j] += prevRow[j];
+                }
+            }
+
+            vector<int> heights = currRow;
+
+            sort(heights.begin(), heights.end(), greater<int>());
+
+            for (int i = 0; i < heights.size(); i++) {
+                int base = i + 1;
+                int height = heights[i];
+                area = max(area, base * height);
+            }
+
+            prevRow = currRow;
+        }
+        return area;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1878. Get Biggest Three Rhombus Sums in a Grid</h3></summary>
 
 `Medium` `Time Beats: 33.79%` `Memory Beats: 13.10%` `Commit:a3a2dd9` `Solved At: 2026-03-16 14:18:13` <code><a href="https://leetcode.com/problems/get-biggest-three-rhombus-sums-in-a-grid/description/" target="_blank">LINK</a></code>
