@@ -9,6 +9,46 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3070. Count Submatrices with Top-Left Element and Sum Less Than k</h3></summary>
+
+`Medium` `Time Beats: 79.21%` `Memory Beats: 74.72%` `Commit:742a40f` `Solved At: 2026-03-18 10:32:49` <code><a href="https://leetcode.com/problems/count-submatrices-with-top-left-element-and-sum-less-than-k/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int countSubmatrices(vector<vector<int>>& grid, int k) {
+        int row = grid.size();
+        int col = grid[0].size();
+        int ans = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (i > 0) {
+                    grid[i][j] += grid[i - 1][j];
+                }
+                if (j > 0) {
+                    grid[i][j] += grid[i][j - 1];
+                }
+                if (i > 0 && j > 0) {
+                    grid[i][j] -= grid[i - 1][j - 1];
+                }
+            }
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (grid[i][j] <= k) {
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1727. Largest Submatrix With Rearrangements 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 23.40%` `Memory Beats: 16.49%` `Commit:95bb94c` `Solved At: 2026-03-17 09:15:02` <code><a href="https://leetcode.com/problems/largest-submatrix-with-rearrangements/description/" target="_blank">LINK</a></code>
