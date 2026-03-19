@@ -9,6 +9,69 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3212. Count Submatrices With Equal Frequency of X and Y 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 34.15%` `Memory Beats: 50.41%` `Commit:8a1adf0` `Solved At: 2026-03-19 09:55:56` <code><a href="https://leetcode.com/problems/count-submatrices-with-equal-frequency-of-x-and-y/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int numberOfSubmatrices(vector<vector<char>>& grid) {
+        int row = grid.size();
+        int col = grid[0].size();
+        
+        vector<vector<int>> sum(row, vector<int>(col, 0));
+        vector<vector<int>> countX(row, vector<int>(col, 0));
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+
+                int val = 0;
+                if (grid[i][j] == 'X') {
+                    val = 1;
+                } else if (grid[i][j] == 'Y') {
+                    val = -1;
+                }
+
+                int xval = (grid[i][j] == 'X') ? 1 : 0;
+
+                sum[i][j] = val;
+                countX[i][j] = xval;
+
+                if (i > 0) {
+                    sum[i][j] += sum[i - 1][j];
+                    countX[i][j] += countX[i - 1][j];
+                }
+                if (j > 0) {
+                    sum[i][j] += sum[i][j - 1];
+                    countX[i][j] += countX[i][j - 1];
+                }
+                if (i > 0 && j > 0) {
+                    sum[i][j] -= sum[i - 1][j - 1];
+                    countX[i][j] -= countX[i - 1][j - 1];
+                }
+            }
+        }
+
+        int ans = 0;
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (sum[i][j] == 0 && countX[i][j] > 0) {
+                    ans++;
+                }
+            }
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3070. Count Submatrices with Top-Left Element and Sum Less Than k</h3></summary>
 
 `Medium` `Time Beats: 79.21%` `Memory Beats: 74.72%` `Commit:742a40f` `Solved At: 2026-03-18 10:32:49` <code><a href="https://leetcode.com/problems/count-submatrices-with-top-left-element-and-sum-less-than-k/description/" target="_blank">LINK</a></code>
