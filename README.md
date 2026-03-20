@@ -9,6 +9,66 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3567. Minimum Absolute Difference in Sliding Submatrix 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 88.89%` `Memory Beats: 68.15%` `Commit:74776ce` `Solved At: 2026-03-20 09:40:37` <code><a href="https://leetcode.com/problems/minimum-absolute-difference-in-sliding-submatrix/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> minAbsDiff(vector<vector<int>>& grid, int k) {
+        int row = grid.size();
+        int col = grid[0].size();
+
+        vector<vector<int>> ans(row - k + 1, vector<int>(col - k + 1, 0));
+        if (k == 1) {
+            return ans;
+        }
+        for (int i = 0; i <= row - k; i++) {
+            for (int j = 0; j <= col - k; j++) {
+
+                vector<int> tmp;
+
+                // collect k x k subgrid
+                for (int m = i; m < i + k; m++) {
+                    for (int n = j; n < j + k; n++) {
+                        tmp.push_back(grid[m][n]);
+                    }
+                }
+
+                sort(tmp.begin(), tmp.end());
+                auto it = unique(tmp.begin(), tmp.end());
+                tmp.erase(it, tmp.end());
+                
+                if (tmp.size() < 2) {
+                    ans[i][j] = 0;
+                    continue;
+                }
+
+                int minDiff = INT_MAX;
+
+                for (int o = 0; o < tmp.size() - 1; o++) {
+                    int diff = abs(tmp[o] - tmp[o + 1]);
+                    minDiff = min(minDiff, diff);
+
+                    if (minDiff == 0) {
+                        break;
+                    }
+                }
+
+                ans[i][j] = minDiff;
+            }
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3212. Count Submatrices With Equal Frequency of X and Y 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 34.15%` `Memory Beats: 50.41%` `Commit:8a1adf0` `Solved At: 2026-03-19 09:55:56` <code><a href="https://leetcode.com/problems/count-submatrices-with-equal-frequency-of-x-and-y/description/" target="_blank">LINK</a></code>
