@@ -9,6 +9,34 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3643. Flip Square Submatrix Vertically 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 28.92%` `Memory Beats: 60.84%` `Commit:fcf83d1` `Solved At: 2026-03-21 09:24:30` <code><a href="https://leetcode.com/problems/flip-square-submatrix-vertically/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> reverseSubmatrix(vector<vector<int>>& grid, int x,
+                                         int y, int k) {
+        vector<vector<int>> ans = grid;
+        int L = x;
+        int R = x + k - 1;
+        while (L < R) {
+            for (int i = y; i < y + k; i++) {
+                swap(ans[L][i], ans[R][i]);
+            }
+            L++;
+            R--;
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3567. Minimum Absolute Difference in Sliding Submatrix 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 88.89%` `Memory Beats: 68.15%` `Commit:74776ce` `Solved At: 2026-03-20 09:40:37` <code><a href="https://leetcode.com/problems/minimum-absolute-difference-in-sliding-submatrix/description/" target="_blank">LINK</a></code>
