@@ -9,6 +9,44 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1010. Pairs of Songs With Total Durations Divisible by 60</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 72.80%` `Commit:7a0655e` `Solved At: 2026-03-21 11:33:28` <code><a href="https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int numPairsDivisibleBy60(vector<int>& time) {
+        int n = time.size();
+        long long count = 0;
+        vector<int> remainder(60, 0);
+
+        for (int i = 0; i < n; i++) {
+            int rem = time[i] % 60;
+            remainder[rem]++;
+        }
+
+        for (int i = 1; i < 30; i++) {
+            count += (long long)remainder[i] * remainder[60 - i];
+        }
+
+        if (remainder[0] > 1) {
+            count += (long long)remainder[0] * (remainder[0] - 1) / 2;
+        }
+
+        if (remainder[30] > 1) {
+            count += (long long)remainder[30] * (remainder[30] - 1) / 2;
+        }
+
+        return (int)count;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3643. Flip Square Submatrix Vertically 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 28.92%` `Memory Beats: 60.84%` `Commit:fcf83d1` `Solved At: 2026-03-21 09:24:30` <code><a href="https://leetcode.com/problems/flip-square-submatrix-vertically/description/" target="_blank">LINK</a></code>
