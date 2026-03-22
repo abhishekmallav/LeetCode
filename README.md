@@ -9,6 +9,53 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1886. Determine Whether Matrix Can Be Obtained By Rotation 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 41.55%` `Commit:69b51fa` `Solved At: 2026-03-22 09:39:12` <code><a href="https://leetcode.com/problems/determine-whether-matrix-can-be-obtained-by-rotation/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool findRotation(vector<vector<int>>& mat, vector<vector<int>>& target) {
+        int n = mat.size();
+
+        for (int c = 1; c <= 4; c++) {
+
+            bool equal = true;
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (mat[i][j] != target[i][j]) {
+                        equal = false;
+                        break;
+                    }
+                }
+                if (!equal)
+                    break;
+            }
+
+            if (equal)
+                return true;
+
+            for (int i = 0; i < n; i++) {
+                for (int j = i; j < n; j++) {
+                    swap(mat[i][j], mat[j][i]);
+                }
+            }
+
+            for (int i = 0; i < n; i++) {
+                reverse(mat[i].begin(), mat[i].end());
+            }
+        }
+
+        return false;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1010. Pairs of Songs With Total Durations Divisible by 60</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 72.80%` `Commit:7a0655e` `Solved At: 2026-03-21 11:33:28` <code><a href="https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/description/" target="_blank">LINK</a></code>
