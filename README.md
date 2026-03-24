@@ -9,6 +9,58 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2906. Construct Product Matrix 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 22.14%` `Memory Beats: 7.75%` `Commit:7e3320c` `Solved At: 2026-03-24 09:48:35` <code><a href="https://leetcode.com/problems/construct-product-matrix/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    typedef long long ll;
+
+    vector<vector<int>> constructProductMatrix(vector<vector<int>>& grid) {
+        int MOD = 12345;
+        int row = grid.size();
+        int col = grid[0].size();
+
+        ll prefixProduct = 1;
+        ll suffixProduct = 1;
+
+        vector<vector<ll>> prefix(row, vector<ll>(col, 1));
+        vector<vector<ll>> suffix(row, vector<ll>(col, 1));
+        vector<vector<int>> ans(row, vector<int>(col, 1));
+
+        // prefix product
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                prefix[i][j] = prefixProduct;
+                prefixProduct = (prefixProduct * grid[i][j]) % MOD;
+            }
+        }
+
+        // suffix product
+        for (int i = row - 1; i >= 0; i--) {
+            for (int j = col - 1; j >= 0; j--) {
+                suffix[i][j] = suffixProduct;
+                suffixProduct = (suffixProduct * grid[i][j]) % MOD;
+            }
+        }
+
+        // prefixProduct[i][j]*suffixProduct[i][j]=ans[i][j]
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                ans[i][j] = (int)(prefix[i][j] * suffix[i][j]) % MOD;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1594. Maximum Non Negative Product in a Matrix 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 34.75%` `Memory Beats: 21.75%` `Commit:e14eef3` `Solved At: 2026-03-23 11:42:31` <code><a href="https://leetcode.com/problems/maximum-non-negative-product-in-a-matrix/description/" target="_blank">LINK</a></code>
