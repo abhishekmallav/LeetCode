@@ -9,6 +9,72 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3546. Equal Sum Grid Partition I 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 5.04%` `Memory Beats: 6.84%` `Commit:2e26111` `Solved At: 2026-03-25 18:45:10` <code><a href="https://leetcode.com/problems/equal-sum-grid-partition-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool canPartitionGrid(vector<vector<int>>& grid) {
+        int row = grid.size();
+        int col = grid[0].size();
+
+        long long prev = 0;
+        vector<vector<long long>> HSum(row, vector<long long>(col, 0));
+        vector<vector<long long>> VSum(row, vector<long long>(col, 0));
+
+        // row wise cumulative sum
+        if (row > 1) {
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < col; j++) {
+                    prev += grid[i][j];
+                    HSum[i][j] = prev;
+                }
+            }
+        }
+
+        // column wise cumulative sum
+        prev = 0;
+        if (col > 1) {
+            for (int i = 0; i < col; i++) {
+                for (int j = 0; j < row; j++) {
+                    prev += grid[j][i];
+                    VSum[j][i] = prev;
+                }
+            }
+        }
+
+        long long total;
+        if (row > 1) {
+            total = HSum[row - 1][col - 1];
+        } else {
+            total = VSum[row - 1][col - 1];
+        }
+
+        // Horizontal cuts
+        for (int i = 0; i < row - 1; i++) {
+            if (HSum[i][col - 1] == total - HSum[i][col - 1]) {
+                return true;
+            }
+        }
+
+        // Vertical cuts
+        for (int j = 0; j < col - 1; j++) {
+            if (VSum[row - 1][j] == total - VSum[row - 1][j]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2906. Construct Product Matrix 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 22.14%` `Memory Beats: 7.75%` `Commit:7e3320c` `Solved At: 2026-03-24 09:48:35` <code><a href="https://leetcode.com/problems/construct-product-matrix/description/" target="_blank">LINK</a></code>
