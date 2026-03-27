@@ -9,6 +9,48 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2946. Matrix Similarity After Cyclic Shifts</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 49.69%` `Commit:c85c41c` `Solved At: 2026-03-27 10:02:52` <code><a href="https://leetcode.com/problems/matrix-similarity-after-cyclic-shifts/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool areSimilar(vector<vector<int>>& mat, int k) {
+        int m = mat.size();
+        int n = mat[0].size();
+        k = k % n;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int newIndex;
+
+                // we are not actually shifting the elements but comparing the
+                // new index if arr size is 3 and we have to rotate it 6 times
+                // we dont need to rotate it at all
+                // just check if the new index value with curr index
+
+                if (i % 2 == 0) {
+                    // left shift
+                    newIndex = (j + k) % n;
+                } else {
+                    // right shift
+                    newIndex = (j - k + n) % n;
+                }
+
+                if (mat[i][j] != mat[i][newIndex]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3548. Equal Sum Grid Partition II 🌟 POTD</h3></summary>
 
 `Hard` `Time Beats: 60.00%` `Memory Beats: 58.46%` `Commit:1d3bdd5` `Solved At: 2026-03-26 20:14:07` <code><a href="https://leetcode.com/problems/equal-sum-grid-partition-ii/description/" target="_blank">LINK</a></code>
