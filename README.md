@@ -9,6 +9,39 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2839. Check if Strings Can be Made Equal With Operations I 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 49.03%` `Commit:a497292` `Solved At: 2026-03-29 13:53:21` <code><a href="https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool canBeEqual(string s1, string s2) {
+        if (s1 == s2) {
+            return true;
+        }
+        string tmp = s1;
+        swap(tmp[0], tmp[2]);
+        if (tmp == s2) {
+            return true;
+        }
+        swap(tmp[1], tmp[3]);
+        if (tmp == s2) {
+            return true;
+        }
+        swap(s1[1], s1[3]);
+        if (s1 == s2) {
+            return true;
+        }
+        return false;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2946. Matrix Similarity After Cyclic Shifts</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 49.69%` `Commit:c85c41c` `Solved At: 2026-03-27 10:02:52` <code><a href="https://leetcode.com/problems/matrix-similarity-after-cyclic-shifts/description/" target="_blank">LINK</a></code>
