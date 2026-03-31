@@ -9,6 +9,82 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3474. Lexicographically Smallest Generated String</h3></summary>
+
+`Hard` `Time Beats: 91.53%` `Memory Beats: 89.83%` `Commit:26b672f` `Solved At: 2026-03-31 13:05:57` <code><a href="https://leetcode.com/problems/lexicographically-smallest-generated-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isSame(string& word, string& str2, int i, int m) {
+        for (int j = 0; j < m; j++) {
+            if (word[i] != str2[j]) {
+                return false;
+            }
+            i++;
+        }
+        return true;
+    }
+
+    string generateString(string str1, string str2) {
+        int n = str1.length();
+        int m = str2.length();
+
+        int N = n + m - 1;
+        string word(N, '$');
+
+        vector<bool> canChange(N, false);
+
+        for (int i = 0; i < n; i++) {
+            if (str1[i] == 'T') {
+                int j = i;
+                for (int k = 0; k < m; k++) {
+                    if (word[j] != '$' && word[j] != str2[k]) {
+                        return "";
+                    }
+                    word[j] = str2[k];
+                    j++;
+                }
+            }
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (word[i] == '$') {
+                word[i] = 'a';
+                canChange[i] = true;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (str1[i] == 'F') {
+
+                if (isSame(word, str2, i, m)) {
+
+                    bool changed = false;
+                    for (int k = i + m - 1; k >= i; k--) {
+                        if (canChange[k] == true) {
+                            word[k] = 'b';
+                            changed = true;
+                            break;
+                        }
+                    }
+
+                    if (changed == false) {
+                        return "";
+                    }
+                }
+            }
+        }
+
+        return word;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2840. Check if Strings Can be Made Equal With Operations II</h3></summary>
 
 `Medium` `Time Beats: 64.94%` `Memory Beats: 68.97%` `Commit:bac6533` `Solved At: 2026-03-30 16:53:56` <code><a href="https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-ii/description/" target="_blank">LINK</a></code>
