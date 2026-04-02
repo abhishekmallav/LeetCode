@@ -9,6 +9,53 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>257. Binary Tree Paths</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 23.80%` `Commit:ddab999` `Solved At: 2026-04-02 14:37:35` <code><a href="https://leetcode.com/problems/binary-tree-paths/description/" target="_blank">LINK</a></code>
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
+ * right(right) {}
+ * };
+ */
+class Solution {
+public:
+    void findPaths(TreeNode* root, string path, vector<string>& ans) {
+        if (!root) {
+            return;
+        }
+
+        path += to_string(root->val);
+
+        if (!root->left && !root->right) {
+            ans.push_back(path);
+            return;
+        }
+        path += "->";
+        findPaths(root->left, path, ans);
+        findPaths(root->right, path, ans);
+    }
+
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<string> ans;
+        findPaths(root, "", ans);
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>242. Valid Anagram</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 73.88%` `Commit:240c8b4` `Solved At: 2026-04-02 14:14:31` <code><a href="https://leetcode.com/problems/valid-anagram/description/" target="_blank">LINK</a></code>
