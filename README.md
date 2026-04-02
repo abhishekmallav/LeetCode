@@ -9,6 +9,35 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>119. Pascal's Triangle II</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 50.68%` `Commit:6491eb2` `Solved At: 2026-04-02 11:58:45` <code><a href="https://leetcode.com/problems/pascals-triangle-ii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        vector<int> ans;
+        // nC0 is always 1
+        long long current = 1;
+        ans.push_back((int)current);
+        
+        // Formula to get nCi from nC(i-1)
+        // Using long long to prevent overflow during multiplication
+        for (int i = 1; i <= rowIndex; i++) {
+            current = current * (rowIndex - i + 1) / i;
+            ans.push_back((int)current);
+        }
+        
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>108. Convert Sorted Array to Binary Search Tree</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 20.32%` `Commit:e04da7f` `Solved At: 2026-04-02 11:40:54` <code><a href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/" target="_blank">LINK</a></code>
