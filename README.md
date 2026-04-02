@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>202. Happy Number</h3></summary>
+
+`Easy` `Time Beats: 15.95%` `Memory Beats: 20.84%` `Commit:f37d871` `Solved At: 2026-04-02 13:18:55` <code><a href="https://leetcode.com/problems/happy-number/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isHappy(int n) {
+        unordered_set<long long> seen;
+        long long num = n;
+
+        while (num != 1) {
+            if (seen.find(num) != seen.end()) {
+                return false;
+            }
+            seen.insert(num);
+            long long sum = 0;
+            while (num > 0) {
+                int digit = num % 10;
+                sum += (digit * digit);
+                num /= 10;
+            }
+            num = sum;
+        }
+        
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>160. Intersection of Two Linked Lists</h3></summary>
 
 `Easy` `Time Beats: 17.03%` `Memory Beats: 14.59%` `Commit:056127f` `Solved At: 2026-04-02 12:57:09` <code><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/description/" target="_blank">LINK</a></code>
