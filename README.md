@@ -9,6 +9,37 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>231. Power of Two</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 49.58%` `Commit:95a22bf` `Solved At: 2026-04-02 14:07:59` <code><a href="https://leetcode.com/problems/power-of-two/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        if (n <= 0)
+            return false;
+
+        int count = 0;
+        while (n > 0) {
+            if ((n & 1) == 1) {
+                count++;
+            }
+            n = n >> 1;
+        }
+
+        if (count == 1) {
+            return true;
+        }
+        return false;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>228. Summary Ranges</h3></summary>
 
 `Easy` `Time Beats: 3.25%` `Memory Beats: 9.91%` `Commit:491dbf6` `Solved At: 2026-04-02 13:52:54` <code><a href="https://leetcode.com/problems/summary-ranges/description/" target="_blank">LINK</a></code>
