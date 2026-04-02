@@ -9,6 +9,54 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>290. Word Pattern</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 69.95%` `Commit:3431a0e` `Solved At: 2026-04-02 15:35:13` <code><a href="https://leetcode.com/problems/word-pattern/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool wordPattern(string pattern, string s) {
+        istringstream iss(s);
+        string word;
+        vector<string> words;
+
+        while (iss >> word) {
+            words.push_back(word);
+        }
+
+        if (words.size() != pattern.size()) {
+            return false;
+        }
+
+        unordered_map<char, string> charToWord;
+        unordered_map<string, char> wordToChar;
+
+        for (int i = 0; i < pattern.size(); i++) {
+            char c = pattern[i];
+            string w = words[i];
+
+            if (charToWord.count(c) && charToWord[c] != w) {
+                return false;
+            }
+
+            if (wordToChar.count(w) && wordToChar[w] != c) {
+                return false;
+            }
+
+            charToWord[c] = w;
+            wordToChar[w] = c;
+        }
+
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>263. Ugly Number</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 97.69%` `Commit:131c7a7` `Solved At: 2026-04-02 15:08:01` <code><a href="https://leetcode.com/problems/ugly-number/description/" target="_blank">LINK</a></code>
