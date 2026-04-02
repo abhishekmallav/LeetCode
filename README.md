@@ -9,6 +9,38 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>108. Convert Sorted Array to Binary Search Tree</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 20.32%` `Commit:e04da7f` `Solved At: 2026-04-02 11:40:54` <code><a href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    TreeNode* BST(vector<int>& nums, int L, int R) {
+        if (L > R) {
+            return nullptr;
+        }
+        
+        int M = L + (R - L) / 2;
+        
+        TreeNode* root = new TreeNode(nums[M]);
+        
+        root->left = BST(nums, L, M - 1);
+        root->right = BST(nums, M + 1, R);
+        
+        return root;
+    }
+
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+        return BST(nums, 0, nums.size() - 1);
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3418. Maximum Amount of Money Robot Can Earn 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 67.24%` `Memory Beats: 83.83%` `Commit:a49895a` `Solved At: 2026-04-02 11:04:41` <code><a href="https://leetcode.com/problems/maximum-amount-of-money-robot-can-earn/description/" target="_blank">LINK</a></code>
