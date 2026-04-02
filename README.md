@@ -9,6 +9,46 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>160. Intersection of Two Linked Lists</h3></summary>
+
+`Easy` `Time Beats: 17.03%` `Memory Beats: 14.59%` `Commit:056127f` `Solved At: 2026-04-02 12:57:09` <code><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/description/" target="_blank">LINK</a></code>
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        unordered_set<ListNode*> visited; 
+
+        ListNode* current = headA;
+        while (current != nullptr) {
+            visited.insert(current);
+            current = current->next;
+        }
+
+        current = headB;
+        while (current != nullptr) {
+            if (visited.find(current) != visited.end()) {
+                return current;
+            }
+            current = current->next;
+        }
+        return nullptr;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>141. Linked List Cycle</h3></summary>
 
 `Easy` `Time Beats: 7.26%` `Memory Beats: 7.36%` `Commit:e1b72c7` `Solved At: 2026-04-02 12:49:49` <code><a href="https://leetcode.com/problems/linked-list-cycle/description/" target="_blank">LINK</a></code>
