@@ -9,6 +9,39 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>242. Valid Anagram</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 73.88%` `Commit:240c8b4` `Solved At: 2026-04-02 14:14:31` <code><a href="https://leetcode.com/problems/valid-anagram/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        int hashS[26] = {0};
+        int hashT[26] = {0};
+
+        for (int i = 0; i < s.size(); i++) {
+            hashS[s[i] - 'a']++;
+        }
+        
+        for (int i = 0; i < t.size(); i++) {
+            hashT[t[i] - 'a']++;
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (hashS[i] != hashT[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>231. Power of Two</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 49.58%` `Commit:95a22bf` `Solved At: 2026-04-02 14:07:59` <code><a href="https://leetcode.com/problems/power-of-two/description/" target="_blank">LINK</a></code>
