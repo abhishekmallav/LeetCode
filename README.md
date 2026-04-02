@@ -9,6 +9,26 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>292. Nim Game</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 86.30%` `Commit:27a6681` `Solved At: 2026-04-02 21:56:52` <code><a href="https://leetcode.com/problems/nim-game/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool canWinNim(int n) {
+        if(n%4==0){
+            return false;
+        }
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>290. Word Pattern</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 69.95%` `Commit:3431a0e` `Solved At: 2026-04-02 15:35:13` <code><a href="https://leetcode.com/problems/word-pattern/description/" target="_blank">LINK</a></code>
