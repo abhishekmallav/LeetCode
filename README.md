@@ -9,6 +9,44 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>205. Isomorphic Strings</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 54.46%` `Commit:d35edaf` `Solved At: 2026-04-02 13:35:30` <code><a href="https://leetcode.com/problems/isomorphic-strings/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        vector<int> mapS(256, -1);
+        vector<int> mapT(256, -1);
+
+        for (int i = 0; i < s.size(); i++) {
+            char charS = s[i];
+            char charT = t[i];
+
+            // If s[i] has been seen before, check if it maps to the same t[i]
+            if (mapS[charS] != -1 && mapS[charS] != charT) {
+                return false;
+            }
+
+            // If t[i] has been seen before, check if it maps to the same s[i]
+            if (mapT[charT] != -1 && mapT[charT] != charS) {
+                return false;
+            }
+
+            mapS[charS] = charT;
+            mapT[charT] = charS;
+        }
+
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>202. Happy Number</h3></summary>
 
 `Easy` `Time Beats: 15.95%` `Memory Beats: 20.84%` `Commit:f37d871` `Solved At: 2026-04-02 13:18:55` <code><a href="https://leetcode.com/problems/happy-number/description/" target="_blank">LINK</a></code>
