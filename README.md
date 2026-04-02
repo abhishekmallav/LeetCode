@@ -9,6 +9,44 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>263. Ugly Number</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 97.69%` `Commit:131c7a7` `Solved At: 2026-04-02 15:08:01` <code><a href="https://leetcode.com/problems/ugly-number/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isUgly(int n) {
+        if (n == 1) {
+            return true;
+        }
+        if (n <= 0) {
+            return false;
+        }
+        while (n > 1) {
+            if (n % 2 == 0) {
+                n /= 2;
+                continue;
+            }
+            if (n % 3 == 0) {
+                n /= 3;
+                continue;
+            }
+            if (n % 5 == 0) {
+                n /= 5;
+                continue;
+            }
+            return false;
+        }
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>257. Binary Tree Paths</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 23.80%` `Commit:ddab999` `Solved At: 2026-04-02 14:37:35` <code><a href="https://leetcode.com/problems/binary-tree-paths/description/" target="_blank">LINK</a></code>
