@@ -9,6 +9,41 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>141. Linked List Cycle</h3></summary>
+
+`Easy` `Time Beats: 7.26%` `Memory Beats: 7.36%` `Commit:e1b72c7` `Solved At: 2026-04-02 12:49:49` <code><a href="https://leetcode.com/problems/linked-list-cycle/description/" target="_blank">LINK</a></code>
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode* head) {
+        unordered_set<ListNode*> visited; 
+
+        ListNode* current = head;
+        while (current != nullptr) {
+            if (visited.find(current) != visited.end()) {
+                return true;
+            }
+            visited.insert(current);
+            current = current->next;
+        }
+        return false;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>119. Pascal's Triangle II</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 50.68%` `Commit:6491eb2` `Solved At: 2026-04-02 11:58:45` <code><a href="https://leetcode.com/problems/pascals-triangle-ii/description/" target="_blank">LINK</a></code>
