@@ -9,6 +9,41 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>228. Summary Ranges</h3></summary>
+
+`Easy` `Time Beats: 3.25%` `Memory Beats: 9.91%` `Commit:491dbf6` `Solved At: 2026-04-02 13:52:54` <code><a href="https://leetcode.com/problems/summary-ranges/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<string> summaryRanges(vector<int>& nums) {
+        vector<string> ans;
+        int n = nums.size();
+        if (n == 0) return ans;
+
+        for (int i = 0; i < n; i++) {
+            int start = nums[i];
+            
+            while (i + 1 < n && nums[i + 1] == nums[i] + 1) {
+                i++;
+            }
+            
+            if (start == nums[i]) {
+                ans.push_back(to_string(start));
+            } else {
+                ans.push_back(to_string(start) + "->" + to_string(nums[i]));
+            }
+        }
+        
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>205. Isomorphic Strings</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 54.46%` `Commit:d35edaf` `Solved At: 2026-04-02 13:35:30` <code><a href="https://leetcode.com/problems/isomorphic-strings/description/" target="_blank">LINK</a></code>
