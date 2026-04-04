@@ -9,6 +9,52 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>234. Palindrome Linked List</h3></summary>
+
+`Easy` `Time Beats: 10.76%` `Memory Beats: 5.15%` `Commit:05b5df4` `Solved At: 2026-04-04 12:26:02` <code><a href="https://leetcode.com/problems/palindrome-linked-list/description/" target="_blank">LINK</a></code>
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        vector<int> fwd;
+        vector<int> rew;
+        ListNode* current = head;
+        while (current != nullptr) {
+            fwd.push_back(current->val);
+            rew.push_back(current->val);
+            current = current->next;
+        }
+
+        reverse(rew.begin(), rew.end());
+
+        int i = 0;
+        
+        while (i < fwd.size()) {
+            if (fwd[i] != rew[i]) {
+                return false;
+            }
+            i++;
+        }
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2075. Decode the Slanted Ciphertext 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 20.34%` `Memory Beats: 44.07%` `Commit:f45887d` `Solved At: 2026-04-04 12:15:12` <code><a href="https://leetcode.com/problems/decode-the-slanted-ciphertext/description/" target="_blank">LINK</a></code>
