@@ -9,6 +9,44 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>409. Longest Palindrome</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 94.27%` `Commit:b504c45` `Solved At: 2026-04-04 15:23:14` <code><a href="https://leetcode.com/problems/longest-palindrome/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        int n = s.length();
+        vector<int> hash(128, 0);
+        for (auto i : s) {
+            hash[i]++;
+        }
+        int cnt1 = 0;
+        int cntEven = 0;
+        int cntOdd = 0;
+        for (int i = 0; i < 128; i++) {
+            if (hash[i] == 1) {
+                cnt1++;
+            } else if (hash[i] % 2 == 0 && hash[i] != 0) {
+                cntEven += hash[i];
+            } else if (hash[i] % 2 != 0 && hash[i] != 1) {
+                cntEven += hash[i] - 1;
+                cntOdd++;
+            }
+        }
+        if (cntOdd > 0 || cnt1 > 0) {
+            return cntEven + 1;
+        }
+        return cntEven;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>392. Is Subsequence</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 9.75%` `Commit:9f7f2c5` `Solved At: 2026-04-04 14:54:36` <code><a href="https://leetcode.com/problems/is-subsequence/description/" target="_blank">LINK</a></code>
