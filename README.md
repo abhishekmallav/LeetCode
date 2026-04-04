@@ -9,6 +9,45 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>303. Range Sum Query - Immutable</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 62.17%` `Commit:60d5f92` `Solved At: 2026-04-04 13:30:00` <code><a href="https://leetcode.com/problems/range-sum-query-immutable/description/" target="_blank">LINK</a></code>
+
+```cpp
+class NumArray {
+private:
+    vector<int> data;
+
+public:
+    NumArray(vector<int>& nums) {
+        data.resize(nums.size()); 
+        int sum = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            sum += nums[i];
+            data[i] = sum;
+        }
+    }
+
+    int sumRange(int left, int right) {
+        if (left == 0) {
+            return data[right];
+        }
+        return data[right] - data[left - 1];
+    }
+};
+
+/**
+ * Your NumArray object will be instantiated and called as such:
+ * NumArray* obj = new NumArray(nums);
+ * int param_1 = obj->sumRange(left,right);
+ */
+```
+
+</details>
+
+
+<details>
 <summary><h3>234. Palindrome Linked List</h3></summary>
 
 `Easy` `Time Beats: 10.76%` `Memory Beats: 5.15%` `Commit:05b5df4` `Solved At: 2026-04-04 12:26:02` <code><a href="https://leetcode.com/problems/palindrome-linked-list/description/" target="_blank">LINK</a></code>
