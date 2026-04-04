@@ -9,6 +9,44 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>350. Intersection of Two Arrays II</h3></summary>
+
+`Easy` `Time Beats: 30.66%` `Memory Beats: 90.29%` `Commit:f61b0be` `Solved At: 2026-04-04 14:17:55` <code><a href="https://leetcode.com/problems/intersection-of-two-arrays-ii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+
+        sort(nums1.begin(), nums1.end());
+        sort(nums2.begin(), nums2.end());
+
+        vector<int> ans;
+        int i = 0;
+        int j = 0;
+
+        while (i < nums1.size() && j < nums2.size()) {
+            if (nums1[i] == nums2[j]) {
+                ans.push_back(nums1[i]);
+                i++;
+                j++;
+            } else if (nums1[i] < nums2[j]) {
+                i++;
+            } else {
+
+                j++;
+            }
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>345. Reverse Vowels of a String</h3></summary>
 
 `Easy` `Time Beats: 20.63%` `Memory Beats: 8.29%` `Commit:71866f8` `Solved At: 2026-04-04 13:46:29` <code><a href="https://leetcode.com/problems/reverse-vowels-of-a-string/description/" target="_blank">LINK</a></code>
