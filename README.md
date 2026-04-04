@@ -9,6 +9,44 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>448. Find All Numbers Disappeared in an Array</h3></summary>
+
+`Easy` `Time Beats: 34.43%` `Memory Beats: 56.76%` `Commit:603486e` `Solved At: 2026-04-04 16:29:33` <code><a href="https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        vector<int> ans;
+        int n = nums.size();
+        int j = 0;
+        int i = 1;
+
+        while (i <= n) {
+            if (j < n && i == nums[j]) {
+                i++;
+                j++;
+            }
+
+            else if (j < n && nums[j] < i) {
+                j++;
+            }
+
+            else {
+                ans.push_back(i);
+                i++;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>434. Number of Segments in a String</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 20.92%` `Commit:ea55a80` `Solved At: 2026-04-04 16:14:12` <code><a href="https://leetcode.com/problems/number-of-segments-in-a-string/description/" target="_blank">LINK</a></code>
