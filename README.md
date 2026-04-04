@@ -9,6 +9,43 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>28. Find the Index of the First Occurrence in a String</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 91.75%` `Commit:3865838` `Solved At: 2026-04-04 17:32:05` <code><a href="https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int n = haystack.length();
+        int m = needle.length();
+
+        if (m == 0)
+            return 0;
+
+        for (int i = 0; i <= n - m; i++) {
+            int j = 0;
+
+            for (j = 0; j < m; j++) {
+                if (haystack[i + j] != needle[j]) {
+                    break;
+                }
+            }
+
+            if (j == m) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>43. Multiply Strings</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 52.45%` `Commit:1c2028a` `Solved At: 2026-04-04 17:19:22` <code><a href="https://leetcode.com/problems/multiply-strings/description/" target="_blank">LINK</a></code>
