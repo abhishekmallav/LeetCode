@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>383. Ransom Note</h3></summary>
+
+`Easy` `Time Beats: 42.00%` `Memory Beats: 73.99%` `Commit:38c2709` `Solved At: 2026-04-04 14:28:48` <code><a href="https://leetcode.com/problems/ransom-note/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        vector<int> hashRansom(26, 0);
+        vector<int> hashMag(26, 0);
+
+        for (auto i : ransomNote) {
+            hashRansom[i - 'a']++;
+        }
+
+        for (auto i : magazine) {
+            hashMag[i - 'a']++;
+        }
+
+        for (auto i : ransomNote) {
+            if (hashRansom[i - 'a'] > hashMag[i - 'a']) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>350. Intersection of Two Arrays II</h3></summary>
 
 `Easy` `Time Beats: 30.66%` `Memory Beats: 90.29%` `Commit:f61b0be` `Solved At: 2026-04-04 14:17:55` <code><a href="https://leetcode.com/problems/intersection-of-two-arrays-ii/description/" target="_blank">LINK</a></code>
