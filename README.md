@@ -9,6 +9,38 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>389. Find the Difference</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 24.60%` `Commit:9f6bc97` `Solved At: 2026-04-04 14:35:55` <code><a href="https://leetcode.com/problems/find-the-difference/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        vector<int> hashS(26, 0);
+        vector<int> hashT(26, 0);
+
+        for (auto i : s) {
+            hashS[i - 'a']++;
+        }
+        for (auto i : t) {
+            hashT[i - 'a']++;
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (hashS[i] + 1 == hashT[i]) {
+                return 'a' + i;
+            }
+        }
+        return 0;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>383. Ransom Note</h3></summary>
 
 `Easy` `Time Beats: 42.00%` `Memory Beats: 73.99%` `Commit:38c2709` `Solved At: 2026-04-04 14:28:48` <code><a href="https://leetcode.com/problems/ransom-note/description/" target="_blank">LINK</a></code>
