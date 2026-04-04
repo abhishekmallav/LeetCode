@@ -9,6 +9,31 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>434. Number of Segments in a String</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 20.92%` `Commit:ea55a80` `Solved At: 2026-04-04 16:14:12` <code><a href="https://leetcode.com/problems/number-of-segments-in-a-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int countSegments(string s) {
+        int cnt = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] != ' ') {
+                if (i == 0 || s[i - 1] == ' ') {
+                cnt++;
+                }
+            }
+        }
+        return cnt;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>415. Add Strings</h3></summary>
 
 `Easy` `Time Beats: 33.42%` `Memory Beats: 95.13%` `Commit:172adfa` `Solved At: 2026-04-04 15:59:30` <code><a href="https://leetcode.com/problems/add-strings/description/" target="_blank">LINK</a></code>
