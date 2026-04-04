@@ -9,6 +9,35 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>455. Assign Cookies</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 47.08%` `Commit:653d0d8` `Solved At: 2026-04-04 16:45:22` <code><a href="https://leetcode.com/problems/assign-cookies/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        sort(g.begin(), g.end());
+        sort(s.begin(), s.end());
+
+        int child = 0;
+        int cookie = 0;
+
+        while (child < g.size() && cookie < s.size()) {
+            if (s[cookie] >= g[child]) {
+                child++; 
+            }
+            cookie++;
+        }
+        return child;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>448. Find All Numbers Disappeared in an Array</h3></summary>
 
 `Easy` `Time Beats: 34.43%` `Memory Beats: 56.76%` `Commit:603486e` `Solved At: 2026-04-04 16:29:33` <code><a href="https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/description/" target="_blank">LINK</a></code>
