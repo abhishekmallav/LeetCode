@@ -9,6 +9,43 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2075. Decode the Slanted Ciphertext 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 20.34%` `Memory Beats: 44.07%` `Commit:f45887d` `Solved At: 2026-04-04 12:15:12` <code><a href="https://leetcode.com/problems/decode-the-slanted-ciphertext/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string decodeCiphertext(string encodedText, int rows) {
+        if (rows == 0) {
+            return "";
+        }
+
+        int n = encodedText.length();
+        int col = n / rows;
+
+        string str = "";
+
+        for (int i = 0; i < col; i++) {
+            str += encodedText[i];
+            int j = i + col + 1;
+            while (j < n) {
+                str += encodedText[j];
+                j += col + 1;
+            }
+        }
+        while (!str.empty() && str.back() == ' ') {
+            str.pop_back();
+        }
+        return str;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>292. Nim Game</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 86.30%` `Commit:27a6681` `Solved At: 2026-04-02 21:56:52` <code><a href="https://leetcode.com/problems/nim-game/description/" target="_blank">LINK</a></code>
