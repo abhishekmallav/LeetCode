@@ -9,6 +9,42 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>459. Repeated Substring Pattern</h3></summary>
+
+`Easy` `Time Beats: 27.84%` `Memory Beats: 15.66%` `Commit:50eef58` `Solved At: 2026-04-04 17:07:16` <code><a href="https://leetcode.com/problems/repeated-substring-pattern/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool repeatedSubstringPattern(string s) {
+        int n = s.length();
+        
+        for (int len = 1; len <= n / 2; len++) {
+            if (n % len == 0) {
+
+                string sub = s.substr(0, len);
+                string reconstructed = "";
+                
+                int multiple = n / len;
+                for (int k = 0; k < multiple; k++) {
+                    reconstructed += sub;
+                }
+                
+                if (reconstructed == s) {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>455. Assign Cookies</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 47.08%` `Commit:653d0d8` `Solved At: 2026-04-04 16:45:22` <code><a href="https://leetcode.com/problems/assign-cookies/description/" target="_blank">LINK</a></code>
