@@ -9,6 +9,33 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>392. Is Subsequence</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 9.75%` `Commit:9f7f2c5` `Solved At: 2026-04-04 14:54:36` <code><a href="https://leetcode.com/problems/is-subsequence/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int i = 0;
+        int j = 0;
+        
+        while (i < s.length() && j < t.length()) {
+            if (s[i] == t[j]) {
+                i++;
+            }
+            j++;
+        }
+        
+        return i == s.length();
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>389. Find the Difference</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 24.60%` `Commit:9f6bc97` `Solved At: 2026-04-04 14:35:55` <code><a href="https://leetcode.com/problems/find-the-difference/description/" target="_blank">LINK</a></code>
