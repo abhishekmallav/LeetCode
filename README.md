@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>415. Add Strings</h3></summary>
+
+`Easy` `Time Beats: 33.42%` `Memory Beats: 95.13%` `Commit:172adfa` `Solved At: 2026-04-04 15:59:30` <code><a href="https://leetcode.com/problems/add-strings/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        string ans = "";
+        int i = num1.length() - 1;
+        int j = num2.length() - 1;
+        int carry = 0;
+
+        while (i >= 0 || j >= 0 || carry > 0) {
+            int digit1 = (i >= 0) ? num1[i] - '0' : 0;
+            int digit2 = (j >= 0) ? num2[j] - '0' : 0;
+
+            int sum = digit1 + digit2 + carry;
+            ans.push_back((sum % 10) + '0');
+            carry = sum / 10;
+
+            i--;
+            j--;
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>409. Longest Palindrome</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 94.27%` `Commit:b504c45` `Solved At: 2026-04-04 15:23:14` <code><a href="https://leetcode.com/problems/longest-palindrome/description/" target="_blank">LINK</a></code>
