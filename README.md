@@ -9,6 +9,43 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>345. Reverse Vowels of a String</h3></summary>
+
+`Easy` `Time Beats: 20.63%` `Memory Beats: 8.29%` `Commit:71866f8` `Solved At: 2026-04-04 13:46:29` <code><a href="https://leetcode.com/problems/reverse-vowels-of-a-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isVowel(char c) {
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' ||
+            c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+            return true;
+        }
+        return false;
+    }
+    string reverseVowels(string s) {
+        int n = s.length();
+        vector<char> vowels;
+        vector<int> idx;
+        for (int i = 0; i < n; i++) {
+            if (isVowel(s[i])) {
+                vowels.push_back(s[i]);
+                idx.push_back(i);
+            }
+        }
+        reverse(vowels.begin(), vowels.end());
+        for (int i = 0; i < idx.size(); i++) {
+            s[idx[i]] = vowels[i];
+        }
+        return s;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>303. Range Sum Query - Immutable</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 62.17%` `Commit:60d5f92` `Solved At: 2026-04-04 13:30:00` <code><a href="https://leetcode.com/problems/range-sum-query-immutable/description/" target="_blank">LINK</a></code>
