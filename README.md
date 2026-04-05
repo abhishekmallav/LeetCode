@@ -9,6 +9,33 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>657. Robot Return to Origin 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 13.45%` `Commit:abc6bce` `Solved At: 2026-04-05 22:57:14` <code><a href="https://leetcode.com/problems/robot-return-to-origin/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool judgeCircle(string moves) {
+        int x = 0;
+        int y = 0;
+
+        for(char &ch : moves) {
+            if(ch == 'U')       y++;
+            else if(ch == 'D')  y--;
+            else if(ch == 'L')  x--;
+            else if(ch == 'R')  x++;
+        }
+
+        return x == 0 && y == 0;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>28. Find the Index of the First Occurrence in a String</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 91.75%` `Commit:3865838` `Solved At: 2026-04-04 17:32:05` <code><a href="https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/" target="_blank">LINK</a></code>
