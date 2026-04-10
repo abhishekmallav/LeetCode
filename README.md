@@ -9,6 +9,36 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3740. Minimum Distance Between Three Equal Elements I 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 33.82%` `Memory Beats: 79.62%` `Commit:5d21c82` `Solved At: 2026-04-10 17:08:04` <code><a href="https://leetcode.com/problems/minimum-distance-between-three-equal-elements-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minimumDistance(vector<int>& nums) {
+        int n = nums.size(), mini = 1e9;
+
+        for (int i = 0; i < n - 2; i++) {
+            for (int j = i + 1; j < n - 1; j++) {
+                for (int k = j + 1; k < n; k++) {
+                    if (nums[i] == nums[j] && nums[j] == nums[k]) {
+                        int dist = abs(i - j) + abs(j - k) + abs(k - i);
+                        mini = min(mini, dist);
+                    }
+                }
+            }
+        }
+
+        return mini == 1e9 ? -1 : mini;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>657. Robot Return to Origin 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 13.45%` `Commit:abc6bce` `Solved At: 2026-04-05 22:57:14` <code><a href="https://leetcode.com/problems/robot-return-to-origin/description/" target="_blank">LINK</a></code>
