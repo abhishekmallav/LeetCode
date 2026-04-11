@@ -9,6 +9,46 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>504. Base 7</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 22.44%` `Commit:2dfecee` `Solved At: 2026-04-11 15:38:11` <code><a href="https://leetcode.com/problems/base-7/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string convertToBase7(int num) {
+        if (num == 0) {
+            return "0";
+        }
+
+        string sign;
+        string ans = "";
+
+        if (num < 0) {
+            sign = "-";
+        } else {
+            sign = "";
+        }
+
+        while (num != 0) {
+            num = abs(num);
+            int bit = num % 7;
+            ans += to_string(bit);
+            num /= 7;
+        }
+
+        ans += sign;
+        reverse(ans.begin(), ans.end());
+        
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>496. Next Greater Element I</h3></summary>
 
 `Easy` `Time Beats: 6.28%` `Memory Beats: 85.00%` `Commit:df24dd7` `Solved At: 2026-04-11 15:16:44` <code><a href="https://leetcode.com/problems/next-greater-element-i/description/" target="_blank">LINK</a></code>
