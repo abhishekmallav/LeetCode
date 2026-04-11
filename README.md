@@ -9,6 +9,32 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>495. Teemo Attacking</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 60.45%` `Commit:1a4135a` `Solved At: 2026-04-11 14:55:28` <code><a href="https://leetcode.com/problems/teemo-attacking/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int findPoisonedDuration(vector<int>& timeSeries, int duration) {
+        int time = 0;
+        int n = timeSeries.size();
+        for(int i = 0;i<n;i++){
+            if (i<n-1 && timeSeries[i]+duration-1>=timeSeries[i+1]){
+                time+=(timeSeries[i+1]-timeSeries[i]);
+                continue;
+            }
+            time+=duration;
+        }
+        return time;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>482. License Key Formatting</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 46.83%` `Commit:c051a6a` `Solved At: 2026-04-11 14:36:32` <code><a href="https://leetcode.com/problems/license-key-formatting/description/" target="_blank">LINK</a></code>
