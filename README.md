@@ -9,6 +9,47 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>463. Island Perimeter</h3></summary>
+
+`Easy` `Time Beats: 70.17%` `Memory Beats: 85.20%` `Commit:e820ecf` `Solved At: 2026-04-11 14:06:34` <code><a href="https://leetcode.com/problems/island-perimeter/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int islandPerimeter(vector<vector<int>>& grid) {
+        int row = grid.size();
+        int col = grid[0].size();
+
+        int peri = 0;
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (grid[i][j] == 1) {
+                    peri += 4;
+                    if (j + 1 < col && grid[i][j + 1] == 1) {
+                        peri--;
+                    }
+                    if (j - 1 >= 0 && grid[i][j - 1] == 1) {
+                        peri--;
+                    }
+                    if (i + 1 < row && grid[i + 1][j] == 1) {
+                        peri--;
+                    }
+                    if (i - 1 >= 0 && grid[i - 1][j] == 1) {
+                        peri--;
+                    }
+                }
+            }
+        }
+        return peri;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3741. Minimum Distance Between Three Equal Elements II 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 51.25%` `Memory Beats: 74.50%` `Commit:3533a3b` `Solved At: 2026-04-11 12:39:17` <code><a href="https://leetcode.com/problems/minimum-distance-between-three-equal-elements-ii/description/" target="_blank">LINK</a></code>
