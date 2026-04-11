@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>496. Next Greater Element I</h3></summary>
+
+`Easy` `Time Beats: 6.28%` `Memory Beats: 85.00%` `Commit:df24dd7` `Solved At: 2026-04-11 15:16:44` <code><a href="https://leetcode.com/problems/next-greater-element-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size();
+        vector<int> vec(n, -1);
+
+        for (int i = 0; i < n; i++) {
+            int j = 0;
+
+            while (j < nums2.size() && nums2[j] != nums1[i]) {
+                j++;
+            }
+
+            for (int k = j + 1; k < nums2.size(); k++) {
+                if (nums2[k] > nums1[i]) {
+                    vec[i] = nums2[k];
+                    break;
+                }
+            }
+        }
+        return vec;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>495. Teemo Attacking</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 60.45%` `Commit:1a4135a` `Solved At: 2026-04-11 14:55:28` <code><a href="https://leetcode.com/problems/teemo-attacking/description/" target="_blank">LINK</a></code>
