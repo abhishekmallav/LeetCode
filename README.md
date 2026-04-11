@@ -9,6 +9,39 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>482. License Key Formatting</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 46.83%` `Commit:c051a6a` `Solved At: 2026-04-11 14:36:32` <code><a href="https://leetcode.com/problems/license-key-formatting/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string licenseKeyFormatting(string s, int k) {
+        string ans = "";
+        int count = 0;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s[i] != '-') {
+
+                if (count > 0 && count % k == 0) {
+                    ans += '-';
+                }
+
+                ans += toupper(s[i]);
+                count++;
+            }
+        }
+
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>463. Island Perimeter</h3></summary>
 
 `Easy` `Time Beats: 70.17%` `Memory Beats: 85.20%` `Commit:e820ecf` `Solved At: 2026-04-11 14:06:34` <code><a href="https://leetcode.com/problems/island-perimeter/description/" target="_blank">LINK</a></code>
