@@ -9,6 +9,59 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>500. Keyboard Row</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 45.05%` `Commit:174771f` `Solved At: 2026-04-11 16:07:38` <code><a href="https://leetcode.com/problems/keyboard-row/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<string> findWords(vector<string>& words) {
+        vector<string> ans;
+        set<char> first = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'};
+        set<char> second = {'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'};
+        set<char> third = {'z', 'x', 'c', 'v', 'b', 'n', 'm'};
+
+        int n = words.size();
+        for (int i = 0; i < n; i++) {
+
+            string s = words[i];
+            int m = s.length();
+            int cnt1 = 0;
+            int cnt2 = 0;
+            int cnt3 = 0;
+
+            for (int j = 0; j < m; j++) {
+                char ch = (char)tolower(s[j]);
+
+                auto it1 = first.find(ch);
+                if (it1 != first.end()) {
+                    cnt1++;
+                }
+
+                auto it2 = second.find(ch);
+                if (it2 != second.end()) {
+                    cnt2++;
+                }
+
+                auto it3 = third.find(ch);
+                if (it3 != third.end()) {
+                    cnt3++;
+                }
+            }
+            if (cnt1 == m || cnt2 == m || cnt3 == m) {
+                ans.push_back(words[i]);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>504. Base 7</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 22.44%` `Commit:2dfecee` `Solved At: 2026-04-11 15:38:11` <code><a href="https://leetcode.com/problems/base-7/description/" target="_blank">LINK</a></code>
