@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3741. Minimum Distance Between Three Equal Elements II 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 51.25%` `Memory Beats: 74.50%` `Commit:3533a3b` `Solved At: 2026-04-11 12:39:17` <code><a href="https://leetcode.com/problems/minimum-distance-between-three-equal-elements-ii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minimumDistance(vector<int>& nums) {
+        int n = nums.size();
+        int ans = INT_MAX;
+        unordered_map<int, vector<int>> mp;
+
+        for (int k = 0; k < n; k++) {
+            mp[nums[k]].push_back(k);
+            
+            if (mp[nums[k]].size() >= 3) {
+                vector<int>& vec = mp[nums[k]];
+                int siz = vec.size();
+                int i = vec[siz - 3];
+                ans = min(ans, 2 * (k - i));
+            }
+        }
+        if (ans != INT_MAX) {
+            return ans;
+        }
+        return -1;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3740. Minimum Distance Between Three Equal Elements I 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 33.82%` `Memory Beats: 79.62%` `Commit:5d21c82` `Solved At: 2026-04-10 17:08:04` <code><a href="https://leetcode.com/problems/minimum-distance-between-three-equal-elements-i/description/" target="_blank">LINK</a></code>
