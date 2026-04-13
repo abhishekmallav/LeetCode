@@ -9,6 +9,30 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1848. Minimum Distance to the Target Element</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 51.84%` `Commit:e3d7747` `Solved At: 2026-04-13 09:22:56` <code><a href="https://leetcode.com/problems/minimum-distance-to-the-target-element/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int getMinDistance(vector<int>& nums, int target, int start) {
+        int n = nums.size();
+        int ans = INT_MAX;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == target) {
+                ans = min(ans, abs(i - start));
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>500. Keyboard Row</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 45.05%` `Commit:174771f` `Solved At: 2026-04-11 16:07:38` <code><a href="https://leetcode.com/problems/keyboard-row/description/" target="_blank">LINK</a></code>
