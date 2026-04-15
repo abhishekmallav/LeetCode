@@ -9,6 +9,35 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2515. Shortest Distance to Target String in a Circular Array 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 37.22%` `Commit:5570674` `Solved At: 2026-04-15 20:55:39` <code><a href="https://leetcode.com/problems/shortest-distance-to-target-string-in-a-circular-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int closestTarget(vector<string>& words, string target, int startIndex) {
+        int n      = words.size();
+        int result = INT_MAX;
+
+        for (int i = 0; i < n; ++i) {
+            if (words[i] == target) {
+                int straightDist  = abs(i - startIndex);
+                int circularDist  = n-straightDist;
+
+                result = min({result, straightDist, circularDist});
+            }
+        }
+
+        return result == INT_MAX ? -1 : result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1848. Minimum Distance to the Target Element</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 51.84%` `Commit:e3d7747` `Solved At: 2026-04-13 09:22:56` <code><a href="https://leetcode.com/problems/minimum-distance-to-the-target-element/description/" target="_blank">LINK</a></code>
