@@ -9,6 +9,33 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3783. Mirror Distance of an Integer 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 86.21%` `Commit:11ea690` `Solved At: 2026-04-18 20:43:06` <code><a href="https://leetcode.com/problems/mirror-distance-of-an-integer/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int getReverse(int n) {
+        int result = 0;
+
+        while (n) {
+            int rem = n % 10;
+            result = (result * 10) + rem;
+            n /= 10;
+        }
+
+        return result;
+    }
+
+    int mirrorDistance(int n) { return abs(n - getReverse(n)); }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2515. Shortest Distance to Target String in a Circular Array 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 37.22%` `Commit:5570674` `Solved At: 2026-04-15 20:55:39` <code><a href="https://leetcode.com/problems/shortest-distance-to-target-string-in-a-circular-array/description/" target="_blank">LINK</a></code>
