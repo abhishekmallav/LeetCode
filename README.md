@@ -9,6 +9,37 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2078. Two Furthest Houses With Different Colors 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 95.64%` `Commit:04ea7e6` `Solved At: 2026-04-20 19:55:10` <code><a href="https://leetcode.com/problems/two-furthest-houses-with-different-colors/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maxDistance(vector<int>& colors) {
+        int n = colors.size();
+
+        int result = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (colors[i] != colors[0]) {
+                result = max(result, i);
+            }
+
+            if (colors[i] != colors[n - 1]) {
+                result = max(result, abs(i - (n - 1)));
+            }
+        }
+
+        return result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3783. Mirror Distance of an Integer 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 86.21%` `Commit:11ea690` `Solved At: 2026-04-18 20:43:06` <code><a href="https://leetcode.com/problems/mirror-distance-of-an-integer/description/" target="_blank">LINK</a></code>
