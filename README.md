@@ -9,6 +9,68 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1559. Detect Cycles in 2D Grid 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 54.81%` `Memory Beats: 75.39%` `Commit:af82347` `Solved At: 2026-04-26 13:12:00` <code><a href="https://leetcode.com/problems/detect-cycles-in-2d-grid/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int m, n;
+    vector<vector<int>> directions = {{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
+
+    bool cycleDetectDFS(int r, int c, int prev_r, int prev_c,
+                        vector<vector<char>>& grid,
+                        vector<vector<bool>>& visited) {
+
+        if (visited[r][c]) {
+            return true;
+        }
+
+        visited[r][c] = true;
+
+        // explore neighbours
+        for (auto& dir : directions) {
+            int new_r = r + dir[0];
+            int new_c = c + dir[1];
+
+            if (new_r >= 0 && new_r < m && new_c >= 0 && new_c < n &&
+                grid[new_r][new_c] == grid[r][c]) {
+                if (new_r == prev_r && new_c == prev_c)
+                    continue;
+
+                if (cycleDetectDFS(new_r, new_c, r, c, grid, visited)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+    bool containsCycle(vector<vector<char>>& grid) {
+        m = grid.size();
+        n = grid[0].size();
+
+        vector<vector<bool>> visited(m, vector<bool>(n, false));
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (!visited[i][j] &&
+                    cycleDetectDFS(i, j, i, j, grid, visited)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2078. Two Furthest Houses With Different Colors 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 95.64%` `Commit:04ea7e6` `Solved At: 2026-04-20 19:55:10` <code><a href="https://leetcode.com/problems/two-furthest-houses-with-different-colors/description/" target="_blank">LINK</a></code>
