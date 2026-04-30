@@ -9,6 +9,61 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3742. Maximum Path Score in a Grid 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 17.60%` `Memory Beats: 11.85%` `Commit:ea76592` `Solved At: 2026-05-01 00:54:19` <code><a href="https://leetcode.com/problems/maximum-path-score-in-a-grid/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maxPathScore(vector<vector<int>>& grid, int k) {
+        int m = grid.size();
+        int n = grid[0].size();
+
+        vector<vector<vector<int>>> t(
+            m + 1, vector<vector<int>>(n + 1, vector<int>(k + 1, -1)));
+
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                for (int cost = k; cost >= 0; cost--) {
+
+                    int newCost = cost + (grid[i][j] > 0);
+
+                    if (newCost > k)
+                        continue;
+
+                    if (i == m - 1 && j == n - 1) {
+                        t[i][j][cost] = grid[i][j];
+                        continue;
+                    }
+
+                    int down = -1;
+                    int right = -1;
+
+                    if (i + 1 < m)
+                        down = t[i + 1][j][newCost];
+
+                    if (j + 1 < n)
+                        right = t[i][j + 1][newCost];
+
+                    int bestNext = max(down, right);
+
+                    if (bestNext != -1) {
+                        t[i][j][cost] = grid[i][j] + bestNext;
+                    }
+                }
+            }
+        }
+
+        return t[0][0][0];
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1391. Check if There is a Valid Path in a Grid 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 61.29%` `Memory Beats: 19.76%` `Commit:e551948` `Solved At: 2026-04-28 00:40:53` <code><a href="https://leetcode.com/problems/check-if-there-is-a-valid-path-in-a-grid/description/" target="_blank">LINK</a></code>
