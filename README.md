@@ -9,6 +9,43 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>396. Rotate Function 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 40.21%` `Memory Beats: 51.69%` `Commit:3eb37b8` `Solved At: 2026-05-01 20:27:07` <code><a href="https://leetcode.com/problems/rotate-function/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maxRotateFunction(vector<int>& nums) {
+        int n = nums.size();
+
+        int sum = 0;
+        int F = 0;
+
+        for (int i = 0; i < n; i++) {
+            sum += nums[i];
+            F += i * nums[i];
+        }
+
+        int result = F;
+
+        for (int k = 0; k <= n - 1; k++) {
+            int newF = F + sum - n * nums[n - 1 - k];
+
+            result = max(result, newF);
+
+            F = newF;
+        }
+
+        return result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3742. Maximum Path Score in a Grid 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 17.60%` `Memory Beats: 11.85%` `Commit:ea76592` `Solved At: 2026-05-01 00:54:19` <code><a href="https://leetcode.com/problems/maximum-path-score-in-a-grid/description/" target="_blank">LINK</a></code>
