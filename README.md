@@ -9,6 +9,46 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>788. Rotated Digits 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 83.68%` `Commit:b04c6df` `Solved At: 2026-05-02 17:15:09` <code><a href="https://leetcode.com/problems/rotated-digits/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isGood(int num) {
+        bool changed = false;
+
+        while (num > 0) {
+            int digit = num % 10;
+
+            if (digit == 3 || digit == 4 || digit == 7)
+                return false;
+            if (digit == 2 || digit == 5 || digit == 6 || digit == 9)
+                changed = true;
+
+            num /= 10;
+        }
+        return changed;
+    }
+
+    int rotatedDigits(int n) {
+        int count = 0;
+
+        for (int i = 1; i <= n; i++) {
+            if (isGood(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>396. Rotate Function 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 40.21%` `Memory Beats: 51.69%` `Commit:3eb37b8` `Solved At: 2026-05-01 20:27:07` <code><a href="https://leetcode.com/problems/rotate-function/description/" target="_blank">LINK</a></code>
