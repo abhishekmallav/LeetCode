@@ -9,6 +9,33 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>796. Rotate String 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 61.66%` `Commit:8dfc3f6` `Solved At: 2026-05-03 21:36:55` <code><a href="https://leetcode.com/problems/rotate-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        int n = s.length();
+
+        for (int i = 0; i < n; i++) {
+            char ch = s[0];
+            s.erase(0, 1);
+            s += ch;
+            if (s == goal) {
+                return true;
+            }
+        }
+        return false;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>788. Rotated Digits 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 83.68%` `Commit:b04c6df` `Solved At: 2026-05-02 17:15:09` <code><a href="https://leetcode.com/problems/rotated-digits/description/" target="_blank">LINK</a></code>
