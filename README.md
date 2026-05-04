@@ -9,6 +9,31 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>48. Rotate Image 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 68.52%` `Commit:89b8a58` `Solved At: 2026-05-04 22:18:13` <code><a href="https://leetcode.com/problems/rotate-image/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int n = matrix[0].size();
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                swap(matrix[i][j], matrix[j][i]);
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            reverse(matrix[i].begin(), matrix[i].end());
+        }
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>796. Rotate String 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 61.66%` `Commit:8dfc3f6` `Solved At: 2026-05-03 21:36:55` <code><a href="https://leetcode.com/problems/rotate-string/description/" target="_blank">LINK</a></code>
