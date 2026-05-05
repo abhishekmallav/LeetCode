@@ -9,6 +9,73 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>61. Rotate List 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 63.05%` `Commit:2d54f9f` `Solved At: 2026-05-05 11:49:17` <code><a href="https://leetcode.com/problems/rotate-list/description/" target="_blank">LINK</a></code>
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+class Solution {
+public:
+    int size(ListNode* head) {
+        int n = 0;
+        while (head != NULL) {
+            n++;
+            head = head->next;
+        }
+        return n;
+    }
+
+    ListNode* rotateRight(ListNode* head, int k) {
+        if (head == NULL)
+            return head;
+
+        int n = size(head);
+        int loop = k % n;
+        loop = n - loop;
+
+        if (n == 1 || loop == n)
+            return head;
+
+        int j = 0;
+        ListNode* temp = head;
+        ListNode* firstAddress = head;
+
+        while (temp != NULL) {
+            j++;
+            if (j == loop) {
+                firstAddress = temp->next;
+                temp->next = NULL;
+                break;
+            }
+            temp = temp->next;
+        }
+
+        temp = firstAddress;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+
+        temp->next = head;
+        return firstAddress;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>48. Rotate Image 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 68.52%` `Commit:89b8a58` `Solved At: 2026-05-04 22:18:13` <code><a href="https://leetcode.com/problems/rotate-image/description/" target="_blank">LINK</a></code>
