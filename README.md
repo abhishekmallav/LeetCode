@@ -9,6 +9,47 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1861. Rotating the Box 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 28.01%` `Memory Beats: 90.17%` `Commit:b6fee99` `Solved At: 2026-05-06 17:29:47` <code><a href="https://leetcode.com/problems/rotating-the-box/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<vector<char>> rotateTheBox(vector<vector<char>>& boxGrid) {
+        int row = boxGrid.size();
+        int col = boxGrid[0].size();
+
+        for (int i = 0; i < row; i++) {
+            int k = col - 1; 
+            for (int j = col - 1; j >= 0; j--) {
+                if (boxGrid[i][j] == '*') {
+                    k = j - 1; 
+                } 
+                else if (boxGrid[i][j] == '#') {
+                    swap(boxGrid[i][j], boxGrid[i][k]);
+                    k--;
+                }
+            }
+        }
+
+        vector<vector<char>> grid(col, vector<char>(row));
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                grid[j][row - 1 - i] = boxGrid[i][j];
+            }
+        }
+        
+        return grid;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>61. Rotate List 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 63.05%` `Commit:2d54f9f` `Solved At: 2026-05-05 11:49:17` <code><a href="https://leetcode.com/problems/rotate-list/description/" target="_blank">LINK</a></code>
