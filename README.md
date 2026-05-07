@@ -9,6 +9,51 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3660. Jump Game IX 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 47.34%` `Memory Beats: 34.04%` `Commit:0a636bd` `Solved At: 2026-05-07 21:13:03` <code><a href="https://leetcode.com/problems/jump-game-ix/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> maxValue(vector<int>& nums) {
+        int n = nums.size();
+
+        vector<int> maxLeft(n);  // maxLeft[i] = max element from index 0 to i
+        vector<int> minRight(n); // minRight[i] = min element from i+1 to n
+
+        maxLeft[0] = nums[0];
+        minRight[n - 1] = nums[n - 1];
+
+        for (int i = 1; i < n; i++) {
+            maxLeft[i] = max(nums[i], maxLeft[i - 1]);
+        }
+
+        for (int i = n - 2; i >= 0; i--) {
+            minRight[i] = min(nums[i], minRight[i + 1]);
+        }
+
+        vector<int> ans(n);
+
+        ans[n - 1] = maxLeft[n - 1];
+
+        for (int i = n - 2; i >= 0; i--) {
+            if (maxLeft[i] <= minRight[i + 1]) { 
+                ans[i] = maxLeft[i];
+            } else {
+                ans[i] = ans[i + 1];
+            }
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1861. Rotating the Box 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 28.01%` `Memory Beats: 90.17%` `Commit:b6fee99` `Solved At: 2026-05-06 17:29:47` <code><a href="https://leetcode.com/problems/rotating-the-box/description/" target="_blank">LINK</a></code>
