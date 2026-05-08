@@ -9,6 +9,106 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3629. Minimum Jumps to Reach End via Prime Teleportation 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 62.73%` `Memory Beats: 79.34%` `Commit:422b47c` `Solved At: 2026-05-08 13:29:20` <code><a href="https://leetcode.com/problems/minimum-jumps-to-reach-end-via-prime-teleportation/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<bool> isPrime;
+
+    void buildSieve(int maxEl) {
+        isPrime.resize(maxEl + 1, true);
+
+        isPrime[0] = false;
+        isPrime[1] = false;
+
+        for (int num = 2; num * num <= maxEl; num++) {
+            if (isPrime[num]) {
+
+                for (int multiple = num * num; multiple <= maxEl;
+                     multiple += num) {
+                    isPrime[multiple] = false;
+                }
+            }
+        }
+    }
+
+    int minJumps(vector<int>& nums) {
+        int n = nums.size();
+
+        unordered_map<int, vector<int>> mp;
+        int maxEl = 0;
+        for (int i = 0; i < n; i++) {
+            mp[nums[i]].push_back(i);
+            maxEl = max(maxEl, nums[i]);
+        }
+
+        buildSieve(maxEl);
+
+        queue<int> que;
+        vector<bool> visited(n, false);
+        que.push(0);
+        visited[0] = true;
+
+        unordered_set<int> seen;
+
+        int steps = 0;
+        while (!que.empty()) {
+            int size = que.size();
+
+            while (size--) {
+                int i = que.front();
+                que.pop();
+
+                if (i == n - 1) {
+                    return steps;
+                }
+
+                if (i - 1 >= 0 && !visited[i - 1]) {
+                    que.push(i - 1);
+                    visited[i - 1] = true;
+                }
+
+                if (i + 1 <= n - 1 && !visited[i + 1]) {
+                    que.push(i + 1);
+                    visited[i + 1] = true;
+                }
+
+                if (!isPrime[nums[i]] || seen.count(nums[i])) {
+                    continue;
+                }
+
+                for (int multiple = nums[i]; multiple <= maxEl;
+                     multiple += nums[i]) {
+                    if (!mp.contains(multiple)) {
+                        continue;
+                    }
+
+                    for (int& j : mp[multiple]) {
+                        if (!visited[j]) {
+                            que.push(j);
+                            visited[j] = true;
+                        }
+                    }
+                }
+
+                seen.insert(nums[i]);
+            }
+
+            steps++;
+        }
+
+        return steps;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3660. Jump Game IX 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 47.34%` `Memory Beats: 34.04%` `Commit:0a636bd` `Solved At: 2026-05-07 21:13:03` <code><a href="https://leetcode.com/problems/jump-game-ix/description/" target="_blank">LINK</a></code>
