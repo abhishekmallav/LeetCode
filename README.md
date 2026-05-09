@@ -9,6 +9,78 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1914. Cyclically Rotating a Grid 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 45.59%` `Memory Beats: 42.65%` `Commit:cbb250f` `Solved At: 2026-05-09 21:10:58` <code><a href="https://leetcode.com/problems/cyclically-rotating-a-grid/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> rotateGrid(vector<vector<int>>& grid, int k) {
+        int m = grid.size();
+        int n = grid[0].size();
+
+        int layers = min(m, n) / 2;
+
+        for (int layer = 0; layer < layers; layer++) {
+
+            vector<int> nums;
+
+            int top = layer;
+            int bottom = m - layer - 1;
+            int left = layer;
+            int right = n - layer - 1;
+
+            for (int j = left; j <= right; j++) {
+                nums.push_back(grid[top][j]);
+            }
+
+            for (int i = top + 1; i <= bottom - 1; i++) {
+                nums.push_back(grid[i][right]);
+            }
+
+            for (int j = right; j >= left; j--) {
+                nums.push_back(grid[bottom][j]);
+            }
+
+            for (int i = bottom - 1; i >= top + 1; i--) {
+                nums.push_back(grid[i][left]);
+            }
+
+            int len = nums.size();
+
+            int nomralized_k = k % len;
+
+            rotate(begin(nums), begin(nums) + nomralized_k, end(nums));
+
+            int idx = 0;
+
+            for (int j = left; j <= right; j++) {
+                grid[top][j] = nums[idx++];
+            }
+
+            for (int i = top + 1; i <= bottom - 1; i++) {
+                grid[i][right] = nums[idx++];
+            }
+
+            for (int j = right; j >= left; j--) {
+                grid[bottom][j] = nums[idx++];
+            }
+
+            for (int i = bottom - 1; i >= top + 1; i--) {
+                grid[i][left] = nums[idx++];
+            }
+        }
+
+        return grid;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3629. Minimum Jumps to Reach End via Prime Teleportation 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 62.73%` `Memory Beats: 79.34%` `Commit:422b47c` `Solved At: 2026-05-08 13:29:20` <code><a href="https://leetcode.com/problems/minimum-jumps-to-reach-end-via-prime-teleportation/description/" target="_blank">LINK</a></code>
