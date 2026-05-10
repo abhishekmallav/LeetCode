@@ -9,6 +9,49 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2770. Maximum Number of Jumps to Reach the Last Index 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 81.06%` `Memory Beats: 19.88%` `Commit:8916eba` `Solved At: 2026-05-10 21:34:49` <code><a href="https://leetcode.com/problems/maximum-number-of-jumps-to-reach-the-last-index/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int n;
+
+    int solve(int i, vector<int>& nums, int target, vector<int>& t) {
+        if (i == n - 1) {
+            return t[i] = 0;
+        }
+
+        if (t[i] != INT_MIN) {
+            return t[i];
+        }
+
+        int result = INT_MIN;
+
+        for (int j = i + 1; j < n; j++) {
+            if (abs(nums[i] - nums[j]) <= target) {
+                int temp = 1 + solve(j, nums, target, t);
+
+                result = max(result, temp);
+            }
+        }
+        return t[i] = result;
+    }
+
+    int maximumJumps(vector<int>& nums, int target) {
+        n = nums.size();
+        vector<int> t(n + 1, INT_MIN);
+        int result = solve(0, nums, target, t);
+        return result < 0 ? -1 : result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1914. Cyclically Rotating a Grid 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 45.59%` `Memory Beats: 42.65%` `Commit:cbb250f` `Solved At: 2026-05-09 21:10:58` <code><a href="https://leetcode.com/problems/cyclically-rotating-a-grid/description/" target="_blank">LINK</a></code>
