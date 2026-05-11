@@ -9,6 +9,36 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2553. Separate the Digits in an Array 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 19.87%` `Memory Beats: 18.38%` `Commit:f61bdb3` `Solved At: 2026-05-11 10:14:32` <code><a href="https://leetcode.com/problems/separate-the-digits-in-an-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> separateDigits(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> ans;
+
+        for (int i = 0; i < n; i++) {
+            vector<int> tmp;
+            while (nums[i] > 0) {
+                tmp.push_back(nums[i] % 10);
+                nums[i] /= 10;
+            }
+            for (int j = tmp.size() - 1; j >= 0; j--) {
+                ans.push_back(tmp[j]);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2770. Maximum Number of Jumps to Reach the Last Index 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 81.06%` `Memory Beats: 19.88%` `Commit:8916eba` `Solved At: 2026-05-10 21:34:49` <code><a href="https://leetcode.com/problems/maximum-number-of-jumps-to-reach-the-last-index/description/" target="_blank">LINK</a></code>
