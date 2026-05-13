@@ -9,6 +9,48 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1674. Minimum Moves to Make Array Complementary 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 82.30%` `Memory Beats: 61.06%` `Commit:418bb41` `Solved At: 2026-05-13 14:44:32` <code><a href="https://leetcode.com/problems/minimum-moves-to-make-array-complementary/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minMoves(vector<int>& nums, int limit) {
+        int n = nums.size();
+
+        vector<int> diff(2 * limit + 2, 0);
+
+        for (int i = 0; i < n / 2; i++) {
+            int a = nums[i];
+            int b = nums[n - 1 - i];
+
+            int left = min(a, b) + 1;
+            int right = max(a, b) + limit;
+            diff[left] -= 1;
+            diff[right + 1] += 1;
+
+            diff[a + b] -= 1;
+            diff[a + b + 1] += 1;
+        }
+
+        int ans = n;
+        int curr = n;
+
+        for (int i = 2; i <= 2 * limit; i++) {
+            curr += diff[i];
+            ans = min(ans, curr);
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1665. Minimum Initial Energy to Finish Tasks 🌟 POTD</h3></summary>
 
 `Hard` `Time Beats: 44.17%` `Memory Beats: 85.92%` `Commit:e678b66` `Solved At: 2026-05-12 19:10:42` <code><a href="https://leetcode.com/problems/minimum-initial-energy-to-finish-tasks/description/" target="_blank">LINK</a></code>
