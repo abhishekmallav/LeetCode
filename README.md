@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2784. Check if Array is Good 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 73.39%` `Commit:73eeae9` `Solved At: 2026-05-14 10:18:28` <code><a href="https://leetcode.com/problems/check-if-array-is-good/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isGood(vector<int>& nums) {
+        int n = nums.size();
+
+        if (n == 1) {
+            return false;
+        }
+
+        sort(nums.begin(), nums.end());
+
+        for (int i = 0; i <= n - 2; i++) {
+            if (nums[i] == i + 1) {
+                continue;
+            }
+            return false;
+        }
+        if (nums[n - 1] == nums[n - 2]) {
+            return true;
+        }
+        return false;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1674. Minimum Moves to Make Array Complementary 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 82.30%` `Memory Beats: 61.06%` `Commit:418bb41` `Solved At: 2026-05-13 14:44:32` <code><a href="https://leetcode.com/problems/minimum-moves-to-make-array-complementary/description/" target="_blank">LINK</a></code>
