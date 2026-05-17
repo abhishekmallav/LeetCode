@@ -9,6 +9,39 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1306. Jump Game III 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 45.74%` `Commit:4de1d34` `Solved At: 2026-05-17 20:26:10` <code><a href="https://leetcode.com/problems/jump-game-iii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int n;
+
+    bool dfs(vector<int>& arr, int i) {
+        if(i < 0 || i >= n || arr[i] < 0) {
+            return false;
+        }
+        if(arr[i] == 0)
+            return true;
+
+        arr[i] *= -1;
+        int left  = dfs(arr, i - arr[i]);
+        int right = dfs(arr, i + arr[i]);
+        return left || right;
+    }
+
+    bool canReach(vector<int>& arr, int start) {
+        n = arr.size();
+        return dfs(arr, start);
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>154. Find Minimum in Rotated Sorted Array II 🌟 POTD</h3></summary>
 
 `Hard` `Time Beats: 100.00%` `Memory Beats: 27.34%` `Commit:4e64bf1` `Solved At: 2026-05-16 10:12:52` <code><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/description/" target="_blank">LINK</a></code>
