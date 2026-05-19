@@ -9,6 +9,42 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2540. Minimum Common Value 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 38.91%` `Memory Beats: 30.11%` `Commit:d4858df` `Solved At: 2026-05-19 10:36:42` <code><a href="https://leetcode.com/problems/minimum-common-value/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int getCommon(vector<int>& nums1, vector<int>& nums2) {
+        for (int i = 0; i < nums1.size(); i++) {
+            int target = nums1[i];
+
+            int L = 0;
+            int R = nums2.size() - 1;
+
+            while (L <= R) {
+                int mid = L + (R - L) / 2;
+
+                if (nums2[mid] == target) {
+                    return target;
+                } else if (nums2[mid] < target) {
+                    L = mid + 1;
+                } else {
+                    R = mid - 1;
+                }
+            }
+        }
+
+        return -1;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1345. Jump Game IV 🌟 POTD</h3></summary>
 
 `Hard` `Time Beats: 33.88%` `Memory Beats: 31.08%` `Commit:5d1821d` `Solved At: 2026-05-18 18:36:52` <code><a href="https://leetcode.com/problems/jump-game-iv/description/" target="_blank">LINK</a></code>
