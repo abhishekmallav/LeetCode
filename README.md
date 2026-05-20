@@ -9,6 +9,26 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>278. First Bad Version</h3></summary>
+
+`Easy` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:cb00cfd` `Solved At: 2026-05-20 14:12:44` <code><a href="https://leetcode.com/problems/first-bad-version/description/" target="_blank">LINK</a></code>
+
+```cpp
+// The API isBadVersion is defined for you.
+// bool isBadVersion(int version);
+
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        int L = 1, R = n, ans = n;
+        while (L <= R) {
+            int mid = L + (R - L) / 2;
+```
+
+</details>
+
+
+<details>
 <summary><h3>2540. Minimum Common Value 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 38.91%` `Memory Beats: 30.11%` `Commit:d4858df` `Solved At: 2026-05-19 10:36:42` <code><a href="https://leetcode.com/problems/minimum-common-value/description/" target="_blank">LINK</a></code>
