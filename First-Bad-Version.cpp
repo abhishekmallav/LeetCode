@@ -7,3 +7,13 @@ public:
         int L = 1, R = n, ans = n;
         while (L <= R) {
             int mid = L + (R - L) / 2;
+            if (isBadVersion(mid)) {
+                ans = mid;
+                R = mid - 1;
+            } else {
+                L = mid + 1;
+            }
+        }
+        return ans;
+    }
+};
