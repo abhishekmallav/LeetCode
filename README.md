@@ -9,6 +9,37 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2657. Find the Prefix Common Array of Two Arrays 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:e4bf708` `Solved At: 2026-05-20 14:35:03` <code><a href="https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> findThePrefixCommonArray(vector<int>& A, vector<int>& B) {
+        int n = A.size();
+        vector<int> freq(n + 1, 0), ans(n);
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            freq[A[i]]++;
+            if (freq[A[i]] == 2)
+                cnt++;
+
+            freq[B[i]]++;
+            if (freq[B[i]] == 2)
+                cnt++;
+
+            ans[i] = cnt;
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>374. Guess Number Higher or Lower</h3></summary>
 
 `Easy` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:b645ed8` `Solved At: 2026-05-20 14:34:20` <code><a href="https://leetcode.com/problems/guess-number-higher-or-lower/description/" target="_blank">LINK</a></code>
