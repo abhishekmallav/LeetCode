@@ -9,6 +9,36 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>278. First Bad Version</h3></summary>
+
+`Easy` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:311a6cd` `Solved At: 2026-05-20 14:37:22` <code><a href="https://leetcode.com/problems/first-bad-version/description/" target="_blank">LINK</a></code>
+
+```cpp
+// The API isBadVersion is defined for you.
+// bool isBadVersion(int version);
+
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        int L = 1, R = n, ans = n;
+        while (L <= R) {
+            int mid = L + (R - L) / 2;
+            if (isBadVersion(mid)) {
+                ans = mid;
+                R = mid - 1;
+            } else {
+                L = mid + 1;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2657. Find the Prefix Common Array of Two Arrays 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:e4bf708` `Solved At: 2026-05-20 14:35:03` <code><a href="https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/description/" target="_blank">LINK</a></code>
