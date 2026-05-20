@@ -13,3 +13,8 @@ public:
             if (freq[B[i]] == 2)
                 cnt++;
 
+            ans[i] = cnt;
+        }
+        return ans;
+    }
+};
