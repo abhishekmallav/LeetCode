@@ -9,6 +9,34 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>367. Valid Perfect Square</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 50.64%` `Commit:ec40bbf` `Solved At: 2026-05-20 14:19:58` <code><a href="https://leetcode.com/problems/valid-perfect-square/description/" target="_blank">LINK</a></code>
+
+```cpp
+        long L = 1, R = num;
+
+        while (L <= R) {
+            long mid = L + (R - L) / 2;
+            long square = mid * mid;
+
+            if (square == num) {
+                return true;
+            } else if (square < num) {
+            return true;
+
+            return false;
+        if (num == 1)
+public:
+    bool isPerfectSquare(int num) {
+        if (num < 1)
+class Solution {
+```
+
+</details>
+
+
+<details>
 <summary><h3>278. First Bad Version</h3></summary>
 
 `Easy` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:cb00cfd` `Solved At: 2026-05-20 14:12:44` <code><a href="https://leetcode.com/problems/first-bad-version/description/" target="_blank">LINK</a></code>
