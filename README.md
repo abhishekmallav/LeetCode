@@ -9,6 +9,38 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>441. Arranging Coins</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 95.67%` `Commit:b04f8b6` `Solved At: 2026-05-20 14:52:29` <code><a href="https://leetcode.com/problems/arranging-coins/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int arrangeCoins(int n) {
+        long left = 0, right = n;
+        long result = 0;
+
+        while (left <= right) {
+            long mid = left + (right - left) / 2;
+            long coinsUsed = mid * (mid + 1) / 2;
+
+            if (coinsUsed <= n) {
+                result = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return (int)result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>278. First Bad Version</h3></summary>
 
 `Easy` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:311a6cd` `Solved At: 2026-05-20 14:37:22` <code><a href="https://leetcode.com/problems/first-bad-version/description/" target="_blank">LINK</a></code>
