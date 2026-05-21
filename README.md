@@ -9,6 +9,44 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3043. Find the Length of the Longest Common Prefix 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 58.83%` `Memory Beats: 81.17%` `Commit:ba261a9` `Solved At: 2026-05-21 10:49:10` <code><a href="https://leetcode.com/problems/find-the-length-of-the-longest-common-prefix/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int longestCommonPrefix(vector<int>& arr1, vector<int>& arr2) {
+        unordered_set<int> prefixes;
+
+        for (int num : arr1) {
+            while (num > 0) {
+                prefixes.insert(num);
+                num /= 10;
+            }
+        }
+
+        int maxLen = 0;
+        for (int num : arr2) {
+            while (num > 0) {
+                if (prefixes.count(num)) {
+                    int currLen = to_string(num).length();
+                    maxLen = max(maxLen, currLen);
+
+                    break;
+                }
+                num /= 10;
+            }
+        }
+        return maxLen;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>441. Arranging Coins</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 95.67%` `Commit:b04f8b6` `Solved At: 2026-05-20 14:52:29` <code><a href="https://leetcode.com/problems/arranging-coins/description/" target="_blank">LINK</a></code>
