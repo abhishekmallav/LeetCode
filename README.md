@@ -9,6 +9,37 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>153. Find Minimum in Rotated Sorted Array</h3></summary>
+
+`Medium` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:aa51ca1` `Solved At: 2026-05-22 09:44:53` <code><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int L = 0, R = nums.size() - 1,mid;
+        
+        if (nums[L] <= nums[R]) return nums[L];
+
+        while (L < R) {
+            mid = L + (R - L) / 2;
+
+            if (nums[mid] > nums[R]) {
+                L = mid + 1;
+            } 
+            else {
+                R = mid;
+            }
+        }
+        return nums[mid];
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>33. Search in Rotated Sorted Array 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 44.6%` `Memory Beats: 100%` `Commit:7050d51` `Solved At: 2026-05-22 08:51:40` <code><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/description/" target="_blank">LINK</a></code>
