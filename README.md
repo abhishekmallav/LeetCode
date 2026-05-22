@@ -9,6 +9,45 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>33. Search in Rotated Sorted Array 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 44.6%` `Memory Beats: 100%` `Commit:7050d51` `Solved At: 2026-05-22 08:51:40` <code><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int n = nums.size();
+        int L = 0;
+        int R = n - 1;
+        while (L <= R) {
+            int mid = L + (R - L) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            }
+            if (nums[mid] >= nums[L]) {
+                if (nums[L] <= target && nums[mid] >= target) {
+                    R = mid - 1;
+                } else {
+                    L = mid + 1;
+                }
+            } else {
+                if (nums[mid] <= target && nums[R] >= target) {
+                    L = mid + 1;
+                } else {
+                    R = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3043. Find the Length of the Longest Common Prefix 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 58.83%` `Memory Beats: 81.17%` `Commit:ba261a9` `Solved At: 2026-05-21 10:49:10` <code><a href="https://leetcode.com/problems/find-the-length-of-the-longest-common-prefix/description/" target="_blank">LINK</a></code>
