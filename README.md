@@ -9,6 +9,36 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1752. Check if Array Is Sorted and Rotated 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:6673d42` `Solved At: 2026-05-23 18:23:08` <code><a href="https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool check(vector<int>& nums) {
+        int n = nums.size();
+        int drops = 0;
+        
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > nums[(i + 1) % n]) {
+                drops++;
+            }
+            
+            if (drops > 1) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>153. Find Minimum in Rotated Sorted Array</h3></summary>
 
 `Medium` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:aa51ca1` `Solved At: 2026-05-22 09:44:53` <code><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/" target="_blank">LINK</a></code>
