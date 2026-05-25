@@ -9,6 +9,38 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1871. Jump Game VII 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 29.3%` `Memory Beats: 0%` `Commit:9dfd6fd` `Solved At: 2026-05-25 11:32:39` <code><a href="https://leetcode.com/problems/jump-game-vii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool canReach(string s, int minJump, int maxJump) {
+        int n = s.length();
+        vector<int> arr(n + 1, 0);
+        if (s[n - 1] == '1')
+            return false;
+        int cnt = 0;
+
+        for (int i = 0; i < n; i++) {
+            cnt += arr[i];
+            if (i == 0 || s[i] == '0' && cnt > 0) {
+                if (i + minJump < n)
+                    arr[i + minJump] += 1;
+                if (i + maxJump + 1 < n)
+                    arr[i + maxJump + 1] -= 1;
+            }
+        }
+        return cnt > 0;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1752. Check if Array Is Sorted and Rotated 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 0.0%` `Memory Beats: 0.0%` `Commit:6673d42` `Solved At: 2026-05-23 18:23:08` <code><a href="https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/description/" target="_blank">LINK</a></code>
