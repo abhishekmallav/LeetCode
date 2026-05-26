@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3120. Count the Number of Special Characters I 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 68.68%` `Commit:c1fa8bb` `Solved At: 2026-05-26 22:29:47` <code><a href="https://leetcode.com/problems/count-the-number-of-special-characters-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int numberOfSpecialChars(string word) {
+        int lower[26] = {0};
+        int upper[26] = {0};
+
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word[i];
+            if (ch >= 'a' && ch <= 'z') {
+                lower[ch - 'a']++;
+            }
+            if (ch >= 'A' && ch <= 'Z') {
+                upper[ch - 'A']++;
+            }
+        }
+        int cnt = 0;
+        for (int i = 0; i < 26; i++) {
+            if (lower[i] >= 1 && upper[i] >= 1)
+                cnt++;
+        }
+        return cnt;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1871. Jump Game VII 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 29.3%` `Memory Beats: 0%` `Commit:9dfd6fd` `Solved At: 2026-05-25 11:32:39` <code><a href="https://leetcode.com/problems/jump-game-vii/description/" target="_blank">LINK</a></code>
