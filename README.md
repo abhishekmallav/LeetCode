@@ -9,6 +9,44 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>5. Longest Palindromic Substring</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 96.49%` `Commit:5014078` `Solved At: 2026-05-27 14:30:58` <code><a href="https://leetcode.com/problems/longest-palindromic-substring/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool solve(string& s, int i, int j) {
+        if (i >= j)
+            return true;
+
+        if (s[i] == s[j])
+            return solve(s, i+1, j-1);
+        return false;
+    }
+    string longestPalindrome(string s) {
+        int n = s.length();
+        int maxi = INT_MIN;
+        int start = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                if (solve(s, i, j)) {
+                    if (j - i + 1 > maxi) {
+                        maxi = j - i + 1;
+                        start = i;
+                    }
+                }
+            }
+        }
+        return s.substr(start, maxi);
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>6. Zigzag Conversion</h3></summary>
 
 `Medium` `Time Beats: 5.04%` `Memory Beats: 5.01%` `Commit:f0666ed` `Solved At: 2026-05-27 13:50:51` <code><a href="https://leetcode.com/problems/zigzag-conversion/description/" target="_blank">LINK</a></code>
