@@ -9,6 +9,57 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>6. Zigzag Conversion</h3></summary>
+
+`Medium` `Time Beats: 5.04%` `Memory Beats: 5.01%` `Commit:f0666ed` `Solved At: 2026-05-27 13:50:51` <code><a href="https://leetcode.com/problems/zigzag-conversion/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        int n = s.length();
+
+        if (numRows == 1 || n <= numRows) {
+            return s;
+        }
+        
+        int maxCol = n;
+        vector<vector<char>> grid(numRows, vector<char>(maxCol, '\0'));
+
+        int k = 0; // Pointer for string s
+        int j = 0; // Column pointer
+        int i = 0; // Row pointer
+
+        while (k < n) {
+            for (i = 0; i < numRows && k < n; i++) {
+                grid[i][j] = s[k++];
+            }
+            i = numRows - 2;
+            j++;
+
+            for (; i > 0 && k < n; i--) {
+                grid[i][j++] = s[k++];
+            }
+        }
+
+        string ans = "";
+        for (int row = 0; row < numRows; row++) {
+            for (int col = 0; col < maxCol; col++) {
+                if (grid[row][col] != '\0') {
+                    ans += grid[row][col];
+                }
+            }
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3121. Count the Number of Special Characters II 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 63.48%` `Memory Beats: 53.09%` `Commit:d11b904` `Solved At: 2026-05-27 13:00:41` <code><a href="https://leetcode.com/problems/count-the-number-of-special-characters-ii/description/" target="_blank">LINK</a></code>
