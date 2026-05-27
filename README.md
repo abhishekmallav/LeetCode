@@ -9,6 +9,49 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3121. Count the Number of Special Characters II 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 63.48%` `Memory Beats: 53.09%` `Commit:d11b904` `Solved At: 2026-05-27 13:00:41` <code><a href="https://leetcode.com/problems/count-the-number-of-special-characters-ii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int numberOfSpecialChars(string word) {
+        vector<int> status(26, 0);
+        vector<bool> lower(26, false);
+
+        int cnt = 0;
+
+        for (char ch : word) {
+            if (ch >= 'a' && ch <= 'z') {
+                int idx = ch - 'a';
+                lower[idx] = true;
+
+                if (status[idx] == 1) {
+                    status[idx] = -1;
+                    cnt--;
+                }
+            } else if (ch >= 'A' && ch <= 'Z') {
+                int idx = ch - 'A';
+                if (lower[idx] && status[idx] == 0) {
+                    status[idx] = 1;
+                    cnt++;
+                }
+                if (!lower[idx] && status[idx] == 0) {
+                    status[idx] = -1;
+                }
+            }
+        }
+
+        return cnt;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3120. Count the Number of Special Characters I 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 68.68%` `Commit:c1fa8bb` `Solved At: 2026-05-26 22:29:47` <code><a href="https://leetcode.com/problems/count-the-number-of-special-characters-i/description/" target="_blank">LINK</a></code>
