@@ -9,6 +9,35 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3300. Minimum Element After Replacement With Digit Sum 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 77.43%` `Commit:9aaea73` `Solved At: 2026-05-29 10:11:00` <code><a href="https://leetcode.com/problems/minimum-element-after-replacement-with-digit-sum/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minElement(vector<int>& nums) {
+        int n = nums.size();
+        int mini = INT_MAX;
+        for (int i = 0; i < n; i++) {
+            int num = nums[i];
+            int sum = 0;
+            while (num > 0) {
+                int d = num % 10;
+                sum += d;
+                num /= 10;
+            }
+            mini = min(sum, mini);
+        }
+        return mini;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>5. Longest Palindromic Substring</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 96.49%` `Commit:5014078` `Solved At: 2026-05-27 14:30:58` <code><a href="https://leetcode.com/problems/longest-palindromic-substring/description/" target="_blank">LINK</a></code>
