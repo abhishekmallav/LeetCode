@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2574. Left and Right Sum Differences 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 33.33%` `Commit:54afa19` `Solved At: 2026-06-06 12:48:47` <code><a href="https://leetcode.com/problems/left-and-right-sum-differences/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> leftRightDifference(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> leftSum(n, 0);
+        vector<int> rightSum(n, 0);
+        int sum = 0;
+        for (int i = 1; i < n; i++) {
+            sum += nums[i - 1];
+            leftSum[i] = sum;
+        }
+        sum = 0;
+        for (int i = n - 2; i >= 0; i--) {
+            sum += nums[i + 1];
+            rightSum[i] = sum;
+        }
+        vector<int> ans(n, 0);
+        for (int i = 0; i < n; i++) {
+            ans[i] = abs(leftSum[i] - rightSum[i]);
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3300. Minimum Element After Replacement With Digit Sum 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 77.43%` `Commit:9aaea73` `Solved At: 2026-05-29 10:11:00` <code><a href="https://leetcode.com/problems/minimum-element-after-replacement-with-digit-sum/description/" target="_blank">LINK</a></code>
