@@ -9,6 +9,49 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2130. Maximum Twin Sum of a Linked List 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 98.61%` `Commit:c2b8cda` `Solved At: 2026-06-14 19:44:38` <code><a href="https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/description/" target="_blank">LINK</a></code>
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    int pairSum(ListNode* head) {
+        vector<int> vec;
+
+        while (head) {
+            vec.push_back(head->val);
+            head = head->next;
+        }
+
+        int i = 0, j = vec.size() - 1;
+        int result = 0;
+
+        while (i < j) {
+            result = max(result, vec[i] + vec[j]);
+            i++;
+            j--;
+        }
+
+        return result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2574. Left and Right Sum Differences 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 33.33%` `Commit:54afa19` `Solved At: 2026-06-06 12:48:47` <code><a href="https://leetcode.com/problems/left-and-right-sum-differences/description/" target="_blank">LINK</a></code>
