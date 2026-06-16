@@ -9,6 +9,37 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3612. Process String with Special Operations I 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:133dcc4` `Solved At: 2026-06-17 00:59:55` <code><a href="https://leetcode.com/problems/process-string-with-special-operations-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string processStr(string s) {
+        string result = "";
+
+        for (char& ch : s) {
+            if (ch == '*') {
+                if (result.length() > 0)
+                    result.pop_back();
+            } else if (ch == '#') {
+                result += result;
+            } else if (ch == '%') {
+                reverse(begin(result), end(result));
+            } else {
+                result += ch;
+            }
+        }
+        return result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2130. Maximum Twin Sum of a Linked List 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 98.61%` `Commit:c2b8cda` `Solved At: 2026-06-14 19:44:38` <code><a href="https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/description/" target="_blank">LINK</a></code>
