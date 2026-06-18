@@ -9,6 +9,30 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1344. Angle Between Hands of a Clock 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:dceba32` `Solved At: 2026-06-18 10:53:46` <code><a href="https://leetcode.com/problems/angle-between-hands-of-a-clock/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    double angleClock(int hour, int minutes) {
+        hour = hour % 12;
+
+        double minute_angle = minutes * 6.0;
+        double hour_angle = (hour * 30.0) + (minutes * 0.5);
+
+        double diff = std::abs(hour_angle - minute_angle);
+
+        return min(diff, 360.0 - diff);
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3612. Process String with Special Operations I 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:133dcc4` `Solved At: 2026-06-17 00:59:55` <code><a href="https://leetcode.com/problems/process-string-with-special-operations-i/description/" target="_blank">LINK</a></code>
