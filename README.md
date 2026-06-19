@@ -9,6 +9,31 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1732. Find the Highest Altitude 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 73.87%` `Commit:453efda` `Solved At: 2026-06-19 10:54:09` <code><a href="https://leetcode.com/problems/find-the-highest-altitude/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int largestAltitude(vector<int>& gain) {
+        int n = gain.size();
+        int maxi = INT_MIN;
+        int height = 0;
+
+        for (int i = 0; i < n; i++) {
+            maxi = max(maxi, height);
+            height += gain[i];
+        }
+        return max(maxi, height);
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1344. Angle Between Hands of a Clock 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:dceba32` `Solved At: 2026-06-18 10:53:46` <code><a href="https://leetcode.com/problems/angle-between-hands-of-a-clock/description/" target="_blank">LINK</a></code>
