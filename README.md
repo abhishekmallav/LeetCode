@@ -9,6 +9,41 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1189. Maximum Number of Balloons 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 64.87%` `Commit:fec97f9` `Solved At: 2026-06-22 11:13:05` <code><a href="https://leetcode.com/problems/maximum-number-of-balloons/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+        int b = 0, a = 0, l = 0, o = 0, n = 0;
+
+        for (char c : text) {
+            if (c == 'b')
+                b++;
+            else if (c == 'a')
+                a++;
+            else if (c == 'l')
+                l++;
+            else if (c == 'o')
+                o++;
+            else if (c == 'n')
+                n++;
+        }
+
+        l /= 2;
+        o /= 2;
+
+        return min({b, a, l, o, n});
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1732. Find the Highest Altitude 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 73.87%` `Commit:453efda` `Solved At: 2026-06-19 10:54:09` <code><a href="https://leetcode.com/problems/find-the-highest-altitude/description/" target="_blank">LINK</a></code>
