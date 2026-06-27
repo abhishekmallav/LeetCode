@@ -9,6 +9,63 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3020. Find the Maximum Number of Elements in Subset 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:0f57ce9` `Solved At: 2026-06-27 15:45:00` <code><a href="https://leetcode.com/problems/find-the-maximum-number-of-elements-in-subset/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maximumLength(vector<int>& nums) {
+        unordered_map<int, int> count;
+        for (int num : nums) {
+            count[num]++;
+        }
+
+        int maxLen = 1;
+
+        // Handle the special case for 1
+        if (count.find(1) != count.end()) {
+            int ones = count[1];
+            if (ones % 2 == 0) {
+                ones--;
+            }
+            maxLen = max(maxLen, ones);
+        }
+
+        // Process other numbers
+        for (auto const& [x, _] : count) {
+            if (x == 1)
+                continue;
+
+            int currentLen = 0;
+            long long curr = x;
+
+            while (curr <= 1000000000LL && count.count((int)curr) &&
+                   count[(int)curr] >= 2) {
+                currentLen += 2;
+                curr *= curr;
+            }
+
+            if (curr <= 1000000000LL && count.count((int)curr) &&
+                count[(int)curr] > 0) {
+                currentLen += 1;
+            } else {
+                currentLen -= 1;
+            }
+
+            maxLen = max(maxLen, currentLen);
+        }
+
+        return maxLen;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1189. Maximum Number of Balloons 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 64.87%` `Commit:fec97f9` `Solved At: 2026-06-22 11:13:05` <code><a href="https://leetcode.com/problems/maximum-number-of-balloons/description/" target="_blank">LINK</a></code>
