@@ -9,6 +9,39 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1846. Maximum Element After Decreasing and Rearranging 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:f9f0265` `Solved At: 2026-06-28 21:41:49` <code><a href="https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maximumElementAfterDecrementingAndRearranging(vector<int>& arr) {
+        sort(arr.begin(), arr.end());
+
+        int n = arr.size();
+        int maxi = 1;
+
+        for (int i = 0; i < n; i++) {
+
+            if (i == 0) {
+                arr[i] = 1;
+            } else if (arr[i] - arr[i - 1] > 1) {
+                arr[i] = arr[i - 1] + 1;
+            }
+
+            maxi = max(maxi, arr[i]);
+        }
+
+        return maxi;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3020. Find the Maximum Number of Elements in Subset 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:0f57ce9` `Solved At: 2026-06-27 15:45:00` <code><a href="https://leetcode.com/problems/find-the-maximum-number-of-elements-in-subset/description/" target="_blank">LINK</a></code>
