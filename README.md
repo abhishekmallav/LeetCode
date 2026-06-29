@@ -9,6 +9,29 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1967. Number of Strings That Appear as Substrings in Word 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 0%` `Memory Beats: 100%` `Commit:e0f7af7` `Solved At: 2026-06-29 14:58:19` <code><a href="https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int numOfStrings(vector<string>& patterns, string word) {
+        int res = 0;
+        for (const string& pattern : patterns) {
+            if (word.find(pattern) != string::npos) {
+                res++;
+            }
+        }
+        return res;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1846. Maximum Element After Decreasing and Rearranging 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:f9f0265` `Solved At: 2026-06-28 21:41:49` <code><a href="https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging/description/" target="_blank">LINK</a></code>
