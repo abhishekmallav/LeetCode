@@ -9,6 +9,35 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1288. Remove Covered Intervals 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:94a2dec` `Solved At: 2026-07-06 11:36:24` <code><a href="https://leetcode.com/problems/remove-covered-intervals/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int removeCoveredIntervals(vector<vector<int>>& A) {
+        int res = 0, left = -1, right = -1;
+
+        sort(A.begin(), A.end());
+
+        for (auto& v : A) {
+            if (v[0] > left && v[1] > right) {
+                left = v[0];
+                res++;
+            }
+            right = max(right, v[1]);
+        }
+
+        return res;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1967. Number of Strings That Appear as Substrings in Word 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 0%` `Memory Beats: 100%` `Commit:e0f7af7` `Solved At: 2026-06-29 14:58:19` <code><a href="https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word/description/" target="_blank">LINK</a></code>
