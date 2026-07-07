@@ -9,6 +9,34 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3754. Concatenate Non-Zero Digits and Multiply by Sum I 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 0%` `Memory Beats: 100.00%` `Commit:36f9450` `Solved At: 2026-07-08 00:13:06` <code><a href="https://leetcode.com/problems/concatenate-non-zero-digits-and-multiply-by-sum-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    long long sumAndMultiply(int n) {
+        long long res = 0;
+        long long sum = 0;
+        int i = 1;
+        while (n) {
+            if (n % 10 != 0) {
+                res = res + (n % 10) * i;
+                sum += n % 10;
+                i = i * 10;
+            }
+            n = n / 10;
+        }
+        return res * sum;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1288. Remove Covered Intervals 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:94a2dec` `Solved At: 2026-07-06 11:36:24` <code><a href="https://leetcode.com/problems/remove-covered-intervals/description/" target="_blank">LINK</a></code>
