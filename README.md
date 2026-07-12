@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1331. Rank Transform of an Array 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 0%` `Memory Beats: 100%` `Commit:d86614c` `Solved At: 2026-07-12 15:55:05` <code><a href="https://leetcode.com/problems/rank-transform-of-an-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> arrayRankTransform(vector<int>& arr) {
+        int n = arr.size();
+
+        if (n == 0)
+            return {};
+
+        set<int> uniqueElements(arr.begin(), arr.end());
+        unordered_map<int, int> ranks;
+        int rank = 1;
+
+        for (const int& ele : uniqueElements)
+            ranks[ele] = rank++;
+
+        vector<int> ans;
+
+        for (int& ele : arr)
+            ans.push_back(ranks[ele]);
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3754. Concatenate Non-Zero Digits and Multiply by Sum I 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 0%` `Memory Beats: 100.00%` `Commit:36f9450` `Solved At: 2026-07-08 00:13:06` <code><a href="https://leetcode.com/problems/concatenate-non-zero-digits-and-multiply-by-sum-i/description/" target="_blank">LINK</a></code>
