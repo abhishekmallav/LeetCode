@@ -9,6 +9,25 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3658. GCD of Odd and Even Sums 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 0%` `Memory Beats: 100.00%` `Commit:8673dd3` `Solved At: 2026-07-15 11:32:21` <code><a href="https://leetcode.com/problems/gcd-of-odd-and-even-sums/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int gcdOfOddEvenSums(int n) {
+        // The GCD of the first n odd sums (n^2)
+        // and the first n even sums (n*(n+1)) is always n.
+        return n;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1291. Sequential Digits 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:6a76a89` `Solved At: 2026-07-13 11:16:10` <code><a href="https://leetcode.com/problems/sequential-digits/description/" target="_blank">LINK</a></code>
