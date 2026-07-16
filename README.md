@@ -9,6 +9,46 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3867. Sum of GCD of Formed Pairs 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:7204721` `Solved At: 2026-07-16 10:30:00` <code><a href="https://leetcode.com/problems/sum-of-gcd-of-formed-pairs/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    long long gcdSum(vector<int>& nums) {
+        int max_val = -1;
+        int n = nums.size();
+        vector<int> prefixGCD(n);
+
+        for (int i = 0; i < n; i++) {
+            max_val = max(nums[i], max_val);
+            prefixGCD[i] = gcd(nums[i], max_val);
+        }
+
+        long long ans = 0;
+        sort(prefixGCD.begin(), prefixGCD.end());
+
+        for (int i = 0, j = n - 1; i < j; i++, j--) {
+            ans += gcd(prefixGCD[i], prefixGCD[j]);
+        }
+
+        return ans;
+    }
+
+private:
+    int gcd(int a, int b) {
+        if (b == 0)
+            return a;
+        return gcd(b, a % b);
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3658. GCD of Odd and Even Sums 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 0%` `Memory Beats: 100.00%` `Commit:8673dd3` `Solved At: 2026-07-15 11:32:21` <code><a href="https://leetcode.com/problems/gcd-of-odd-and-even-sums/description/" target="_blank">LINK</a></code>
