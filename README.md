@@ -9,6 +9,39 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1979. Find Greatest Common Divisor of Array</h3></summary>
+
+`Easy` `Time Beats: 0%` `Memory Beats: 100.00%` `Commit:b89fe7f` `Solved At: 2026-07-18 21:36:45` <code><a href="https://leetcode.com/problems/find-greatest-common-divisor-of-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int gcd(int a, int b) {
+
+        if (b == 0)
+            return a;
+
+        return gcd(b, a % b);
+    }
+
+    int findGCD(vector<int>& nums) {
+        int maxi = INT_MIN;
+        int mini = INT_MAX;
+
+        for (int ele : nums) {
+            maxi = max(maxi, ele);
+            mini = min(mini, ele);
+        }
+
+        return gcd(maxi, mini);
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3867. Sum of GCD of Formed Pairs 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:7204721` `Solved At: 2026-07-16 10:30:00` <code><a href="https://leetcode.com/problems/sum-of-gcd-of-formed-pairs/description/" target="_blank">LINK</a></code>
