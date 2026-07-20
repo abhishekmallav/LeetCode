@@ -9,6 +9,43 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1260. Shift 2D Grid 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 0%` `Memory Beats: 100%` `Commit:cb3e8fd` `Solved At: 2026-07-20 10:38:11` <code><a href="https://leetcode.com/problems/shift-2d-grid/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
+        int m = grid.size(), n = grid[0].size();
+        int size = m * n;
+
+        vector<int> temp(size);
+        int ind = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                temp[ind++] = grid[i][j];
+            }
+        }
+
+        vector<vector<int>> ans(m, vector<int>(n));
+        ind = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int idx = ((ind - k) % size + size) % size;
+                ans[i][j] = temp[idx];
+                ind++;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1979. Find Greatest Common Divisor of Array</h3></summary>
 
 `Easy` `Time Beats: 0%` `Memory Beats: 100.00%` `Commit:b89fe7f` `Solved At: 2026-07-18 21:36:45` <code><a href="https://leetcode.com/problems/find-greatest-common-divisor-of-array/description/" target="_blank">LINK</a></code>
