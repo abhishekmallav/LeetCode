@@ -9,6 +9,46 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3499. Maximize Active Section with Trade I</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:2f26c5b` `Solved At: 2026-07-21 10:32:02` <code><a href="https://leetcode.com/problems/maximize-active-section-with-trade-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maxActiveSectionsAfterTrade(string s) {
+        int n = s.length();
+        int ones = 0, maxsum = 0, prevrun = -1;
+        int i = 0;
+
+        while (i < n) {
+            if (s[i] == '1') {
+                ones++;
+                i++;
+            } else {
+
+                int curr = 0;
+                while (i < n && s[i] == '0') {
+                    curr++;
+                    i++;
+                }
+
+                if (prevrun > 0) {
+                    maxsum = max(maxsum, prevrun + curr);
+                }
+                prevrun = curr;
+            }
+        }
+
+        return ones + maxsum;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1260. Shift 2D Grid 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 0%` `Memory Beats: 100%` `Commit:cb3e8fd` `Solved At: 2026-07-20 10:38:11` <code><a href="https://leetcode.com/problems/shift-2d-grid/description/" target="_blank">LINK</a></code>
