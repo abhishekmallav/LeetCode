@@ -9,6 +9,27 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3513. Number of Unique XOR Triplets I</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:f6a8d67` `Solved At: 2026-07-23 10:04:15` <code><a href="https://leetcode.com/problems/number-of-unique-xor-triplets-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int uniqueXorTriplets(vector<int>& nums) {
+        int n = nums.size();
+        if (n < 3)
+            return n;
+        return 1 << ((int)log2(n) + 1);
+        
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3499. Maximize Active Section with Trade I</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:2f26c5b` `Solved At: 2026-07-21 10:32:02` <code><a href="https://leetcode.com/problems/maximize-active-section-with-trade-i/description/" target="_blank">LINK</a></code>
