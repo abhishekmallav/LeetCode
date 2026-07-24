@@ -9,6 +9,39 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3514. Number of Unique XOR Triplets II 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:941c038` `Solved At: 2026-07-24 11:13:06` <code><a href="https://leetcode.com/problems/number-of-unique-xor-triplets-ii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int uniqueXorTriplets(vector<int>& nums) {
+        int n = nums.size();
+
+        unordered_set<int> s1;
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                s1.insert(nums[i] ^ nums[j]);
+            }
+        }
+
+        unordered_set<int> s2;
+        for (int pairXor : s1) {
+            for (int& num : nums) {
+                s2.insert(pairXor ^ num);
+            }
+        }
+
+        return s2.size();
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3513. Number of Unique XOR Triplets I</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:f6a8d67` `Solved At: 2026-07-23 10:04:15` <code><a href="https://leetcode.com/problems/number-of-unique-xor-triplets-i/description/" target="_blank">LINK</a></code>
