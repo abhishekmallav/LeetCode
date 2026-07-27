@@ -9,6 +9,33 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1464. Maximum Product of Two Elements in an Array 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 0%` `Memory Beats: 100%` `Commit:1e6d594` `Solved At: 2026-07-27 23:45:04` <code><a href="https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int n = nums.size();
+
+        int maxNum = nums[0];
+        int result = 0;
+
+        for (int i = 1; i < n; i++) {
+            result = max(result, (maxNum - 1) * (nums[i] - 1));
+            maxNum = max(maxNum, nums[i]);
+        }
+
+        return result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>628. Maximum Product of Three Numbers 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 0%` `Memory Beats: 71.43%` `Commit:ef200e7` `Solved At: 2026-07-26 11:55:35` <code><a href="https://leetcode.com/problems/maximum-product-of-three-numbers/description/" target="_blank">LINK</a></code>
