@@ -9,6 +9,32 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3517. Smallest Palindromic Rearrangement I 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:ce9655b` `Solved At: 2026-07-28 20:03:00` <code><a href="https://leetcode.com/problems/smallest-palindromic-rearrangement-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string smallestPalindrome(string s) {
+        int n = s.length();
+        int mid = n / 2;
+
+        sort(s.begin(), s.begin() + mid);
+
+        for (int i = 0; i < mid; i++) {
+            s[n - 1 - i] = s[i];
+        }
+
+        return s;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1464. Maximum Product of Two Elements in an Array 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 0%` `Memory Beats: 100%` `Commit:1e6d594` `Solved At: 2026-07-27 23:45:04` <code><a href="https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/description/" target="_blank">LINK</a></code>
