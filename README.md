@@ -9,6 +9,33 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3014. Minimum Number of Pushes to Type Word I 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 75.3%` `Memory Beats: 0%` `Commit:a47d989` `Solved At: 2026-07-30 20:55:09` <code><a href="https://leetcode.com/problems/minimum-number-of-pushes-to-type-word-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minimumPushes(string word) {
+        vector<int> mp(26, 0);
+        for (char& ch : word)
+            mp[ch - 'a'] = 1;
+
+        sort(begin(mp), end(mp), greater<int>());
+
+        int ans = 0;
+        for (int i = 0; i < 26; i++) {
+            ans += mp[i] * ((i / 8) + 1);
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3517. Smallest Palindromic Rearrangement I 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:ce9655b` `Solved At: 2026-07-28 20:03:00` <code><a href="https://leetcode.com/problems/smallest-palindromic-rearrangement-i/description/" target="_blank">LINK</a></code>
