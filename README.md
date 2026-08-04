@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3731. Find Missing Elements 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 0%` `Memory Beats: 49.33%` `Commit:64d0756` `Solved At: 2026-08-04 20:23:48` <code><a href="https://leetcode.com/problems/find-missing-elements/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> findMissingElements(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+
+        vector<int> ans;
+
+        int n = nums.size();
+        int start = nums[0];
+        int end = nums[n - 1];
+        int idx = 0;
+
+        for (int i = start; i <= end; i++) {
+            if (i != nums[idx]) {
+                ans.push_back(i);
+            } else {
+                idx++;
+            }
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3014. Minimum Number of Pushes to Type Word I 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 75.3%` `Memory Beats: 0%` `Commit:a47d989` `Solved At: 2026-07-30 20:55:09` <code><a href="https://leetcode.com/problems/minimum-number-of-pushes-to-type-word-i/description/" target="_blank">LINK</a></code>
