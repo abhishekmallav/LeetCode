@@ -9,6 +9,67 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3310. Remove Methods From Project</h3></summary>
+
+`Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:4fb3598` `Solved At: 2026-08-05 12:45:41` <code><a href="https://leetcode.com/problems/remove-methods-from-project/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    void dfs(int curr, vector<vector<int>>& adj, vector<int>& inDegree,
+             vector<bool>& suspicious) {
+        suspicious[curr] = true;
+        for (int& ngbr : adj[curr]) {
+            inDegree[ngbr]--;
+            if (!suspicious[ngbr]) {
+                dfs(ngbr, adj, inDegree, suspicious);
+            }
+        }
+    }
+
+    vector<int> remainingMethods(int n, int k,
+                                 vector<vector<int>>& invocations) {
+        vector<vector<int>> adj(n);
+        vector<int> inDegree(n, 0);
+        vector<bool> suspicious(n, false);
+        for (auto& edge : invocations) {
+            int u = edge[0];
+            int v = edge[1];
+            adj[u].push_back(v);
+            inDegree[v]++;
+        }
+
+        dfs(k, adj, inDegree, suspicious);
+
+        vector<int> result;
+        bool cannotRemove = false;
+
+        for (int i = 0; i < n; i++) {
+            if (suspicious[i] && inDegree[i] > 0) {
+                cannotRemove = true;
+                break;
+            }
+            if (!suspicious[i]) {
+                result.push_back(i);
+            }
+        }
+        if (cannotRemove) {
+            vector<int> vec(n);
+            for (int i = 0; i < n; i++) {
+                vec[i] = i;
+            }
+            return vec;
+        }
+
+        return result;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3731. Find Missing Elements 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 0%` `Memory Beats: 49.33%` `Commit:64d0756` `Solved At: 2026-08-04 20:23:48` <code><a href="https://leetcode.com/problems/find-missing-elements/description/" target="_blank">LINK</a></code>
