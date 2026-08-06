@@ -25,12 +25,12 @@ if [[ -z "$PROBLEM_NUMBER" ]]; then
 fi
 
 TIME_BEATS=$(echo "$RAW_COMMIT" \
-  | grep -oE 'Time Beats: [0-9.]+%' \
-  | grep -oE '[0-9.]+%')
+  | grep -oE 'Time Beats: (-|[0-9.]+)%' \
+  | grep -oE '(-|[0-9.]+)%' || true)
 
 MEMORY_BEATS=$(echo "$RAW_COMMIT" \
-  | grep -oE 'Memory Beats: [0-9.]+%' \
-  | grep -oE '[0-9.]+%')
+  | grep -oE 'Memory Beats: (-|[0-9.]+)%' \
+  | grep -oE '(-|[0-9.]+)%' || true)
 
 # Validate performance metrics
 if [[ -z "$TIME_BEATS" ]] || [[ -z "$MEMORY_BEATS" ]]; then
