@@ -9,6 +9,45 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3302. Find the Lexicographically Smallest Valid Sequence 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 12.77%` `Memory Beats: 55.32%` `Commit:692f676` `Solved At: 2026-08-08 17:25:34` <code><a href="https://leetcode.com/problems/find-the-lexicographically-smallest-valid-sequence/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> validSequence(string word1, string word2) {
+        int n = word1.length(), m = word2.length();
+        vector<int> last(m, -1);
+        int j = m - 1;
+        for (int i = n - 1; i >= 0; i--) {
+            if (j >= 0 && word1[i] == word2[j]) {
+                last[j--] = i;
+            }
+        }
+        vector<int> res;
+        int skip = 0;
+        j = 0;
+        for (int i = 0; i < n; i++) {
+            if (j == m)
+                break;
+            if (word1[i] == word2[j] ||
+                (skip == 0 && (j == m - 1 || i < last[j + 1]))) {
+                if (word1[i] != word2[j])
+                    skip++;
+                res.push_back(i);
+                j++;
+            }
+        }
+        return j == m ? res : vector<int>();
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3310. Remove Methods From Project</h3></summary>
 
 `Medium` `Time Beats: 0%` `Memory Beats: 100%` `Commit:4fb3598` `Solved At: 2026-08-05 12:45:41` <code><a href="https://leetcode.com/problems/remove-methods-from-project/description/" target="_blank">LINK</a></code>
