@@ -9,6 +9,33 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3090. Maximum Length Substring With Two Occurrences 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 87.78%` `Commit:ac82466` `Solved At: 2026-08-15 01:26:09` <code><a href="https://leetcode.com/problems/maximum-length-substring-with-two-occurrences/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maximumLengthSubstring(string s) {
+        vector<int> count(26, 0);
+        int left = 0, res = 0;
+        for (int right = 0; right < s.size(); right++) {
+            count[s[right] - 'a']++;
+            while (count[s[right] - 'a'] > 2) {
+                count[s[left] - 'a']--;
+                left++;
+            }
+            res = max(res, right - left + 1);
+        }
+        return res;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3302. Find the Lexicographically Smallest Valid Sequence 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 12.77%` `Memory Beats: 55.32%` `Commit:692f676` `Solved At: 2026-08-08 17:25:34` <code><a href="https://leetcode.com/problems/find-the-lexicographically-smallest-valid-sequence/description/" target="_blank">LINK</a></code>
