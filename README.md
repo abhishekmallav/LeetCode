@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3069. Distribute Elements Into Two Arrays I</h3></summary>
+
+`Easy` `Time Beats: 12.56%` `Memory Beats: 45.52%` `Commit:0990c90` `Solved At: 2026-08-20 13:47:49` <code><a href="https://leetcode.com/problems/distribute-elements-into-two-arrays-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> resultArray(vector<int>& nums) {
+        vector<int> arr1, arr2;
+
+        arr1 = {nums[0]};
+        arr2 = {nums[1]};
+
+        for (int i = 2; i < nums.size(); i++) {
+            if (arr1.back() > arr2.back()) {
+                arr1.push_back(nums[i]);
+            } else {
+                arr2.push_back(nums[i]);
+            }
+        }
+
+        for (auto it : arr2) {
+            arr1.push_back(it);
+        }
+        
+        return arr1;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3090. Maximum Length Substring With Two Occurrences 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 87.78%` `Commit:ac82466` `Solved At: 2026-08-15 01:26:09` <code><a href="https://leetcode.com/problems/maximum-length-substring-with-two-occurrences/description/" target="_blank">LINK</a></code>
