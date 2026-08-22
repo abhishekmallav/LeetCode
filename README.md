@@ -9,6 +9,29 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3622. Check Divisibility by Digit Sum and Product</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 8.59%` `Commit:60c9581` `Solved At: 2026-08-23 01:18:22` <code><a href="https://leetcode.com/problems/check-divisibility-by-digit-sum-and-product/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool checkDivisibility(int n) {
+        int s=0, p=1;
+        for(int x=n; x>0; x/=10){
+            const int r=x%10;
+            s+=r;
+            p*=r;
+        }
+        return n%(s+p)==0;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3069. Distribute Elements Into Two Arrays I</h3></summary>
 
 `Easy` `Time Beats: 12.56%` `Memory Beats: 45.52%` `Commit:0990c90` `Solved At: 2026-08-20 13:47:49` <code><a href="https://leetcode.com/problems/distribute-elements-into-two-arrays-i/description/" target="_blank">LINK</a></code>
