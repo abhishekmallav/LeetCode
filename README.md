@@ -9,6 +9,69 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3720. Lexicographically Smallest Permutation Greater Than Target 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 57.32%` `Memory Beats: 70.06%` `Commit:67508d1` `Solved At: 2026-08-27 17:13:26` <code><a href="https://leetcode.com/problems/lexicographically-smallest-permutation-greater-than-target/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string lexGreaterPermutation(string s, string target) {
+        int cnt[26] = {};
+
+        for (char ch : s) {
+            cnt[ch - 'a']++;
+        }
+
+        for (char ch : target) {
+            cnt[ch - 'a']--;
+        }
+
+        for (int i = target.size() - 1; i >= 0; i--) {
+            int cur = target[i] - 'a';
+            cnt[cur]++;
+
+            bool ok = true;
+            for (int c = 0; c < 26; c++) {
+                if (cnt[c] < 0) {
+                    ok = false;
+                    break;
+                }
+            }
+
+            if (!ok) continue;
+
+            int next = -1;
+            for (int c = cur + 1; c < 26; c++) {
+                if (cnt[c] > 0) {
+                    next = c;
+                    break;
+                }
+            }
+
+            if (next == -1) continue;
+
+            cnt[next]--;
+
+            string ans = target.substr(0, i);
+            ans += char('a' + next);
+
+            for (int c = 0; c < 26; c++) {
+                ans.append(cnt[c], char('a' + c));
+            }
+
+            return ans;
+        }
+
+        return "";
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3622. Check Divisibility by Digit Sum and Product</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 8.59%` `Commit:60c9581` `Solved At: 2026-08-23 01:18:22` <code><a href="https://leetcode.com/problems/check-divisibility-by-digit-sum-and-product/description/" target="_blank">LINK</a></code>
