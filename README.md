@@ -9,6 +9,51 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2091. Removing Minimum and Maximum From Array 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 36.81%` `Memory Beats: 86.87%` `Commit:297fc49` `Solved At: 2026-08-31 00:05:31` <code><a href="https://leetcode.com/problems/removing-minimum-and-maximum-from-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minimumDeletions(vector<int>& nums) {
+        int n = nums.size();
+        int left = 0;
+        int right = 0;
+        
+        for (int i = 1; i < n; i++) {
+            if (nums[i] < nums[left])
+                left = i;
+                
+            if (nums[i] > nums[right])
+                right = i;
+        }
+        
+        if (left < right)
+            swap(left, right);
+            
+        int ans = n;
+        
+        for (int i = 0; i <= n; i++) {
+            int extra = 0;
+            
+            if (right >= i)
+                extra = n - right;
+            else if (left >= i)
+                extra = n - left;
+                
+            ans = min(ans, i + extra);
+        }
+        
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3720. Lexicographically Smallest Permutation Greater Than Target 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 57.32%` `Memory Beats: 70.06%` `Commit:67508d1` `Solved At: 2026-08-27 17:13:26` <code><a href="https://leetcode.com/problems/lexicographically-smallest-permutation-greater-than-target/description/" target="_blank">LINK</a></code>
