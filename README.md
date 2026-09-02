@@ -9,6 +9,23 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3875. Construct Uniform Parity Array I 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 36.43%` `Commit:c03d23f` `Solved At: 2026-09-02 22:06:57` <code><a href="https://leetcode.com/problems/construct-uniform-parity-array-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool uniformArray(vector<int>& nums1) {
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2091. Removing Minimum and Maximum From Array 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 36.81%` `Memory Beats: 86.87%` `Commit:297fc49` `Solved At: 2026-08-31 00:05:31` <code><a href="https://leetcode.com/problems/removing-minimum-and-maximum-from-array/description/" target="_blank">LINK</a></code>
