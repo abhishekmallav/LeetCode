@@ -9,6 +9,41 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3903. Smallest Stable Index I 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 56.73%` `Commit:faa34dd` `Solved At: 2026-09-04 14:58:26` <code><a href="https://leetcode.com/problems/smallest-stable-index-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int firstStableIndex(vector<int>& nums, int k) {
+        int n = nums.size();
+        vector<int> suffix(n, 0);
+
+        int mini = INT_MAX; 
+        // Build suffix minimum
+        for (int i = n - 1; i >= 0; i--){
+            mini = min(mini, nums[i]);
+            suffix[i] = mini;
+        }
+ 
+        int maxi = 0;
+        // Find first index with score <= k
+        for (int i = 0; i < n; i++){
+            maxi = max(maxi, nums[i]);
+            int score = maxi - suffix[i];
+            if (score <= k) return i;
+        }
+ 
+        return -1;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3875. Construct Uniform Parity Array I 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 36.43%` `Commit:c03d23f` `Solved At: 2026-09-02 22:06:57` <code><a href="https://leetcode.com/problems/construct-uniform-parity-array-i/description/" target="_blank">LINK</a></code>
