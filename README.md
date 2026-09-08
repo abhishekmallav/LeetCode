@@ -9,6 +9,25 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3870. Count Commas in Range 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 99.47%` `Commit:f6893ea` `Solved At: 2026-09-08 21:07:51` <code><a href="https://leetcode.com/problems/count-commas-in-range/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int countCommas(int n) {
+        if (n < 1000)
+            return 0;
+        return n-999;
+    }   
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3903. Smallest Stable Index I 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 56.73%` `Commit:faa34dd` `Solved At: 2026-09-04 14:58:26` <code><a href="https://leetcode.com/problems/smallest-stable-index-i/description/" target="_blank">LINK</a></code>
