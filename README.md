@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3871. Count Commas in Range II 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 19.20%` `Commit:fd4ab89` `Solved At: 2026-09-10 00:32:32` <code><a href="https://leetcode.com/problems/count-commas-in-range-ii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    long long countCommas(long long n) {
+        if(n <= 999) return 0;
+
+        long long totalCommas = 0;
+        long long rangeStart = 1000;
+        long long rangeEnd = rangeStart * 1000 - 1;
+        int commas = 1;
+
+        while(rangeStart <= n){
+            long long numbers = (min(n, rangeEnd) - rangeStart + 1);
+            totalCommas += 1LL * commas * numbers;
+
+            if(rangeEnd > n) break;
+
+            rangeStart = rangeStart * 1000;
+            rangeEnd = rangeStart * 1000 - 1;
+            commas++;
+        }
+        return totalCommas;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3870. Count Commas in Range 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 99.47%` `Commit:f6893ea` `Solved At: 2026-09-08 21:07:51` <code><a href="https://leetcode.com/problems/count-commas-in-range/description/" target="_blank">LINK</a></code>
