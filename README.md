@@ -9,6 +9,46 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>678. Valid Parenthesis String 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 93.14%` `Commit:f51c594` `Solved At: 2026-10-04 18:06:26` <code><a href="https://leetcode.com/problems/valid-parenthesis-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool checkValidString(string s) {
+        int low = 0;
+        int high = 0;
+
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == '(') {
+                low++;
+                high++;
+            } else if (s[i] == ')') {
+                if (low > 0) {
+                    low--;
+                }
+                high--;
+            } else {
+                if (low > 0) {
+                    low--;
+                }
+                high++;
+            }
+
+            if (high < 0) {
+                return false;
+            }
+        }
+        return low == 0;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3550. Smallest Index With Digit Sum Equal to Index 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 15.11%` `Commit:68022fd` `Solved At: 2026-09-24 23:13:22` <code><a href="https://leetcode.com/problems/smallest-index-with-digit-sum-equal-to-index/description/" target="_blank">LINK</a></code>
