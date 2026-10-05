@@ -9,6 +9,45 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>856. Score of Parentheses 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 21.13%` `Commit:3221977` `Solved At: 2026-10-05 21:37:21` <code><a href="https://leetcode.com/problems/score-of-parentheses/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int scoreOfParentheses(string s) {
+        stack<int> st;
+        st.push(0);
+
+        for (char ch : s) {
+            if (ch == '(') {
+                st.push(0);
+            } else {
+                int inside = st.top();
+                st.pop();
+
+                if (inside == 0) {
+                    int below = st.top();
+                    st.pop();
+                    st.push(below + 1);
+                } else {
+                    int below = st.top();
+                    st.pop();
+                    st.push(below + 2 * inside);
+                }
+            }
+        }
+
+        return st.top();
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>678. Valid Parenthesis String 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 93.14%` `Commit:f51c594` `Solved At: 2026-10-04 18:06:26` <code><a href="https://leetcode.com/problems/valid-parenthesis-string/description/" target="_blank">LINK</a></code>
