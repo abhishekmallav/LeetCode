@@ -9,6 +9,35 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>921. Minimum Add to Make Parentheses Valid 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 56.27%` `Commit:c66de6e` `Solved At: 2026-10-06 22:59:14` <code><a href="https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minAddToMakeValid(string s) {
+        int open = 0, add = 0;
+        for (char c : s) {
+            if (c == '(') {
+                open++;
+            } else {
+                if (open > 0) {
+                    open--;
+                } else {
+                    add++;
+                }
+            }
+        }
+        return add + open;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>856. Score of Parentheses 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 21.13%` `Commit:3221977` `Solved At: 2026-10-05 21:37:21` <code><a href="https://leetcode.com/problems/score-of-parentheses/description/" target="_blank">LINK</a></code>
