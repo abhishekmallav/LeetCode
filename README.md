@@ -9,6 +9,39 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1773. Count Items Matching a Rule</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 87.79%` `Commit:5fb28ee` `Solved At: 2026-10-08 18:11:17` <code><a href="https://leetcode.com/problems/count-items-matching-a-rule/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int countMatches(vector<vector<string>>& items, string ruleKey,
+                     string ruleValue) {
+        int Idx, cnt = 0;
+
+        if (ruleKey == "type") {
+            Idx = 0;
+        } else if (ruleKey == "color") {
+            Idx = 1;
+        } else {
+            Idx = 2;
+        }
+
+        for (int i = 0; i < items.size(); i++) {
+            if (items[i][Idx] == ruleValue) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1021. Remove Outermost Parentheses 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 80.67%` `Commit:8850cdc` `Solved At: 2026-10-08 18:01:27` <code><a href="https://leetcode.com/problems/remove-outermost-parentheses/description/" target="_blank">LINK</a></code>
