@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1021. Remove Outermost Parentheses 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 80.67%` `Commit:8850cdc` `Solved At: 2026-10-08 18:01:27` <code><a href="https://leetcode.com/problems/remove-outermost-parentheses/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string removeOuterParentheses(string s) {
+        string ans = "";
+        int cnt = 0;
+        
+        for (char p : s) {
+            if (p == '(') {
+                if (cnt > 0) {
+                    ans += p;
+                }
+                cnt++;
+            } else {
+                cnt--;
+                if (cnt > 0) {
+                    ans += p;
+                }
+            }
+        }
+        
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>301. Remove Invalid Parentheses</h3></summary>
 
 `Hard` `Time Beats: 38.92%` `Memory Beats: 75.41%` `Commit:6422f02` `Solved At: 2026-10-07 11:43:55` <code><a href="https://leetcode.com/problems/remove-invalid-parentheses/description/" target="_blank">LINK</a></code>
