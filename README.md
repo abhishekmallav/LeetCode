@@ -9,6 +9,50 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1267. Count Servers that Communicate</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 75.03%` `Commit:d5ba5de` `Solved At: 2026-10-08 19:58:17` <code><a href="https://leetcode.com/problems/count-servers-that-communicate/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int countServers(vector<vector<int>>& grid) {
+        int row = grid.size();
+        int col = grid[0].size();
+
+        vector<int> rowCnt(row, 0);
+        vector<int> colCnt(col, 0);
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (grid[i][j] == 1) {
+                    rowCnt[i]++;
+                    colCnt[j]++;
+                }
+            }
+        }
+
+        int res = 0;
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (grid[i][j] == 1) {
+                    if (rowCnt[i] > 1 || colCnt[j] > 1) {
+                        res++;
+                    }
+                }
+            }
+        }
+
+        return res;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>697. Degree of an Array</h3></summary>
 
 `Easy` `Time Beats: 93.20%` `Memory Beats: 99.08%` `Commit:44e42eb` `Solved At: 2026-10-08 19:41:16` <code><a href="https://leetcode.com/problems/degree-of-an-array/description/" target="_blank">LINK</a></code>
