@@ -9,6 +9,62 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>697. Degree of an Array</h3></summary>
+
+`Easy` `Time Beats: 93.20%` `Memory Beats: 99.08%` `Commit:44e42eb` `Solved At: 2026-10-08 19:41:16` <code><a href="https://leetcode.com/problems/degree-of-an-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums) {
+        int hash[50000] = {0};
+        int first[50000];
+        int last[50000];
+        
+        // Initialize the first array with -1 to keep track of unvisited elements
+        for(int i = 0; i < 50000; i++) {
+            first[i] = -1;
+        }
+
+        int n = nums.size();
+        int max_freq = 0;
+
+        for (int i = 0; i < n; i++) {
+            int val = nums[i];
+            hash[val]++;
+            
+            if (first[val] == -1) {
+                first[val] = i;
+            }
+            
+            last[val] = i;
+
+            if (hash[val] > max_freq) {
+                max_freq = hash[val];
+            }
+        }
+
+        int min_len = n;
+
+        for (int i = 0; i < n; i++) {
+            int val = nums[i];
+            if (hash[val] == max_freq) {
+                int len = last[val] - first[val] + 1;
+                if (len < min_len) {
+                    min_len = len;
+                }
+            }
+        }
+
+        return min_len;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1773. Count Items Matching a Rule</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 87.79%` `Commit:5fb28ee` `Solved At: 2026-10-08 18:11:17` <code><a href="https://leetcode.com/problems/count-items-matching-a-rule/description/" target="_blank">LINK</a></code>
