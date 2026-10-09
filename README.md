@@ -9,6 +9,42 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1541. Minimum Insertions to Balance a Parentheses String 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 41.10%` `Memory Beats: 53.60%` `Commit:ab8bf59` `Solved At: 2026-10-09 20:12:15` <code><a href="https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minInsertions(string s) {
+        int ans = 0, x = 0;
+        int n = s.length();
+        for (int i = 0; i < n; ++i) {
+            if (s[i] == '(') {
+                ++x;
+            } else {
+                if (i < n - 1 && s[i + 1] == ')') {
+                    ++i;
+                } else {
+                    ++ans;
+                }
+                if (x == 0) {
+                    ++ans;
+                } else {
+                    --x;
+                }
+            }
+        }
+        ans += x << 1;
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1267. Count Servers that Communicate</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 75.03%` `Commit:d5ba5de` `Solved At: 2026-10-08 19:58:17` <code><a href="https://leetcode.com/problems/count-servers-that-communicate/description/" target="_blank">LINK</a></code>
