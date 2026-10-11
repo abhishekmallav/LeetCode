@@ -9,6 +9,31 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2778. Sum of Squares of Special Elements  🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 41.92%` `Commit:86650fb` `Solved At: 2026-10-11 23:41:17` <code><a href="https://leetcode.com/problems/sum-of-squares-of-special-elements/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int sumOfSquares(vector<int>& nums) {
+        int n = nums.size();
+        int sum = 0;
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                int sq = nums[i-1] * nums[i-1];
+                sum += sq;
+            }
+        }
+        return sum;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2333. Minimum Sum of Squared Difference 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 75.98%` `Memory Beats: 7.26%` `Commit:a526a18` `Solved At: 2026-10-10 12:26:27` <code><a href="https://leetcode.com/problems/minimum-sum-of-squared-difference/description/" target="_blank">LINK</a></code>
