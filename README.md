@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3727. Maximum Alternating Sum of Squares 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 66.25%` `Memory Beats: 20.74%` `Commit:f971289` `Solved At: 2026-10-13 20:02:17` <code><a href="https://leetcode.com/problems/maximum-alternating-sum-of-squares/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    long long maxAlternatingSum(vector<int>& nums) {
+        int n = nums.size();
+
+        vector<long long> a(n);
+        for (int i = 0; i < n; i++)
+            a[i] = 1LL * nums[i] * nums[i];
+            
+        sort(a.begin(), a.end());
+
+        long long ans = 0;
+        int k = n / 2;
+
+        for (int i = 0; i < k; i++)
+            ans -= a[i];
+
+        for (int i = k; i < n; i++)
+            ans += a[i];
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2778. Sum of Squares of Special Elements  🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 41.92%` `Commit:86650fb` `Solved At: 2026-10-11 23:41:17` <code><a href="https://leetcode.com/problems/sum-of-squares-of-special-elements/description/" target="_blank">LINK</a></code>
