@@ -9,6 +9,34 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3723. Maximize Sum of Squares of Digits 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 30.46%` `Memory Beats: 8.12%` `Commit:2e63fc4` `Solved At: 2026-10-14 19:28:40` <code><a href="https://leetcode.com/problems/maximize-sum-of-squares-of-digits/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string maxSumOfSquares(int num, int sum) {
+        if (sum > 9 * num)
+            return "";
+
+        string ans;
+
+        while (num-- > 0) {
+            int digit = min(9, sum);
+            ans += char('0' + digit);
+            sum -= digit;
+        }
+
+        return sum == 0 ? ans : "";
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3727. Maximum Alternating Sum of Squares 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 66.25%` `Memory Beats: 20.74%` `Commit:f971289` `Solved At: 2026-10-13 20:02:17` <code><a href="https://leetcode.com/problems/maximum-alternating-sum-of-squares/description/" target="_blank">LINK</a></code>
