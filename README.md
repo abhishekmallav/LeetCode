@@ -9,6 +9,33 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2913. Subarrays Distinct Element Sum of Squares I 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 14.25%` `Memory Beats: 69.53%` `Commit:b9b508a` `Solved At: 2026-10-15 22:26:51` <code><a href="https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-i/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int sumCounts(vector<int>& nums) {
+        int n = nums.size();
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            unordered_set<int> unique;
+            for (int j = i; j < n; j++) {
+                unique.insert(nums[j]);
+                int uni = unique.size();
+                ans += (uni * uni);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3723. Maximize Sum of Squares of Digits 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 30.46%` `Memory Beats: 8.12%` `Commit:2e63fc4` `Solved At: 2026-10-14 19:28:40` <code><a href="https://leetcode.com/problems/maximize-sum-of-squares-of-digits/description/" target="_blank">LINK</a></code>
