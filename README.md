@@ -9,6 +9,47 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3551. Minimum Swaps to Sort by Digit Sum 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 69.76%` `Memory Beats: 70.99%` `Commit:e2b9a6f` `Solved At: 2026-10-17 12:20:18` <code><a href="https://leetcode.com/problems/minimum-swaps-to-sort-by-digit-sum/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minSwaps(vector<int>& nums) {
+        int n = nums.size();
+        vector<array<int, 3>> a(n);
+        for (int i = 0; i < n; i++) {
+            int s = 0, x = nums[i];
+            while (x > 0) {
+                s += x % 10;
+                x /= 10;
+            }
+            a[i] = {s, nums[i], i};
+        }
+        sort(a.begin(), a.end());
+
+        vector<bool> vis(n, false);
+        int swaps = 0;
+        for (int i = 0; i < n; i++) {
+            if (vis[i] || a[i][2] == i) continue;
+            int j = i, len = 0;
+            while (!vis[j]) {
+                vis[j] = true;
+                j = a[j][2];
+                len++;
+            }
+            swaps += len - 1;
+        }
+        return swaps;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2913. Subarrays Distinct Element Sum of Squares I 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 14.25%` `Memory Beats: 69.53%` `Commit:b9b508a` `Solved At: 2026-10-15 22:26:51` <code><a href="https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-i/description/" target="_blank">LINK</a></code>
