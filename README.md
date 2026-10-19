@@ -9,6 +9,34 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2089. Find Target Indices After Sorting Array 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 16.50%` `Commit:4bc7cce` `Solved At: 2026-10-19 11:58:11` <code><a href="https://leetcode.com/problems/find-target-indices-after-sorting-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> targetIndices(vector<int>& nums, int target) {
+        int n = nums.size();
+        vector<int> ans;
+
+        sort(nums.begin(), nums.end());
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == target) {
+                ans.push_back(i);
+            }
+        }
+        sort(ans.begin(), ans.end());
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3551. Minimum Swaps to Sort by Digit Sum 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 69.76%` `Memory Beats: 70.99%` `Commit:e2b9a6f` `Solved At: 2026-10-17 12:20:18` <code><a href="https://leetcode.com/problems/minimum-swaps-to-sort-by-digit-sum/description/" target="_blank">LINK</a></code>
