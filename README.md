@@ -9,6 +9,39 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3863. Minimum Operations to Sort a String</h3></summary>
+
+`Medium` `Time Beats: 52.21%` `Memory Beats: 79.65%` `Commit:df409c9` `Solved At: 2026-10-21 15:50:41` <code><a href="https://leetcode.com/problems/minimum-operations-to-sort-a-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minOperations(string s) {
+        int n = s.size();
+        bool sorted = true;
+        for (int i = 1; i < n; ++i) {
+            if (s[i] < s[i - 1]) {
+                sorted = false;
+                break;
+            }
+        }
+        if (sorted) return 0;
+        if (n == 2) return -1;
+        char mn = *min_element(s.begin(), s.end());
+        char mx = *max_element(s.begin(), s.end());
+        if (s[0] == mn || s[n - 1] == mx) return 1;
+        for (int i = 1; i < n - 1; ++i) {
+            if (s[i] == mn || s[i] == mx) return 2;
+        }
+        return 3;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2089. Find Target Indices After Sorting Array 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 16.50%` `Commit:4bc7cce` `Solved At: 2026-10-19 11:58:11` <code><a href="https://leetcode.com/problems/find-target-indices-after-sorting-array/description/" target="_blank">LINK</a></code>
