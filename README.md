@@ -9,6 +9,32 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3644. Maximum K to Sort a Permutation 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 100.00%` `Memory Beats: 92.38%` `Commit:7528c45` `Solved At: 2026-10-23 14:52:00` <code><a href="https://leetcode.com/problems/maximum-k-to-sort-a-permutation/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int sortPermutation(vector<int>& nums) {
+        int n = nums.size();
+        bool op = false;
+        int an = -1;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != i) {
+                an = an & nums[i];
+                op = true;
+            }
+        }
+        return (!op) ? 0 : an;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3863. Minimum Operations to Sort a String</h3></summary>
 
 `Medium` `Time Beats: 52.21%` `Memory Beats: 79.65%` `Commit:df409c9` `Solved At: 2026-10-21 15:50:41` <code><a href="https://leetcode.com/problems/minimum-operations-to-sort-a-string/description/" target="_blank">LINK</a></code>
