@@ -9,6 +9,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>303. Range Sum Query - Immutable</h3></summary>
+
+`Easy` `Time Beats: 22.91%` `Memory Beats: 22.46%` `Commit:e634026` `Solved At: 2026-10-24 18:59:56` <code><a href="https://leetcode.com/problems/range-sum-query-immutable/description/" target="_blank">LINK</a></code>
+
+```cpp
+class NumArray {
+public:
+    vector<int> preSum;
+    NumArray(vector<int>& nums) {
+
+        preSum.push_back(nums[0]);
+        for (int i = 1; i < nums.size(); i++) {
+            preSum.push_back(nums[i] + preSum[i - 1]);
+        }
+    }
+
+    int sumRange(int left, int right) {
+        if (left == 0)
+            return preSum[right];
+        return preSum[right] - preSum[left - 1];
+    }
+};
+
+/**
+ * Your NumArray object will be instantiated and called as such:
+ * NumArray* obj = new NumArray(nums);
+ * int param_1 = obj->sumRange(left,right);
+ */
+```
+
+</details>
+
+
+<details>
 <summary><h3>771. Jewels and Stones</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 44.56%` `Commit:0320cb5` `Solved At: 2026-10-24 18:26:59` <code><a href="https://leetcode.com/problems/jewels-and-stones/description/" target="_blank">LINK</a></code>
