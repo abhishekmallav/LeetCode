@@ -9,6 +9,47 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2409. Count Days Spent Together 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 12.12%` `Memory Beats: 38.18%` `Commit:3780847` `Solved At: 2026-10-24 19:58:32` <code><a href="https://leetcode.com/problems/count-days-spent-together/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int findDayOfYear(const string& day, const vector<int>& cumMonthDays) {
+        int month = stoi(day.substr(0, 2));
+        int date = stoi(day.substr(3));
+        return cumMonthDays[month - 1] + date;
+    }
+
+    int countDaysTogether(string arriveAlice, string leaveAlice,
+                          string arriveBob, string leaveBob) {
+        vector<int> monthDays = {31, 28, 31, 30, 31, 30,
+                                 31, 31, 30, 31, 30, 31};
+
+        vector<int> cumMonthDays(13, 0);
+        cumMonthDays[1] = 31; // January
+        for (int i = 1; i <= 12; i++) {
+            cumMonthDays[i] = cumMonthDays[i - 1] + monthDays[i - 1];
+        }
+
+        int arriveAliceDay = findDayOfYear(arriveAlice, cumMonthDays);
+        int leaveAliceDay = findDayOfYear(leaveAlice, cumMonthDays);
+        int arriveBobDay = findDayOfYear(arriveBob, cumMonthDays);
+        int leaveBobDay = findDayOfYear(leaveBob, cumMonthDays);
+
+        int overLapDays = min(leaveAliceDay, leaveBobDay) -
+                          max(arriveAliceDay, arriveBobDay) + 1;
+
+        return overLapDays < 0 ? 0 : overLapDays;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>21. Merge Two Sorted Lists</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 87.21%` `Commit:d7ae951` `Solved At: 2026-10-24 19:41:16` <code><a href="https://leetcode.com/problems/merge-two-sorted-lists/description/" target="_blank">LINK</a></code>
