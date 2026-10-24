@@ -9,6 +9,39 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>922. Sort Array By Parity II</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 98.63%` `Commit:3745c50` `Solved At: 2026-10-24 19:28:28` <code><a href="https://leetcode.com/problems/sort-array-by-parity-ii/description/" target="_blank">LINK</a></code>
+
+```java
+class Solution {
+public:
+    vector<int> sortArrayByParityII(vector<int>& nums) {
+        int n = nums.size();
+        int even = 0;
+        int odd = 1;
+
+        while (even < n && odd < n) {
+            if (nums[even] % 2 == 0) {
+                even += 2;
+            } else if (nums[odd] % 2 != 0) {
+                odd += 2;
+            } else {
+                swap(nums[odd], nums[even]);
+
+                even += 2;
+                odd += 2;
+            }
+        }
+        return nums;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>303. Range Sum Query - Immutable</h3></summary>
 
 `Easy` `Time Beats: 22.91%` `Memory Beats: 22.46%` `Commit:e634026` `Solved At: 2026-10-24 18:59:56` <code><a href="https://leetcode.com/problems/range-sum-query-immutable/description/" target="_blank">LINK</a></code>
