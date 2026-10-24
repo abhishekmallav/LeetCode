@@ -9,6 +9,35 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>771. Jewels and Stones</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 44.56%` `Commit:0320cb5` `Solved At: 2026-10-24 18:26:59` <code><a href="https://leetcode.com/problems/jewels-and-stones/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int numJewelsInStones(string jewels, string stones) {
+        unordered_set<char> st;
+        int cnt = 0;
+
+        for (int i = 0; i < jewels.length(); i++) {
+            st.insert(jewels[i]);
+        }
+
+        for (int i = 0; i < stones.length(); i++) {
+            if (st.find(stones[i]) != st.end()) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1971. Find if Path Exists in Graph</h3></summary>
 
 `Easy` `Time Beats: 11.21%` `Memory Beats: 10.31%` `Commit:5ddef41` `Solved At: 2026-10-24 16:51:41` <code><a href="https://leetcode.com/problems/find-if-path-exists-in-graph/description/" target="_blank">LINK</a></code>
