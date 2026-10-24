@@ -9,6 +9,34 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1672. Richest Customer Wealth</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 78.89%` `Commit:bf79c1a` `Solved At: 2026-10-24 19:33:12` <code><a href="https://leetcode.com/problems/richest-customer-wealth/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maximumWealth(vector<vector<int>>& accounts) {
+        int n = accounts.size();
+        int maxi = 0;
+        
+        for (int i = 0; i < n; i++) {
+            int m = accounts[i].size();
+            int sum = 0;
+            for (int j = 0; j < m; j++) {
+                sum += accounts[i][j];
+            }
+            maxi = max(maxi, sum);
+        }
+        return maxi;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>922. Sort Array By Parity II</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 98.63%` `Commit:3745c50` `Solved At: 2026-10-24 19:28:28` <code><a href="https://leetcode.com/problems/sort-array-by-parity-ii/description/" target="_blank">LINK</a></code>
