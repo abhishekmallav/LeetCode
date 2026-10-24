@@ -9,6 +9,32 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>1929. Concatenation of Array</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 80.60%` `Commit:dd1e5a2` `Solved At: 2026-10-24 15:43:55` <code><a href="https://leetcode.com/problems/concatenation-of-array/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& nums) {
+        int n = nums.size();
+
+        vector<int> ans(2*n, 0);
+
+        for (int i = 0; i < n; i++) {
+            ans[i] = nums[i];
+            ans[i + n] = nums[i];
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3644. Maximum K to Sort a Permutation 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 100.00%` `Memory Beats: 92.38%` `Commit:7528c45` `Solved At: 2026-10-23 14:52:00` <code><a href="https://leetcode.com/problems/maximum-k-to-sort-a-permutation/description/" target="_blank">LINK</a></code>
