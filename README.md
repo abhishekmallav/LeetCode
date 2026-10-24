@@ -9,6 +9,23 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>2235. Add Two Integers</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 90.64%` `Commit:824c6a2` `Solved At: 2026-10-24 16:06:58` <code><a href="https://leetcode.com/problems/add-two-integers/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int sum(int num1, int num2) {
+        return num1 + num2;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>1929. Concatenation of Array</h3></summary>
 
 `Easy` `Time Beats: 100.00%` `Memory Beats: 80.60%` `Commit:dd1e5a2` `Solved At: 2026-10-24 15:43:55` <code><a href="https://leetcode.com/problems/concatenation-of-array/description/" target="_blank">LINK</a></code>
