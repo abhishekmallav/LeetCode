@@ -9,6 +9,46 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>22. Generate Parentheses</h3></summary>
+
+`Medium` `Time Beats: 79.07%` `Memory Beats: 75.81%` `Commit:1e6b41a` `Solved At: 2026-10-26 20:57:26` <code><a href="https://leetcode.com/problems/generate-parentheses/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<string> ans;
+
+    void backtrack(string& s, int open, int close, int n) {
+        if (s.size() == 2 * n) {
+            ans.push_back(s);
+            return;
+        }
+
+        if (open < n) {
+            s.push_back('(');
+            backtrack(s, open + 1, close, n);
+            s.pop_back();
+        }
+        if (close < open) {
+            s.push_back(')');
+            backtrack(s, open, close + 1, n);
+            s.pop_back();
+        }
+    }
+
+    vector<string> generateParenthesis(int n) {
+        string s;
+        s.reserve(2 * n);
+        backtrack(s, 0, 0, n);
+        return ans;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>36. Valid Sudoku</h3></summary>
 
 `Medium` `Time Beats: 23.06%` `Memory Beats: 32.80%` `Commit:b1bc4a6` `Solved At: 2026-10-26 19:49:02` <code><a href="https://leetcode.com/problems/valid-sudoku/description/" target="_blank">LINK</a></code>
