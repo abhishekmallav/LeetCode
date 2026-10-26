@@ -9,6 +9,55 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>200. Number of Islands</h3></summary>
+
+`Medium` `Time Beats: 78.18%` `Memory Beats: 87.08%` `Commit:d398273` `Solved At: 2026-10-26 18:32:56` <code><a href="https://leetcode.com/problems/number-of-islands/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int m, n;
+
+    bool dfs(int i, int j, vector<vector<char>>& grid) {
+        grid[i][j] = '0';
+
+        if (i + 1 < n && grid[i + 1][j] != '0') {
+            dfs(i + 1, j, grid);
+        }
+        if (i - 1 >= 0 && grid[i - 1][j] != '0') {
+            dfs(i - 1, j, grid);
+        }
+        if (j + 1 < m && grid[i][j + 1] != '0') {
+            dfs(i, j + 1, grid);
+        }
+        if (j - 1 >= 0 && grid[i][j - 1] != '0') {
+            dfs(i, j - 1, grid);
+        }
+        return true;
+    }
+    int numIslands(vector<vector<char>>& grid) {
+        n = grid.size();
+        m = grid[0].size();
+        int cnt = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] != '0') {
+                    if (dfs(i, j, grid)) {
+                        cnt++;
+                    }
+                }
+            }
+        }
+        return cnt;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3413. Maximum Coins From K Consecutive Bags</h3></summary>
 
 `Medium` `Time Beats: 89.30%` `Memory Beats: 51.17%` `Commit:cacb232` `Solved At: 2026-10-26 16:05:41` <code><a href="https://leetcode.com/problems/maximum-coins-from-k-consecutive-bags/description/" target="_blank">LINK</a></code>
