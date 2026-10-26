@@ -9,6 +9,56 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3619. Count Islands With Total Value Divisible by K 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 5.14%` `Memory Beats: 32.55%` `Commit:a433f5d` `Solved At: 2026-10-26 14:16:02` <code><a href="https://leetcode.com/problems/count-islands-with-total-value-divisible-by-k/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int m, n;
+    vector<vector<int>> directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+    long long dfs(int i, int j, vector<vector<int>>& grid) {
+        long long sum = grid[i][j];
+        grid[i][j] = 0;
+
+        for (vector<int> dir : directions) {
+            int i_ = i + dir[0];
+            int j_ = j + dir[1];
+
+            if (i_ >= 0 && j_ >= 0 && i_ < n && j_ < m && grid[i_][j_] > 0) {
+                sum += dfs(i_, j_, grid);
+            }
+        }
+        return sum;
+    }
+
+    int countIslands(vector<vector<int>>& grid, int k) {
+        n = grid.size();
+        m = grid[0].size();
+
+        int cnt = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] > 0) {
+                    long long sum = dfs(i, j, grid);
+                    if (sum % k == 0) {
+                        cnt++;
+                    }
+                }
+            }
+        }
+        return cnt;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>2409. Count Days Spent Together 🌟 POTD</h3></summary>
 
 `Easy` `Time Beats: 12.12%` `Memory Beats: 38.18%` `Commit:3780847` `Solved At: 2026-10-24 19:58:32` <code><a href="https://leetcode.com/problems/count-days-spent-together/description/" target="_blank">LINK</a></code>
