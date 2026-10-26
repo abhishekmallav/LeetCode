@@ -9,6 +9,65 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>36. Valid Sudoku</h3></summary>
+
+`Medium` `Time Beats: 23.06%` `Memory Beats: 32.80%` `Commit:b1bc4a6` `Solved At: 2026-10-26 19:49:02` <code><a href="https://leetcode.com/problems/valid-sudoku/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+
+        for (int i = 0; i < 9; i += 3) {
+            for (int j = 0; j < 9; j += 3) {
+                unordered_set<char> box;
+
+                for (int k = 0; k < 3; k++) {
+                    for (int l = 0; l < 3; l++) {
+                        char curr = board[i + k][j + l];
+
+                        if (curr != '.') {
+                            if (box.find(curr) != box.end()) {
+                                return false;
+                            }
+                            box.insert(curr);
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < 9; i++) {
+            unordered_set<char> row;
+            unordered_set<char> col;
+
+            for (int j = 0; j < 9; j++) {
+
+                if (board[i][j] != '.') {
+                    if (row.find(board[i][j]) != row.end()) {
+                        return false;
+                    }
+                    row.insert(board[i][j]);
+                }
+
+                if (board[j][i] != '.') {
+                    if (col.find(board[j][i]) != col.end()) {
+                        return false;
+                    }
+                    col.insert(board[j][i]);
+                }
+            }
+        }
+
+        return true;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>200. Number of Islands</h3></summary>
 
 `Medium` `Time Beats: 78.18%` `Memory Beats: 87.08%` `Commit:d398273` `Solved At: 2026-10-26 18:32:56` <code><a href="https://leetcode.com/problems/number-of-islands/description/" target="_blank">LINK</a></code>
