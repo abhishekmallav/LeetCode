@@ -9,6 +9,59 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3413. Maximum Coins From K Consecutive Bags</h3></summary>
+
+`Medium` `Time Beats: 89.30%` `Memory Beats: 51.17%` `Commit:cacb232` `Solved At: 2026-10-26 16:05:41` <code><a href="https://leetcode.com/problems/maximum-coins-from-k-consecutive-bags/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    long long maximumCoins(vector<vector<int>>& coins, int k) {
+        sort(coins.begin(), coins.end());
+        int n = coins.size();
+        long long res = 0, curr = 0;
+
+        for (int i = 0, j = 0; i < n; i++) {
+            while (j < n && coins[j][1] <= coins[i][0] + k - 1) {
+                curr +=
+                    (long long)(coins[j][1] - coins[j][0] + 1) * coins[j][2];
+                j++;
+            }
+            if (j < n && coins[j][0] <= coins[i][0] + k - 1) {
+                long long part =
+                    (long long)(coins[i][0] + k - 1 - coins[j][0] + 1) *
+                    coins[j][2];
+                res = max(res, curr + part);
+            }
+            curr -= (long long)(coins[i][1] - coins[i][0] + 1) * coins[i][2];
+        }
+        curr = 0;
+
+        for (int i = 0, j = 0; i < n; i++) {
+            curr += (long long)(coins[i][1] - coins[i][0] + 1) * coins[i][2];
+            while (j < n && coins[j][1] < coins[i][1] - k + 1) {
+                curr -=
+                    (long long)(coins[j][1] - coins[j][0] + 1) * coins[j][2];
+                j++;
+            }
+            if (coins[j][0] < coins[i][1] - k + 1) {
+                long long part =
+                    (long long)(coins[i][1] - k + 1 - coins[j][0]) *
+                    coins[j][2];
+                res = max(res, curr - part);
+            } else {
+                res = max(res, curr);
+            }
+        }
+        return res;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3619. Count Islands With Total Value Divisible by K 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 5.14%` `Memory Beats: 32.55%` `Commit:a433f5d` `Solved At: 2026-10-26 14:16:02` <code><a href="https://leetcode.com/problems/count-islands-with-total-value-divisible-by-k/description/" target="_blank">LINK</a></code>
