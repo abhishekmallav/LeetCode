@@ -9,6 +9,63 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>3882. Minimum XOR Path in a Grid 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 95.45%` `Memory Beats: 78.51%` `Commit:326c1a4` `Solved At: 2026-10-28 19:04:42` <code><a href="https://leetcode.com/problems/minimum-xor-path-in-a-grid/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minCost(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+
+        vector<vector<bitset<1024>>> dp(n, vector<bitset<1024>>(m));
+        dp[0][0][grid[0][0]] = 1;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (i == 0 && j == 0) {
+                    continue;
+                }
+
+                bitset<1024> up;
+                bitset<1024> left;
+
+                if (i > 0) {
+                    up = dp[i - 1][j];
+                }
+                if (j > 0) {
+                    left = dp[i][j - 1];
+                }
+
+                bitset<1024> comb;
+                comb = up | left;
+
+                for (int xorV = 0; xorV < 1024; xorV++) {
+                    if (comb[xorV]) {
+                        int xorRes = xorV ^ grid[i][j];
+                        dp[i][j][xorRes] = 1;
+                    }
+                }
+            }
+        }
+
+        for (int xorV = 0; xorV < 1024; xorV++) {
+            if (dp[n - 1][m - 1][xorV]) {
+                return xorV;
+            }
+        }
+
+        return -1;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>22. Generate Parentheses</h3></summary>
 
 `Medium` `Time Beats: 79.07%` `Memory Beats: 75.81%` `Commit:1e6b41a` `Solved At: 2026-10-26 20:57:26` <code><a href="https://leetcode.com/problems/generate-parentheses/description/" target="_blank">LINK</a></code>
