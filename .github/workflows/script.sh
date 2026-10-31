@@ -39,43 +39,69 @@ if [[ -z "$TIME_BEATS" ]] || [[ -z "$MEMORY_BEATS" ]]; then
     exit 1
 fi
 
-# Fetch LeetCode problems data
-PROBLEM_DATA=$(curl -s https://leetcode.com/api/problems/all/)
+FILE=$(git show --pretty="" --name-only "$COMMIT_HASH" \
+  | grep -m1 -E "(^|/)$PROBLEM_NUMBER-.*\\.(cpp|java|py|js|ts)$" || true)
 
-if [[ -z "$PROBLEM_DATA" ]] || [[ "$PROBLEM_DATA" == "null" ]]; then
-    echo "Error: Failed to fetch LeetCode problems data." >&2
+if [[ -z "$FILE" ]]; then
+    FILE=$(git show --pretty="" --name-only "$COMMIT_HASH" | head -n 1)
+fi
+
+# Check if a file was found in the commit
+if [[ -z "$FILE" ]]; then
+    echo "Error: Could not find code file from commit $COMMIT_HASH." >&2
     exit 1
 fi
 
-PROBLEM_TITLE=$(echo "$PROBLEM_DATA" | jq -r --arg id "$PROBLEM_NUMBER" '
-.stat_status_pairs[]
-| select((.stat.frontend_question_id|tostring) == $id)
-| .stat.question__title
-')
+EXT="${FILE##*.}"
 
-PROBLEM_SLUG=$(echo "$PROBLEM_DATA" | jq -r --arg id "$PROBLEM_NUMBER" '
-.stat_status_pairs[]
-| select((.stat.frontend_question_id|tostring) == $id)
-| .stat.question__title_slug
-')
+FILE_BASENAME=$(basename "$FILE")
+FILE_NAME="${FILE_BASENAME%.*}"
+FILE_TITLE_PART="$FILE_NAME"
+if [[ "$FILE_TITLE_PART" == "$PROBLEM_NUMBER"-* ]]; then
+    FILE_TITLE_PART="${FILE_TITLE_PART#"$PROBLEM_NUMBER"-}"
+fi
+FALLBACK_PROBLEM_TITLE="${FILE_TITLE_PART//-/ }"
+FALLBACK_PROBLEM_SLUG=$(echo "$FILE_TITLE_PART" | tr '[:upper:]' '[:lower:]')
 
-DIFFICULTY=$(echo "$PROBLEM_DATA" | jq -r --arg id "$PROBLEM_NUMBER" '
-.stat_status_pairs[]
-| select((.stat.frontend_question_id|tostring) == $id)
-| (if .difficulty.level==1 then "Easy"
-   elif .difficulty.level==2 then "Medium"
-   else "Hard" end)
-')
+if [[ -z "$FALLBACK_PROBLEM_TITLE" ]] || [[ "$FALLBACK_PROBLEM_TITLE" == "$FILE_NAME" ]]; then
+    echo "Error: Could not determine problem title from file name: $FILE_BASENAME" >&2
+    exit 1
+fi
+
+# Fetch LeetCode problems data
+PROBLEM_DATA=$(curl -fsSL \
+  -H 'User-Agent: Mozilla/5.0' \
+  -H 'Accept: application/json' \
+  https://leetcode.com/api/problems/all/ || true)
+
+if [[ -n "$PROBLEM_DATA" ]] && echo "$PROBLEM_DATA" | jq -e '.stat_status_pairs | arrays' > /dev/null 2>&1; then
+    PROBLEM_TITLE=$(echo "$PROBLEM_DATA" | jq -r --arg id "$PROBLEM_NUMBER" '
+    first(.stat_status_pairs[]
+    | select((.stat.frontend_question_id|tostring) == $id)
+    | .stat.question__title) // empty
+    ')
+
+    PROBLEM_SLUG=$(echo "$PROBLEM_DATA" | jq -r --arg id "$PROBLEM_NUMBER" '
+    first(.stat_status_pairs[]
+    | select((.stat.frontend_question_id|tostring) == $id)
+    | .stat.question__title_slug) // empty
+    ')
+
+    DIFFICULTY=$(echo "$PROBLEM_DATA" | jq -r --arg id "$PROBLEM_NUMBER" '
+    first(.stat_status_pairs[]
+    | select((.stat.frontend_question_id|tostring) == $id)
+    | (if .difficulty.level==1 then "Easy"
+       elif .difficulty.level==2 then "Medium"
+       else "Hard" end)) // empty
+    ')
+fi
 
 # Validate problem data was found
-if [[ -z "$PROBLEM_TITLE" ]] || [[ "$PROBLEM_TITLE" == "null" ]]; then
-    echo "Error: Could not find problem #$PROBLEM_NUMBER in LeetCode API." >&2
-    exit 1
-fi
-
-if [[ -z "$PROBLEM_SLUG" ]] || [[ "$PROBLEM_SLUG" == "null" ]]; then
-    echo "Error: Could not find problem slug for #$PROBLEM_NUMBER." >&2
-    exit 1
+if [[ -z "$PROBLEM_TITLE" ]] || [[ -z "$PROBLEM_SLUG" ]] || [[ -z "$DIFFICULTY" ]]; then
+    echo "Warning: Falling back to filename-derived metadata for problem #$PROBLEM_NUMBER." >&2
+    PROBLEM_TITLE="$FALLBACK_PROBLEM_TITLE"
+    PROBLEM_SLUG="$FALLBACK_PROBLEM_SLUG"
+    DIFFICULTY="Unknown"
 fi
 
 PROBLEM_URL="https://leetcode.com/problems/$PROBLEM_SLUG/description/"
@@ -94,17 +120,6 @@ if [[ "$PROBLEM_NUMBER" == "$DAILY_ID" ]]; then
     POTD=" 🌟 POTD"
     echo "✓ This is today's Problem of the Day!" >&2
 fi
-
-
-FILE=$(git show --pretty="" --name-only "$COMMIT_HASH" | head -n 1)
-
-# Check if a file was found in the commit
-if [[ -z "$FILE" ]]; then
-    echo "Error: Could not find code file from commit $COMMIT_HASH." >&2
-    exit 1
-fi
-
-EXT="${FILE##*.}"
 
 # Extract code content from the commit
 CODE_CONTENT=$(git show "$COMMIT_HASH:$FILE" 2>/dev/null | sed 's/^[0-9]*//g')
@@ -125,7 +140,7 @@ TMPFILE=$(mktemp)
 {
 echo ""
 echo "<details>"
-echo "<summary><h3>$PROBLEM_NUMBER. $PROBLEM_TITLE$POTD</h3></summary>"
+echo "<summary><h3>$PROBLEM_NUMBER-$PROBLEM_TITLE$POTD</h3></summary>"
 echo ""
 echo "\`$DIFFICULTY\` \`Time Beats: $TIME_BEATS\` \`Memory Beats: $MEMORY_BEATS\` \`Commit:$COMMIT_HASH\` \`Solved At: $COMMIT_TIME\` <code><a href=\"$PROBLEM_URL\" target=\"_blank\">LINK</a></code>"
 echo ""
