@@ -140,7 +140,7 @@ TMPFILE=$(mktemp)
 {
 echo ""
 echo "<details>"
-echo "<summary><h3>$PROBLEM_NUMBER. $PROBLEM_TITLE$POTD</h3></summary>"
+echo "<summary><h3>$PROBLEM_NUMBER-$PROBLEM_TITLE$POTD</h3></summary>"
 echo ""
 echo "\`$DIFFICULTY\` \`Time Beats: $TIME_BEATS\` \`Memory Beats: $MEMORY_BEATS\` \`Commit:$COMMIT_HASH\` \`Solved At: $COMMIT_TIME\` <code><a href=\"$PROBLEM_URL\" target=\"_blank\">LINK</a></code>"
 echo ""
