@@ -4,35 +4,42 @@ set -euo pipefail
 for tool in jq curl git; do
     command -v "$tool" >/dev/null || { echo "Missing required tool: $tool" >&2; exit 1; }
 done
+
 cd "$(git rev-parse --show-toplevel)"
 
 COMMIT_HASH=$(git rev-parse "${SUBMISSION_COMMIT:-HEAD}")
 COMMIT_SHORT=$(git rev-parse --short "$COMMIT_HASH")
 COMMIT_SUBJECT=$(git log -1 --format=%s "$COMMIT_HASH")
 COMMIT_TIME=$(TZ=Asia/Kolkata git log -1 --format=%cd --date=format:'%Y-%m-%d %H:%M:%S' "$COMMIT_HASH")
+
 if [[ ! "$COMMIT_SUBJECT" =~ \[([0-9]+)\] ]]; then
     echo 'No submission problem number in commit message; skipping.'
     exit 0
 fi
+
 PROBLEM_NUMBER=${BASH_REMATCH[1]}
 TIME_BEATS='N/A'
 MEMORY_BEATS='N/A'
+
 if [[ "$COMMIT_SUBJECT" =~ Time\ Beats:\ ([-0-9.]+%) ]]; then TIME_BEATS=${BASH_REMATCH[1]}; fi
 if [[ "$COMMIT_SUBJECT" =~ Memory\ Beats:\ ([-0-9.]+%) ]]; then MEMORY_BEATS=${BASH_REMATCH[1]}; fi
 
 # A daily source takes priority if both copies were included in the commit.
 FILES=()
 DAILY_FILES=()
+
 while IFS= read -r -d '' path; do
     if [[ "${path##*/}" =~ ^${PROBLEM_NUMBER}-.+\.(cpp|java|py|js|ts|sql|sh)$ ]]; then
         FILES+=("$path")
         if [[ "$path" =~ ^DCP-[0-9]{2}-[0-9]{2}/ ]]; then DAILY_FILES+=("$path"); fi
     fi
 done < <(git diff-tree --root --no-commit-id --name-only --diff-filter=AM -r -z "$COMMIT_HASH")
+
 if ((${#FILES[@]} == 0)); then
     echo "No numbered solution file for problem $PROBLEM_NUMBER; skipping."
     exit 0
 fi
+
 if ((${#DAILY_FILES[@]})); then FILES=("${DAILY_FILES[@]}"); fi
 
 mkdir -p SQL SHELL
@@ -47,7 +54,9 @@ touch SQL/.gitkeep SHELL/.gitkeep
 ENTRIES=$(mktemp)
 CODE_TMP=$(mktemp)
 README_TMP=$(mktemp)
+
 trap 'rm -f "$ENTRIES" "$CODE_TMP" "$README_TMP"' EXIT
+
 for FILE in "${FILES[@]}"; do
     BASENAME=${FILE##*/}
     EXT=${BASENAME##*.}
@@ -61,6 +70,7 @@ for FILE in "${FILES[@]}"; do
     DATA=$(curl -fsSL --connect-timeout 15 --max-time 90 --retry 2 --get \
         --data-urlencode "titleSlug=$SLUG" \
         https://alfa-leetcode-api.onrender.com/select || true)
+    
     if META=$(printf '%s' "$DATA" | jq -er --arg id "$PROBLEM_NUMBER" '
         select((.questionFrontendId | tostring) == $id)
         | [.questionTitle, .titleSlug, .difficulty]
@@ -69,10 +79,15 @@ for FILE in "${FILES[@]}"; do
     else
         echo "Warning: metadata unavailable or mismatched for #$PROBLEM_NUMBER; using filename." >&2
     fi
+    
     POTD=''
+    
     if [[ "$FILE" =~ ^DCP-[0-9]{2}-[0-9]{2}/ ]]; then POTD=' 🌟 POTD'; fi
+
     DB=''
+
     if [[ "$EXT" == sql ]]; then DB=' 🗄️'; fi
+
     case "$EXT" in
         sql) DEST="SQL/$BASENAME" ;;
         sh) DEST="SHELL/$BASENAME" ;;
@@ -85,6 +100,7 @@ for FILE in "${FILES[@]}"; do
                 exit 1
             fi ;;
     esac
+
     git show "$COMMIT_HASH:$FILE" > "$CODE_TMP"
     # Preserve the DCP source; root submissions move into their destination.
     if [[ -f "$DEST" ]] && ! cmp -s "$CODE_TMP" "$DEST"; then
@@ -96,8 +112,11 @@ for FILE in "${FILES[@]}"; do
         done
         cp "$DEST" "$ALTERNATIVE"
     fi
+
     cp "$CODE_TMP" "$DEST"
+
     if [[ "$FILE" != "$DEST" && "$FILE" != */* ]]; then rm -f -- "$FILE"; fi
+
     # Rerunning a commit should organise files without duplicating its README entry.
     if grep -Fq "<!-- submission:$COMMIT_HASH:$EXT -->" README.md; then continue; fi
     {
@@ -110,15 +129,19 @@ for FILE in "${FILES[@]}"; do
         printf '\n```\n\n</details>\n\n'
     } >> "$ENTRIES"
 done
+
 if ! grep -qF '<!-- SUBMISSIONS -->' README.md; then
     echo 'README submission marker is missing.' >&2
     exit 1
 fi
+
 awk -v entries="$ENTRIES" '
     { print }
     /<!-- SUBMISSIONS -->/ { while ((getline line < entries) > 0) print line; close(entries) }
 ' README.md > "$README_TMP"
+
 cat "$README_TMP" > README.md
+
 if [[ -n "${GITHUB_ENV:-}" ]]; then
     printf 'LEETCODE_PROBLEM_NUMBER=%s\nLEETCODE_PROBLEM_TITLE=%s\nLEETCODE_COMMIT_DATE=%s\n' \
         "$PROBLEM_NUMBER" "$PROBLEM_TITLE" "${COMMIT_TIME:0:10}" >> "$GITHUB_ENV"
