@@ -144,6 +144,9 @@ awk -v entries="$ENTRIES" '
 cat "$README_TMP" > README.md
 
 if [[ -n "${GITHUB_ENV:-}" ]]; then
+    # Keep the submission message, without the extension's branding suffix.
+    SUBMISSION_MESSAGE=$(printf '%s' "$COMMIT_SUBJECT" | sed -E 's/[[:space:]]*-[[:space:]]*LeetPush[[:space:]]*$//; s/LeetPush//g; s/[[:space:]]+$//')
+    printf 'LEETCODE_COMMIT_MESSAGE=%s\n' "$SUBMISSION_MESSAGE" >> "$GITHUB_ENV"
     printf 'LEETCODE_PROBLEM_NUMBER=%s\nLEETCODE_PROBLEM_TITLE=%s\nLEETCODE_COMMIT_DATE=%s\n' \
         "$PROBLEM_NUMBER" "$PROBLEM_TITLE" "${COMMIT_TIME:0:10}" >> "$GITHUB_ENV"
 fi
