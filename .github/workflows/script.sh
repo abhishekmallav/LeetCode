@@ -45,7 +45,7 @@ if ((${#DAILY_FILES[@]})); then FILES=("${DAILY_FILES[@]}"); fi
 mkdir -p SQL SHELL
 # Git needs placeholders to retain empty folders.
 for ((start=1; start<=4200; start+=100)); do
-    folder="$start-$((start+99))"
+    printf -v folder '%04d-%04d' "$start" "$((start+99))"
     mkdir -p "$folder"
     touch "$folder/.gitkeep"
 done
@@ -94,7 +94,8 @@ for FILE in "${FILES[@]}"; do
         *)
             NUMBER=$((10#$PROBLEM_NUMBER))
             START=$(((NUMBER-1)/100*100+1))
-            DEST="$START-$((START+99))/$BASENAME"
+            printf -v RANGE '%04d-%04d' "$START" "$((START+99))"
+            DEST="$RANGE/$BASENAME"
             if ((NUMBER < 1)) || [[ ! -d "${DEST%/*}" ]]; then
                 echo "Create a range folder for problem $PROBLEM_NUMBER before processing." >&2
                 exit 1
