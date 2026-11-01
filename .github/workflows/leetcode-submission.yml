@@ -59,6 +59,7 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: organize LeetCode submissions and update README [skip ci]"
+          # Pushes using the checkout GITHUB_TOKEN do not trigger another workflow run.
+          git commit -m "$LEETCODE_COMMIT_MESSAGE"
           git pull --rebase origin main
           git push origin HEAD:main
