@@ -8,6 +8,23 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:9a330d84c61bf0108b30bddd43b45ed65349c70a:sql -->
+<details>
+<summary><h3>1141-User Activity for the Past 30 Days I 🗄️</h3></summary>
+
+`Easy` `Time Beats: 31.65%` `Memory Beats: N/A` `Commit:9a330d8` `Solved At: 2026-10-24 16:15:17` <code><a href="https://leetcode.com/problems/user-activity-for-the-past-30-days-i/description/" target="_blank">LINK</a></code>
+
+```sql
+# Write your MySQL query statement below
+SELECT activity_date AS day, COUNT(DISTINCT user_id) AS active_users
+FROM Activity
+WHERE (activity_date > "2019-06-27" AND activity_date <= "2019-07-27")
+GROUP BY activity_date;
+```
+
+</details>
+
+
 <details>
 <summary><h3>453-Minimum Moves to Equal Array Elements 🌟 POTD</h3></summary>
 
