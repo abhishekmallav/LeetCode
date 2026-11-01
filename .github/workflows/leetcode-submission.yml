@@ -1,4 +1,4 @@
-name: Update README with LeetCode Solution
+name: Organize LeetCode submissions and update README
 
 on:
   push:
@@ -10,48 +10,55 @@ on:
       - '**.py'
       - '**.js'
       - '**.ts'
+      - '**.sql'
+      - '**.sh'
+      - '!.github/**'
+
+# Serialize updates so two submissions cannot push documentation simultaneously.
+concurrency:
+  group: leetcode-submissions-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
-    
-    # Prevent the workflow from running on commits made by the workflow itself
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    
     permissions:
       contents: write
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
-      
+
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y jq curl
-      
-      - name: Make script executable
-        run: chmod +x .github/workflows/script.sh
-      
-      - name: Run LeetCode script
-        run: bash .github/workflows/script.sh
-      
-      - name: Check if README was modified
-        id: check_changes
+
+      - name: Process submission commits in this push
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
         run: |
-          if git diff --quiet README.md; then
-            echo "changed=false" >> $GITHUB_OUTPUT
+          if [[ "$BEFORE" =~ ^0+$ ]]; then
+            commits=$(git rev-list --reverse "$AFTER")
           else
-            echo "changed=true" >> $GITHUB_OUTPUT
+            commits=$(git rev-list --reverse "$BEFORE..$AFTER")
           fi
-      
-      - name: Commit and push changes
-        if: steps.check_changes.outputs.changed == 'true'
+          for commit in $commits; do
+            SUBMISSION_COMMIT="$commit" bash .github/workflows/script.sh
+          done
+
+      - name: Commit and push organized submissions
         run: |
+          git add --all
+          if git diff --cached --quiet; then
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "docs: [#${{ env.LEETCODE_PROBLEM_NUMBER }}] ${{ env.LEETCODE_PROBLEM_TITLE }} (${{ env.LEETCODE_COMMIT_DATE }}) [skip ci]"
-          git push
+          git commit -m "chore: organize LeetCode submissions and update README [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
