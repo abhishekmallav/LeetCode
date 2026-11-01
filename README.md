@@ -17,6 +17,43 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:0717abc6460f2367e818080884c38807b328da2e:cpp -->
+<details>
+<summary><h3>11-Container With Most Water</h3></summary>
+
+`Medium` `Time Beats: 17.37%` `Memory Beats: 40.55%` `Commit:0717abc` `Solved At: 2026-11-01 20:26:24` <code><a href="https://leetcode.com/problems/container-with-most-water/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int n = height.size();
+        if (n == 1)
+            return 0;
+
+        int l = 0;
+        int r = n - 1;
+        int maxi = 0;
+
+        while (l < r) {
+            int area = min(height[l], height[r]) * (r - l);
+
+            maxi = max(maxi, area);
+            
+            if (height[r] > height[l]) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+        return maxi;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:9a330d84c61bf0108b30bddd43b45ed65349c70a:sql -->
 <details>
 <summary><h3>1141-User Activity for the Past 30 Days I 🗄️</h3></summary>
