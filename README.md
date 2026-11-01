@@ -2,7 +2,16 @@
 
 A daily log of my LeetCode solutions, automatically updated on every submission.
 
-<a href="https://leetcode.com/u/abhishekmallav/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-abhishekmallav-FFA116?style=flat&logo=leetcode&logoColor=white" alt="LeetCode Profile"/></a>
+<a href="https://leetcode.com/u/abhishekmallav/"><img src="https://shieldcn.dev/badge/LeetCode-abhishekmallav-FFA116.svg?logo=leetcode&amp;variant=default&amp;mode=light&amp;color=FFA116&amp;valueColor=18181B&amp;labelTextColor=18181B&amp;labelOpacity=1&amp;logoColor=18181B" alt="LeetCode profile: abhishekmallav" /></a>
+
+<p>
+  <a href="https://leetcode.com/u/abhishekmallav/"><img src="https://shieldcn.dev/badge/dynamic/json.svg?url=https%3A%2F%2Fleetinfo-api.vercel.app%2Fapi%2Fshields%3Fusername%3Dabhishekmallav%26stat%3Dranking&amp;query=%24.message&amp;label=Ranking&amp;variant=default&amp;mode=light&amp;color=C4B5FD&amp;valueColor=18181B&amp;labelTextColor=18181B&amp;labelOpacity=1&amp;logoColor=18181B" alt="LeetCode Ranking" /></a>
+  <a href="https://leetcode.com/u/abhishekmallav/"><img src="https://shieldcn.dev/badge/dynamic/json.svg?url=https%3A%2F%2Fleetinfo-api.vercel.app%2Fapi%2Fshields%3Fusername%3Dabhishekmallav%26stat%3Dsolved&amp;query=%24.message&amp;label=Solved&amp;variant=default&amp;mode=light&amp;color=93C5FD&amp;valueColor=18181B&amp;labelTextColor=18181B&amp;labelOpacity=1&amp;logoColor=18181B" alt="LeetCode Solved" /></a>
+  <a href="https://leetcode.com/u/abhishekmallav/"><img src="https://shieldcn.dev/badge/dynamic/json.svg?url=https%3A%2F%2Fleetinfo-api.vercel.app%2Fapi%2Fshields%3Fusername%3Dabhishekmallav%26stat%3Deasy&amp;query=%24.message&amp;label=Easy&amp;variant=default&amp;mode=light&amp;color=5EEAD4&amp;valueColor=18181B&amp;labelTextColor=18181B&amp;labelOpacity=1&amp;logoColor=18181B" alt="LeetCode Easy" /></a>
+  <a href="https://leetcode.com/u/abhishekmallav/"><img src="https://shieldcn.dev/badge/dynamic/json.svg?url=https%3A%2F%2Fleetinfo-api.vercel.app%2Fapi%2Fshields%3Fusername%3Dabhishekmallav%26stat%3Dmedium&amp;query=%24.message&amp;label=Medium&amp;variant=default&amp;mode=light&amp;color=FDE047&amp;valueColor=18181B&amp;labelTextColor=18181B&amp;labelOpacity=1&amp;logoColor=18181B" alt="LeetCode Medium" /></a>
+  <a href="https://leetcode.com/u/abhishekmallav/"><img src="https://shieldcn.dev/badge/dynamic/json.svg?url=https%3A%2F%2Fleetinfo-api.vercel.app%2Fapi%2Fshields%3Fusername%3Dabhishekmallav%26stat%3Dhard&amp;query=%24.message&amp;label=Hard&amp;variant=default&amp;mode=light&amp;color=FDA4AF&amp;valueColor=18181B&amp;labelTextColor=18181B&amp;labelOpacity=1&amp;logoColor=18181B" alt="LeetCode Hard" /></a>
+  <a href="https://leetcode.com/u/abhishekmallav/"><img src="https://shieldcn.dev/badge/dynamic/json.svg?url=https%3A%2F%2Fleetinfo-api.vercel.app%2Fapi%2Fshields%3Fusername%3Dabhishekmallav%26stat%3Dcontributions&amp;query=%24.message&amp;label=Contributions&amp;variant=default&amp;mode=light&amp;color=FDBA74&amp;valueColor=18181B&amp;labelTextColor=18181B&amp;labelOpacity=1&amp;logoColor=18181B" alt="LeetCode Current Streak" /></a>
+</p>
 
 ---
 
