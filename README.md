@@ -17,6 +17,29 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:b96d5484b7b45caad77da6132951a9e0571a15f4:cpp -->
+<details>
+<summary><h3>12-Integer to Roman</h3></summary>
+
+`Medium` `Time Beats: 33.67%` `Memory Beats: 91.07%` `Commit:b96d548` `Solved At: 2026-11-01 20:33:17` <code><a href="https://leetcode.com/problems/integer-to-roman/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string intToRoman(int num) {
+        string ones[] = {"","I","II","III","IV","V","VI","VII","VIII","IX"};
+        string tens[] = {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
+        string hrns[] = {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
+        string ths[]={"","M","MM","MMM"};
+        
+        return ths[num/1000] + hrns[(num%1000)/100] + tens[(num%100)/10] + ones[num%10];
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:0717abc6460f2367e818080884c38807b328da2e:cpp -->
 <details>
 <summary><h3>11-Container With Most Water</h3></summary>
