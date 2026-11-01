@@ -9,6 +9,30 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 <!-- SUBMISSIONS -->
 
 <details>
+<summary><h3>453-Minimum Moves to Equal Array Elements 🌟 POTD</h3></summary>
+
+`Unknown` `Time Beats: 100.00%` `Memory Beats: 56.31%` `Commit:6a5533f` `Solved At: 2026-11-01 12:17:11` <code><a href="https://leetcode.com/problems/minimum-moves-to-equal-array-elements/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minMoves(vector<int>& nums) {
+        int n = nums.size();
+        auto mini = ranges::min_element(nums);
+        int sol = 0;
+
+        for (int i = 0; i < n; i++) {
+            sol += nums[i] - *mini;
+        }
+        return sol;
+    }
+};
+```
+
+</details>
+
+
+<details>
 <summary><h3>3882. Minimum XOR Path in a Grid 🌟 POTD</h3></summary>
 
 `Medium` `Time Beats: 95.45%` `Memory Beats: 78.51%` `Commit:326c1a4` `Solved At: 2026-10-28 19:04:42` <code><a href="https://leetcode.com/problems/minimum-xor-path-in-a-grid/description/" target="_blank">LINK</a></code>
