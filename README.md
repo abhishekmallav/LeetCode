@@ -17,6 +17,31 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:d716d36eb587f12aab842a5bfe5f163c7bcd8dfe:cpp -->
+<details>
+<summary><h3>462-Minimum Moves to Equal Array Elements II 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 42.84%` `Memory Beats: 79.95%` `Commit:d716d36` `Solved At: 2026-11-02 13:33:17` <code><a href="https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minMoves2(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size(), m = nums[n / 2], sol = 0;
+
+        for (int num : nums) {
+            sol += abs(num - m);
+        }
+        
+        return sol;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:b96d5484b7b45caad77da6132951a9e0571a15f4:cpp -->
 <details>
 <summary><h3>12-Integer to Roman</h3></summary>
