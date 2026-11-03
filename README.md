@@ -17,6 +17,31 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:d7182a486a607a003d65bf807b69a21c83fdc269:cpp -->
+<details>
+<summary><h3>3736-Minimum Moves to Equal Array Elements III 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 27.20%` `Memory Beats: 79.45%` `Commit:d7182a4` `Solved At: 2026-11-03 12:37:04` <code><a href="https://leetcode.com/problems/minimum-moves-to-equal-array-elements-iii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minMoves(vector<int>& nums) {
+        auto maxi = ranges::max_element(nums);
+        int sol = 0;
+
+        for (int num : nums) {
+            sol += *maxi - num;
+        }
+        
+        return sol;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:d716d36eb587f12aab842a5bfe5f163c7bcd8dfe:cpp -->
 <details>
 <summary><h3>462-Minimum Moves to Equal Array Elements II 🌟 POTD</h3></summary>
