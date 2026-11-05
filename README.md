@@ -17,6 +17,37 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:cec6d70b68be287438ad9c16ab4e2373280dcfb9:cpp -->
+<details>
+<summary><h3>1385-Find the Distance Value Between Two Arrays 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 48.66%` `Memory Beats: 75.81%` `Commit:cec6d70` `Solved At: 2026-11-05 12:32:14` <code><a href="https://leetcode.com/problems/find-the-distance-value-between-two-arrays/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int findTheDistanceValue(vector<int>& arr1, vector<int>& arr2, int d) {
+        sort(arr1.begin(), arr1.end());
+        sort(arr2.begin(), arr2.end());
+
+        arr2.push_back(INT_MAX);
+        int count = 0;
+        auto b = arr2.begin();
+
+        for (int a : arr1) {
+            while (*b < a - d) {
+                b++;
+            }
+            count += *b > a + d;
+        }
+        return count;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:d7182a486a607a003d65bf807b69a21c83fdc269:cpp -->
 <details>
 <summary><h3>3736-Minimum Moves to Equal Array Elements III 🌟 POTD</h3></summary>
