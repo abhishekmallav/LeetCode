@@ -17,6 +17,65 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:43a35c6047bea49c615a99df661cbfe9e973e0d8:cpp -->
+<details>
+<summary><h3>2747-Count Zero Request Servers 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 38.96%` `Memory Beats: 52.81%` `Commit:43a35c6` `Solved At: 2026-11-06 19:12:57` <code><a href="https://leetcode.com/problems/count-zero-request-servers/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> countServers(int n, vector<vector<int>>& logs, int x,
+                             vector<int>& queries) {
+        int m = logs.size();
+
+        auto lambda = [](vector<int>& v1, vector<int>& v2) {
+            return v1[1] < v2[1];
+        };
+
+        sort(begin(logs), end(logs), lambda);
+
+        int q = queries.size();
+        vector<pair<int, int>> timeIndex(q);
+
+        for (int i = 0; i < q; i++)
+            timeIndex[i] = {queries[i], i};
+
+        sort(begin(timeIndex), end(timeIndex));
+
+        unordered_map<int, int> mp;
+        vector<int> result(q);
+
+        int i = 0, j = 0;
+        for (auto [curtime, ind] : timeIndex) {
+            int start = curtime - x;
+            int end = curtime;
+
+            while (j < m && logs[j][1] <= end) {
+                mp[logs[j][0]]++;
+                j++;
+            }
+
+            while (i < m && logs[i][1] < start) {
+                mp[logs[i][0]]--;
+                if (mp[logs[i][0]] == 0)
+                    mp.erase(logs[i][0]);
+
+                i++;
+            }
+
+            result[ind] = n - mp.size();
+        }
+
+        return result;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:cec6d70b68be287438ad9c16ab4e2373280dcfb9:cpp -->
 <details>
 <summary><h3>1385-Find the Distance Value Between Two Arrays 🌟 POTD</h3></summary>
