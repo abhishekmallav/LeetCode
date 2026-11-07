@@ -17,6 +17,56 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:e165e5dbe7b0ca1b0a5dc222ee205c0506d482b6:cpp -->
+<details>
+<summary><h3>1882-Process Tasks Using Servers 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 23.79%` `Memory Beats: 52.04%` `Commit:e165e5d` `Solved At: 2026-11-07 12:35:30` <code><a href="https://leetcode.com/problems/process-tasks-using-servers/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    vector<int> assignTasks(vector<int>& servers, vector<int>& tasks) {
+        using pii = pair<int, int>;
+        using arr = array<long long, 3>;
+
+        priority_queue<pii, vector<pii>, greater<pii>> free;
+        priority_queue<arr, vector<arr>, greater<arr>> busy;
+
+        for (int i = 0; i < (int)servers.size(); ++i) {
+            free.push({servers[i], i});
+        }
+
+        int m = tasks.size();
+        vector<int> ans(m);
+
+        for (int j = 0; j < m; ++j) {
+            while (!busy.empty() && busy.top()[0] <= j) {
+                auto [_, w, i] = busy.top();
+                busy.pop();
+                free.push({(int)w, (int)i});
+            }
+            if (!free.empty()) {
+                auto [w, i] = free.top();
+                free.pop();
+                ans[j] = i;
+                busy.push({(long long)j + tasks[j], w, i});
+            } else {
+                auto [ft, w, i] = busy.top();
+                busy.pop();
+                ans[j] = (int)i;
+                busy.push({ft + tasks[j], w, i});
+            }
+        }
+
+        return ans;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:43a35c6047bea49c615a99df661cbfe9e973e0d8:cpp -->
 <details>
 <summary><h3>2747-Count Zero Request Servers 🌟 POTD</h3></summary>
