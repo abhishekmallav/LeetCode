@@ -17,6 +17,42 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:b02b812fedf2d4213eda88f9d3c5c26e6434afe6:cpp -->
+<details>
+<summary><h3>3693-Climbing Stairs II 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 74.23%` `Memory Beats: 72.19%` `Commit:b02b812` `Solved At: 2026-11-10 19:39:21` <code><a href="https://leetcode.com/problems/climbing-stairs-ii/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int climbStairs(int n, vector<int>& costs) {
+        vector<int> dp(n + 1, 0);
+        for (int i = n - 1; i >= 0; i--) {
+            int cost = INT_MAX;
+
+            int j = i + 1;
+            if (j <= n) {
+                cost = dp[j] + costs[j - 1] + (j - i) * (j - i);
+            }
+            j = i + 2;
+            if (j <= n) {
+                cost = min(cost, dp[j] + costs[j - 1] + (j - i) * (j - i));
+            }
+            j = i + 3;
+            if (j <= n) {
+                cost = min(cost, dp[j] + costs[j - 1] + (j - i) * (j - i));
+            }
+            dp[i] = cost;
+        }
+        return dp[0];
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:e165e5dbe7b0ca1b0a5dc222ee205c0506d482b6:cpp -->
 <details>
 <summary><h3>1882-Process Tasks Using Servers 🌟 POTD</h3></summary>
