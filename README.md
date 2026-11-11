@@ -17,6 +17,31 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:5b730d89b4f7dc9bdbfd1fa17e0773c44495008c:cpp -->
+<details>
+<summary><h3>3789-Minimum Cost to Acquire Required Items 🌟 POTD</h3></summary>
+
+`Unknown` `Time Beats: 100.00%` `Memory Beats: 52.35%` `Commit:5b730d8` `Solved At: 2026-11-11 20:53:32` <code><a href="https://leetcode.com/problems/minimum-cost-to-acquire-required-items/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    long long minimumCost(int cost1, int cost2, int costBoth, int need1, int need2) {
+        long long c1 = cost1, c2 = cost2, cb = costBoth;
+        long long n1 = need1, n2 = need2;
+        long long pairs = min(n1, n2);
+        long long costPairs = pairs * min(cb, c1 + c2);
+        long long rem1 = n1 - pairs;
+        long long rem2 = n2 - pairs;
+        long long costRem = rem1 * min(c1, cb) + rem2 * min(c2, cb);
+        return costPairs + costRem;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:b02b812fedf2d4213eda88f9d3c5c26e6434afe6:cpp -->
 <details>
 <summary><h3>3693-Climbing Stairs II 🌟 POTD</h3></summary>
