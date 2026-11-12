@@ -17,6 +17,40 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:4bb592b0ad8e862c6f468ba8867dddaaa3e1668b:cpp -->
+<details>
+<summary><h3>3105-Longest Strictly Increasing or Strictly Decreasing Subarray 🌟 POTD</h3></summary>
+
+`Unknown` `Time Beats: 21.27%` `Memory Beats: 48.88%` `Commit:4bb592b` `Solved At: 2026-11-12 18:52:54` <code><a href="https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int longestMonotonicSubarray(vector<int>& nums) {
+        int n = nums.size();
+        int maxi = 1, inc = 1, dec = 1;
+        
+        for (int i = 1; i < n; i++) {
+            if (nums[i] > nums[i - 1]) {
+                inc++;
+                dec = 1;
+            } else if (nums[i] < nums[i - 1]) {
+                dec++;
+                inc = 1;
+            } else {
+                inc = 1;
+                dec = 1;
+            }
+            maxi = max(maxi, max(inc, dec));
+        }
+        return maxi;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:5b730d89b4f7dc9bdbfd1fa17e0773c44495008c:cpp -->
 <details>
 <summary><h3>3789-Minimum Cost to Acquire Required Items 🌟 POTD</h3></summary>
