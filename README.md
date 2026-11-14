@@ -17,6 +17,37 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:cf7a3b2e2e2bbadfb91d6a16d325f148c0add547:cpp -->
+<details>
+<summary><h3>3364-Minimum Positive Sum Subarray  🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 21.02%` `Memory Beats: 63.40%` `Commit:cf7a3b2` `Solved At: 2026-11-14 20:06:57` <code><a href="https://leetcode.com/problems/minimum-positive-sum-subarray/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minimumSumSubarray(vector<int>& nums, int l, int r) {
+        int n = nums.size();
+        int mini = INT_MAX;
+
+        for (int i = 0; i < n; i++) {
+            int sum = 0;
+            for (int j = i; j < n; j++) {
+                sum += nums[j];
+                int len = j - i + 1;
+                if (len >= l && len <= r && sum > 0) {
+                    mini = min(mini, sum);
+                }
+            }
+        }
+        return mini == INT_MAX ? -1 : mini;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:4bb592b0ad8e862c6f468ba8867dddaaa3e1668b:cpp -->
 <details>
 <summary><h3>3105-Longest Strictly Increasing or Strictly Decreasing Subarray 🌟 POTD</h3></summary>
