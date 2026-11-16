@@ -17,6 +17,36 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:b295712280d89afec953560804bd420bd327f7f1:cpp -->
+<details>
+<summary><h3>2243-Calculate Digit Sum of a String 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 100.00%` `Memory Beats: 40.41%` `Commit:b295712` `Solved At: 2026-11-16 23:00:24` <code><a href="https://leetcode.com/problems/calculate-digit-sum-of-a-string/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    string digitSum(string s, int k) {
+        while (s.length() > k) {
+            int n = s.length();
+            string tmp = "";
+            for (int i = 0; i < n; i += k) {
+                int sum = 0;
+                for (int j = i; j < n && j < i + k; j++) {
+                    sum += s[j] - '0';
+                }
+                tmp += to_string(sum);
+            }
+            s = tmp;
+        }
+        return s;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:cf7a3b2e2e2bbadfb91d6a16d325f148c0add547:cpp -->
 <details>
 <summary><h3>3364-Minimum Positive Sum Subarray  🌟 POTD</h3></summary>
