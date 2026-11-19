@@ -17,6 +17,27 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:c467d553fab685af5332aaa290b29789883168bc:cpp -->
+<details>
+<summary><h3>2567-Minimum Score by Changing Two Elements 🌟 POTD</h3></summary>
+
+`Medium` `Time Beats: 37.31%` `Memory Beats: 96.37%` `Commit:c467d55` `Solved At: 2026-11-19 12:13:00` <code><a href="https://leetcode.com/problems/minimum-score-by-changing-two-elements/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    int minimizeSum(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        return min({nums[n - 1] - nums[2], nums[n - 3] - nums[0],
+                    nums[n - 2] - nums[1]});
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:b295712280d89afec953560804bd420bd327f7f1:cpp -->
 <details>
 <summary><h3>2243-Calculate Digit Sum of a String 🌟 POTD</h3></summary>
