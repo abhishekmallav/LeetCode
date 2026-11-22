@@ -17,6 +17,32 @@ A daily log of my LeetCode solutions, automatically updated on every submission.
 
 <!-- SUBMISSIONS -->
 
+<!-- submission:bc54d7e1b535386da487ed4e68d1c047117551a1:cpp -->
+<details>
+<summary><h3>2124-Check if All A's Appears Before All B's 🌟 POTD</h3></summary>
+
+`Easy` `Time Beats: 9.75%` `Memory Beats: 81.89%` `Commit:bc54d7e` `Solved At: 2026-11-22 18:36:18` <code><a href="https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/description/" target="_blank">LINK</a></code>
+
+```cpp
+class Solution {
+public:
+    bool checkString(string s) {
+        bool seenB = false;
+        for (char c : s) {
+            if (c == 'b') {
+                seenB = true;
+            } else if (seenB) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+```
+
+</details>
+
+
 <!-- submission:c467d553fab685af5332aaa290b29789883168bc:cpp -->
 <details>
 <summary><h3>2567-Minimum Score by Changing Two Elements 🌟 POTD</h3></summary>
